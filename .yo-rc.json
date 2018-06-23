@@ -1,0 +1,20 @@
+{
+  "generator-ngx-rocket": {
+    "version": "5.0.1",
+    "props": {
+      "location": "path",
+      "appName": "Testra",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": false,
+      "lazy": true,
+      "angulartics": false,
+      "projectName": "testra",
+      "packageManager": "yarn",
+      "mobile": []
+    }
+  }
+}
