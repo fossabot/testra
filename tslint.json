@@ -148,5 +148,10 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true
-  }
+  },
+  "linterOptions": {
+    "exclude": [
+        "src/app/core/api/testra/index.ts"
+    ]
+}
 }

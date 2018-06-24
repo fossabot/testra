@@ -10,7 +10,6 @@ import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CountersComponent } from './counters/counters.component';
 
 @NgModule({
   imports: [
@@ -24,7 +23,7 @@ import { CountersComponent } from './counters/counters.component';
     HomeModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent, CountersComponent],
+  declarations: [AppComponent],
   providers: [
   ],
   bootstrap: [AppComponent]
