@@ -1,3 +1,4 @@
+import { ApiConfiguration } from './../core/api/testra/api-configuration';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -10,7 +11,7 @@ import { QuoteService } from './quote.service';
 import { CountersComponent } from '../counters/counters.component';
 import { CounterListComponent } from '../counters/counter-list/counter-list.component';
 import { CounterComponent } from '../counters/counter/counter.component';
-import { ApiClientService } from '../core/api/testra/index';
+import { CounterService, ProjectService } from '@app/core/api/testra/services';
 
 @NgModule({
   imports: [
@@ -28,7 +29,9 @@ import { ApiClientService } from '../core/api/testra/index';
   ],
   providers: [
     QuoteService,
-    ApiClientService
+    CounterService,
+    ProjectService,
+    ApiConfiguration
   ]
 })
 export class HomeModule { }

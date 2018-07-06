@@ -4,6 +4,7 @@ import { Counter } from '@app/core/api/testra/models';
 import { Logger } from '@app/core';
 import { finalize, startWith, switchMap } from 'rxjs/operators';
 import { interval } from 'rxjs';
+import { CounterService, ProjectService } from '@app/core/api/testra/services';
 
 const log = new Logger('CountersComponent');
 
@@ -17,7 +18,8 @@ export class CountersComponent implements OnInit {
   isLoading: boolean;
   counters: { type: string; count: number; }[];
 
-  constructor(private testraClientService: ApiClientService) {
+  constructor(private counterService: CounterService,
+      private projectService: ProjectService) {
   }
 
   ngOnInit() {
@@ -25,22 +27,22 @@ export class CountersComponent implements OnInit {
     interval(60000)
       .pipe(
         startWith(0),
-        switchMap(() => this.testraClientService.getCounters())
+        switchMap(() => this.counterService.getCounters())
       )
       .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe(res => this.mapCounterToList(res.body));
+      .subscribe(res => this.mapCounterToList(res));
 
-    this.testraClientService.getProjects()
-      .subscribe(res => console.log(res.body[0]));
+    this.projectService.getProjects()
+      .subscribe(res => console.log(res));
   }
 
   mapCounterToList(counter: Counter) {
     this.counters = [
-      { type: 'Projects', count: counter.projectsSize },
-      { type: 'Scenarios', count: counter.testScenariosSize },
-      { type: 'Testcases', count: counter.testCasesSize },
-      { type: 'Executions', count: counter.testExecutionsSize },
-      { type: 'Results', count: counter.testResultsSize }
+      { type: 'Projects', count: counter.projectsCount },
+      { type: 'Scenarios', count: counter.testScenariosCount },
+      { type: 'Testcases', count: counter.testCasesCount },
+      { type: 'Executions', count: counter.testExecutionsCount },
+      { type: 'Results', count: counter.testResultsCount }
     ];
   }
 }
