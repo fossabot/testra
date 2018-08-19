@@ -1,7 +1,7 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpResponse } from '@angular/common/http';
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpResponse} from '@angular/common/http';
 
-import { HttpCacheService, HttpCacheEntry } from './http-cache.service';
+import {HttpCacheEntry, HttpCacheService} from './http-cache.service';
 
 const cachePersistenceKey = 'httpCache';
 
@@ -22,7 +22,7 @@ describe('HttpCacheService', () => {
   beforeEach(inject([HttpCacheService], (_httpCacheService: HttpCacheService) => {
     httpCacheService = _httpCacheService;
 
-    response = new HttpResponse({ body: 'data' });
+    response = new HttpResponse({body: 'data'});
   }));
 
   afterEach(() => {
@@ -40,7 +40,7 @@ describe('HttpCacheService', () => {
 
     it('should replace existing data', () => {
       // Arrange
-      const newResponse = new HttpResponse({ body: 'new data' });
+      const newResponse = new HttpResponse({body: 'new data'});
 
       // Act
       httpCacheService.setCacheData('/popo', response);

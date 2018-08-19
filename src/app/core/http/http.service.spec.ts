@@ -1,12 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpInterceptor } from '@angular/common/http';
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpClient, HttpInterceptor} from '@angular/common/http';
 
-import { HttpService } from './http.service';
-import { HttpCacheService } from './http-cache.service';
-import { ErrorHandlerInterceptor } from './error-handler.interceptor';
-import { CacheInterceptor } from './cache.interceptor';
-import { ApiPrefixInterceptor } from './api-prefix.interceptor';
+import {HttpService} from './http.service';
+import {HttpCacheService} from './http-cache.service';
+import {ErrorHandlerInterceptor} from './error-handler.interceptor';
+import {CacheInterceptor} from './cache.interceptor';
+import {ApiPrefixInterceptor} from './api-prefix.interceptor';
 
 describe('HttpService', () => {
   let httpCacheService: HttpCacheService;
@@ -51,7 +51,7 @@ describe('HttpService', () => {
     // Arrange
     let interceptors: HttpInterceptor[];
     const realRequest = http.request;
-    spyOn(HttpService.prototype, 'request').and.callFake(function(this: any) {
+    spyOn(HttpService.prototype, 'request').and.callFake(function (this: any) {
       interceptors = this.interceptors;
       return realRequest.apply(this, arguments);
     });
@@ -73,7 +73,7 @@ describe('HttpService', () => {
     // Arrange
     let interceptors: HttpInterceptor[];
     const realRequest = http.request;
-    spyOn(HttpService.prototype, 'request').and.callFake(function(this: any) {
+    spyOn(HttpService.prototype, 'request').and.callFake(function (this: any) {
       interceptors = this.interceptors;
       return realRequest.apply(this, arguments);
     });
@@ -96,7 +96,7 @@ describe('HttpService', () => {
     // Arrange
     let interceptors: HttpInterceptor[];
     const realRequest = http.request;
-    spyOn(HttpService.prototype, 'request').and.callFake(function(this: any) {
+    spyOn(HttpService.prototype, 'request').and.callFake(function (this: any) {
       interceptors = this.interceptors;
       return realRequest.apply(this, arguments);
     });
@@ -119,7 +119,7 @@ describe('HttpService', () => {
     // Arrange
     let interceptors: HttpInterceptor[];
     const realRequest = http.request;
-    spyOn(HttpService.prototype, 'request').and.callFake(function(this: any) {
+    spyOn(HttpService.prototype, 'request').and.callFake(function (this: any) {
       interceptors = this.interceptors;
       return realRequest.apply(this, arguments);
     });

@@ -1,8 +1,9 @@
 /* tslint:disable */
-import { StepResult } from './step-result';
-import { Attachment } from './attachment';
-import { Scenario } from './scenario';
-import { Testcase } from './testcase';
+import {StepResult} from './step-result';
+import {Attachment} from './attachment';
+import {Scenario} from './scenario';
+import {Testcase} from './testcase';
+
 export interface EnrichedTestResult {
   startTime: number;
   id: string;

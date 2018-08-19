@@ -1,16 +1,13 @@
 /* tslint:disable */
-import { Injectable } from '@angular/core';
-import {
-  HttpClient, HttpRequest, HttpResponse,
-  HttpHeaders, HttpParams } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
-import { Project } from '../models/project';
-import { ErrorResponse } from '../models/error-response';
-import { ProjectRequest } from '../models/project-request';
+import {Project} from '../models/project';
+import {ProjectRequest} from '../models/project-request';
 
 /**
  * Everything about Projects
@@ -254,4 +251,4 @@ module ProjectService {
   }
 }
 
-export { ProjectService }
+export {ProjectService};

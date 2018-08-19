@@ -1,17 +1,14 @@
 /* tslint:disable */
-import { Injectable } from '@angular/core';
-import {
-  HttpClient, HttpRequest, HttpResponse,
-  HttpHeaders, HttpParams } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
-import { Execution } from '../models/execution';
-import { ErrorResponse } from '../models/error-response';
-import { ExecutionRequest } from '../models/execution-request';
-import { TestExecutionStats } from '../models/test-execution-stats';
+import {Execution} from '../models/execution';
+import {ExecutionRequest} from '../models/execution-request';
+import {TestExecutionStats} from '../models/test-execution-stats';
 
 /**
  * Everything about Executions
@@ -418,4 +415,4 @@ module ExecutionService {
   }
 }
 
-export { ExecutionService }
+export {ExecutionService};

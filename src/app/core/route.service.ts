@@ -1,6 +1,6 @@
-import { Route as ngRoute, Routes } from '@angular/router';
+import {Route as ngRoute, Routes} from '@angular/router';
 
-import { ShellComponent } from './shell/shell.component';
+import {ShellComponent} from './shell/shell.component';
 
 /**
  * Provides helper methods to create routes.
@@ -18,7 +18,7 @@ export class Route {
       component: ShellComponent,
       children: routes,
       // Reuse ShellComponent instance when navigating between child views
-      data: { reuse: true }
+      data: {reuse: true}
     };
   }
 

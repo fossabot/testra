@@ -1,9 +1,9 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HTTP_INTERCEPTORS, HttpClient, HttpResponse } from '@angular/common/http';
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HTTP_INTERCEPTORS, HttpClient, HttpResponse} from '@angular/common/http';
 
-import { CacheInterceptor } from './cache.interceptor';
-import { HttpCacheService } from './http-cache.service';
+import {CacheInterceptor} from './cache.interceptor';
+import {HttpCacheService} from './http-cache.service';
 
 describe('CacheInterceptor', () => {
   let interceptorOptions: Object | null = {};
@@ -64,12 +64,12 @@ describe('CacheInterceptor', () => {
         expect(cachedData ? cachedData.body : null).toEqual('someData');
       });
 
-      httpMock.expectOne({ url: '/toto' }).flush('someData');
+      httpMock.expectOne({url: '/toto'}).flush('someData');
     });
 
     it('should respond from the cache', () => {
       // Arrange
-      httpCacheService.setCacheData('/toto', new HttpResponse({ body: 'cachedData' }));
+      httpCacheService.setCacheData('/toto', new HttpResponse({body: 'cachedData'}));
 
       // Act
       http.get('/toto').subscribe(response => {
@@ -77,12 +77,13 @@ describe('CacheInterceptor', () => {
         expect(response).toEqual('cachedData');
       });
 
-      httpMock.expectNone({ url: '/toto' });
+      httpMock.expectNone({url: '/toto'});
     });
 
     it('should not cache the request in case of error', () => {
       // Act
-      http.get('/toto').subscribe(() => {}, () => {
+      http.get('/toto').subscribe(() => {
+      }, () => {
         // Assert
         expect(httpCacheService.getCacheData('/toto')).toBeNull();
       });
@@ -96,7 +97,7 @@ describe('CacheInterceptor', () => {
 
   describe('with update forced configuration', () => {
     beforeEach(() => {
-      interceptorOptions = { update: true };
+      interceptorOptions = {update: true};
     });
 
     beforeEach(inject([
@@ -119,8 +120,8 @@ describe('CacheInterceptor', () => {
 
     it('should force cache update', () => {
       // Arrange
-      httpCacheService.setCacheData('/toto', new HttpResponse({ body: 'oldCachedData' }));
-      cacheInterceptor.configure({ update: true });
+      httpCacheService.setCacheData('/toto', new HttpResponse({body: 'oldCachedData'}));
+      cacheInterceptor.configure({update: true});
 
       // Act
       http.get('/toto').subscribe(response => {
@@ -129,7 +130,7 @@ describe('CacheInterceptor', () => {
 
       });
 
-      httpMock.expectOne({ url: '/toto' }).flush('newData');
+      httpMock.expectOne({url: '/toto'}).flush('newData');
     });
   });
 });

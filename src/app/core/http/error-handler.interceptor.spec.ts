@@ -1,8 +1,8 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 
-import { ErrorHandlerInterceptor } from './error-handler.interceptor';
+import {ErrorHandlerInterceptor} from './error-handler.interceptor';
 
 describe('ErrorHandlerInterceptor', () => {
   let errorHandlerInterceptor: ErrorHandlerInterceptor;

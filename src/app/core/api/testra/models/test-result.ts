@@ -1,6 +1,7 @@
 /* tslint:disable */
-import { StepResult } from './step-result';
-import { Attachment } from './attachment';
+import {StepResult} from './step-result';
+import {Attachment} from './attachment';
+
 export interface TestResult {
   durationInMs: number;
   id: string;

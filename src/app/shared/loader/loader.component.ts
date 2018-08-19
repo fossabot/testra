@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-loader',
@@ -10,8 +10,10 @@ export class LoaderComponent implements OnInit {
   @Input() isLoading = false;
   @Input() message: string;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }

@@ -1,9 +1,9 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 
-import { environment } from '@env/environment';
-import { ApiPrefixInterceptor } from './api-prefix.interceptor';
+import {environment} from '@env/environment';
+import {ApiPrefixInterceptor} from './api-prefix.interceptor';
 
 describe('ApiPrefixInterceptor', () => {
   let http: HttpClient;
@@ -39,6 +39,6 @@ describe('ApiPrefixInterceptor', () => {
     http.get('/toto').subscribe();
 
     // Assert
-    httpMock.expectOne({ url: environment.serverUrl + '/toto' });
+    httpMock.expectOne({url: environment.serverUrl + '/toto'});
   });
 });

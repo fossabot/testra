@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Counter } from '@app/core/api/testra/models';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-counter-list',

@@ -1,10 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ApiClientService } from '@app/core/api/testra';
-import { Counter } from '@app/core/api/testra/models';
-import { Logger } from '@app/core';
-import { finalize, startWith, switchMap } from 'rxjs/operators';
-import { interval } from 'rxjs';
-import { CounterService, ProjectService } from '@app/core/api/testra/services';
+import {Component, OnInit} from '@angular/core';
+import {Counter} from '@app/core/api/testra/models';
+import {Logger} from '@app/core';
+import {finalize, startWith, switchMap} from 'rxjs/operators';
+import {interval} from 'rxjs';
+import {CounterService, ProjectService} from '@app/core/api/testra/services';
 
 const log = new Logger('CountersComponent');
 
@@ -19,7 +18,7 @@ export class CountersComponent implements OnInit {
   counters: { type: string; count: number; }[];
 
   constructor(private counterService: CounterService,
-      private projectService: ProjectService) {
+              private projectService: ProjectService) {
   }
 
   ngOnInit() {
@@ -29,7 +28,9 @@ export class CountersComponent implements OnInit {
         startWith(0),
         switchMap(() => this.counterService.getCounters())
       )
-      .pipe(finalize(() => { this.isLoading = false; }))
+      .pipe(finalize(() => {
+        this.isLoading = false;
+      }))
       .subscribe(res => this.mapCounterToList(res));
 
     this.projectService.getProjects()
@@ -38,11 +39,11 @@ export class CountersComponent implements OnInit {
 
   mapCounterToList(counter: Counter) {
     this.counters = [
-      { type: 'Projects', count: counter.projectsCount },
-      { type: 'Scenarios', count: counter.testScenariosCount },
-      { type: 'Testcases', count: counter.testCasesCount },
-      { type: 'Executions', count: counter.testExecutionsCount },
-      { type: 'Results', count: counter.testResultsCount }
+      {type: 'Projects', count: counter.projectsCount},
+      {type: 'Scenarios', count: counter.testScenariosCount},
+      {type: 'Testcases', count: counter.testCasesCount},
+      {type: 'Executions', count: counter.testExecutionsCount},
+      {type: 'Results', count: counter.testResultsCount}
     ];
   }
 }

@@ -1,17 +1,14 @@
 /* tslint:disable */
-import { Injectable } from '@angular/core';
-import {
-  HttpClient, HttpRequest, HttpResponse,
-  HttpHeaders, HttpParams } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
-import { EnrichedTestResult } from '../models/enriched-test-result';
-import { ErrorResponse } from '../models/error-response';
-import { TestResult } from '../models/test-result';
-import { TestResultRequest } from '../models/test-result-request';
+import {EnrichedTestResult} from '../models/enriched-test-result';
+import {TestResult} from '../models/test-result';
+import {TestResultRequest} from '../models/test-result-request';
 
 /**
  * Everything about Test Results
@@ -161,7 +158,6 @@ class ResultService extends BaseService {
     let __body: any = null;
 
 
-
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/projects/${params.projectId}/executions/${params.executionId}/results/${params.id}`,
@@ -221,7 +217,6 @@ class ResultService extends BaseService {
     let __body: any = null;
 
 
-
     __body = params.body;
     let req = new HttpRequest<any>(
       'PUT',
@@ -279,7 +274,6 @@ class ResultService extends BaseService {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
 
 
     let req = new HttpRequest<any>(
@@ -426,4 +420,4 @@ module ResultService {
   }
 }
 
-export { ResultService }
+export {ResultService};

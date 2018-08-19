@@ -1,5 +1,6 @@
 /* tslint:disable */
-import { TestStep } from './test-step';
+import {TestStep} from './test-step';
+
 export interface ScenarioRequest {
   name: string;
   featureName: string;

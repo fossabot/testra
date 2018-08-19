@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { HttpClient, HttpParameterCodec, HttpParams } from '@angular/common/http';
-import { ApiConfiguration } from './api-configuration';
+import {HttpClient, HttpParameterCodec, HttpParams} from '@angular/common/http';
+import {ApiConfiguration} from './api-configuration';
 
 /**
  * Custom parameter codec to correctly handle the plus sign in parameter
@@ -23,6 +23,7 @@ class ParameterCodec implements HttpParameterCodec {
     return decodeURIComponent(value);
   }
 }
+
 const PARAMETER_CODEC = new ParameterCodec();
 
 /**

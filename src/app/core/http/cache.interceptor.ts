@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Observable, Subscriber } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {Observable, Subscriber} from 'rxjs';
 
-import { HttpCacheService } from './http-cache.service';
+import {HttpCacheService} from './http-cache.service';
 
 /**
  * Caches HTTP requests.
@@ -13,7 +13,8 @@ export class CacheInterceptor implements HttpInterceptor {
 
   private forceUpdate = false;
 
-  constructor(private httpCacheService: HttpCacheService) { }
+  constructor(private httpCacheService: HttpCacheService) {
+  }
 
   /**
    * Configures interceptor options

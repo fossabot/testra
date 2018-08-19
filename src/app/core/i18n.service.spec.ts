@@ -1,8 +1,8 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
+import {inject, TestBed} from '@angular/core/testing';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {Subject} from 'rxjs';
 
-import { extract, I18nService } from './i18n.service';
+import {extract, I18nService} from './i18n.service';
 
 const defaultLanguage = 'en-US';
 const supportedLanguages = ['eo', 'en-US', 'fr-FR'];
@@ -24,7 +24,8 @@ class MockTranslateService {
     return 'en-US';
   }
 
-  setTranslation(lang: string, translations: Object, shouldMerge?: boolean) { }
+  setTranslation(lang: string, translations: Object, shouldMerge?: boolean) {
+  }
 
 }
 
@@ -37,7 +38,7 @@ describe('I18nService', () => {
     TestBed.configureTestingModule({
       providers: [
         I18nService,
-        { provide: TranslateService, useClass: MockTranslateService },
+        {provide: TranslateService, useClass: MockTranslateService},
       ]
     });
   });

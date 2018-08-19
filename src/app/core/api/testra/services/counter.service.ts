@@ -1,14 +1,13 @@
 /* tslint:disable */
-import { Injectable } from '@angular/core';
-import {
-  HttpClient, HttpRequest, HttpResponse,
-  HttpHeaders, HttpParams } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
-import { Counter } from '../models/counter';
+import {Counter} from '../models/counter';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -63,4 +62,4 @@ class CounterService extends BaseService {
 module CounterService {
 }
 
-export { CounterService }
+export {CounterService};

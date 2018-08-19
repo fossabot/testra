@@ -1,16 +1,13 @@
 /* tslint:disable */
-import { Injectable } from '@angular/core';
-import {
-  HttpClient, HttpRequest, HttpResponse,
-  HttpHeaders, HttpParams } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
-import { Testcase } from '../models/testcase';
-import { ErrorResponse } from '../models/error-response';
-import { TestcaseRequest } from '../models/testcase-request';
+import {Testcase} from '../models/testcase';
+import {TestcaseRequest} from '../models/testcase-request';
 
 /**
  * Everything about Test Cases
@@ -375,4 +372,4 @@ module TestcaseService {
   }
 }
 
-export { TestcaseService }
+export {TestcaseService};

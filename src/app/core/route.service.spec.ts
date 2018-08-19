@@ -1,7 +1,7 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { ShellComponent } from './shell/shell.component';
-import { Route } from './route.service';
+import {ShellComponent} from './shell/shell.component';
+import {Route} from './route.service';
 
 describe('Route', () => {
   let route: Route;
@@ -21,7 +21,7 @@ describe('Route', () => {
   describe('withShell', () => {
     it('should create routes as children of shell', () => {
       // Prepare
-      const testRoutes = [{ path: 'test' }];
+      const testRoutes = [{path: 'test'}];
 
       // Act
       const result = Route.withShell(testRoutes);
