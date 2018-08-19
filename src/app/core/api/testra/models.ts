@@ -1,21 +1,20 @@
-export { Project } from './models/project.model';
-export { ProjectRequest } from './models/projectrequest.model';
-export { Scenario } from './models/scenario.model';
-export { ScenarioRequest } from './models/scenariorequest.model';
-export { TestStep } from './models/teststep.model';
-export { Testcase } from './models/testcase.model';
-export { TestcaseRequest } from './models/testcaserequest.model';
-export { Execution } from './models/execution.model';
-export { ExecutionRequest } from './models/executionrequest.model';
-export { TestResult } from './models/testresult.model';
-export {
-  ResultType,
-  TestResultRequest
-} from './models/testresultrequest.model';
-export {
-  Result,
-  StepResult
-} from './models/stepresult.model';
-export { Attachment } from './models/attachment.model';
-export { Counter } from './models/counter.model';
-export { ErrorResponse } from './models/errorresponse.model';
+export { Project } from './models/project';
+export { ProjectRequest } from './models/project-request';
+export { Scenario } from './models/scenario';
+export { ScenarioRequest } from './models/scenario-request';
+export { TestStep } from './models/test-step';
+export { DataTableRow } from './models/data-table-row';
+export { DataTableCell } from './models/data-table-cell';
+export { Testcase } from './models/testcase';
+export { TestcaseRequest } from './models/testcase-request';
+export { Execution } from './models/execution';
+export { ExecutionRequest } from './models/execution-request';
+export { TestExecutionStats } from './models/test-execution-stats';
+export { TestResult } from './models/test-result';
+export { EnrichedTestResult } from './models/enriched-test-result';
+export { TestResultRequest } from './models/test-result-request';
+export { StepResult } from './models/step-result';
+export { Attachment } from './models/attachment';
+export { TestGroup } from './models/test-group';
+export { Counter } from './models/counter';
+export { ErrorResponse } from './models/error-response';

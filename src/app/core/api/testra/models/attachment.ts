@@ -1,6 +1,6 @@
-
+/* tslint:disable */
 export interface Attachment {
-  name: string;
+  name?: string;
   mimeType: string;
   base64EncodedByteArray: string;
 }

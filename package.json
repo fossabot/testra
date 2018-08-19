@@ -31,9 +31,7 @@
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.6",
     "lodash": "^4.17.10",
-    "ng-swagger-gen": "^1.1.1",
     "rxjs": "^6.1.0",
-    "yamljs": "^0.3.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -67,6 +65,8 @@
     "stylelint-scss": "~3.1.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.10.0",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "ng-swagger-gen": "^1.2.1",
+    "yamljs": "^0.3.0"
   }
 }

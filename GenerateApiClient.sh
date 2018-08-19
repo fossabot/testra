@@ -14,7 +14,7 @@ formattedEcho "Fetching swagger.yaml from github repo"
 wget -O swagger.yaml https://raw.githubusercontent.com/testra-tech/testra-api/master/swagger.yaml
 
 # Convert swagger.yaml to swagger.json file
-# Install yaml2json using `yarn add yamljs --save-dev `
+# Install yaml2json using `yarn add yamljs --save-dev`
 formattedEcho "Converting swagger.yaml to swagger.json"
 node_modules/.bin/yaml2json swagger.yaml -p -i4 > swagger.json
 
