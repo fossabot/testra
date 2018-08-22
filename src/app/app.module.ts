@@ -1,15 +1,20 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {TranslateModule} from '@ngx-translate/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from '@app/core';
+import { SharedModule } from '@app/shared';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateModule } from '@ngx-translate/core';
 
-import {CoreModule} from '@app/core';
-import {SharedModule} from '@app/shared';
-import {HomeModule} from './home/home.module';
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeModule } from './home/home.module';
+import { metaReducers, reducers } from './reducers';
 
 @NgModule({
   imports: [
@@ -21,11 +26,13 @@ import {AppRoutingModule} from './app-routing.module';
     CoreModule,
     SharedModule,
     HomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

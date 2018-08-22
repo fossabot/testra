@@ -8,10 +8,8 @@ import {SharedModule} from '@app/shared';
 import {HomeRoutingModule} from './home-routing.module';
 import {HomeComponent} from './home.component';
 import {QuoteService} from './quote.service';
-import {CountersComponent} from '../counters/counters.component';
-import {CounterListComponent} from '../counters/counter-list/counter-list.component';
-import {CounterComponent} from '../counters/counter/counter.component';
 import {CounterService, ProjectService} from '@app/core/api/testra/services';
+import {CountersModule} from '../counters/counters.module';
 
 @NgModule({
   imports: [
@@ -19,13 +17,11 @@ import {CounterService, ProjectService} from '@app/core/api/testra/services';
     TranslateModule,
     CoreModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    CountersModule
   ],
   declarations: [
     HomeComponent,
-    CountersComponent,
-    CounterListComponent,
-    CounterComponent
   ],
   providers: [
     QuoteService,

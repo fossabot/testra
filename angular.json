@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "testra"
+  "defaultProject": "testra",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
