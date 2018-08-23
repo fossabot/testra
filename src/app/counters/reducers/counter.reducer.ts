@@ -32,5 +32,3 @@ export function reducer(state: State = initialState, action: CounterActions): St
       return state;
   }
 }
-
-export const getCounters = (state: State) => state.counter;

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-counter-list',
@@ -6,12 +6,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./counter-list.component.scss']
 })
 export class CounterListComponent implements OnInit {
+  @Input()
+  counters: { type: string; count: number }[];
 
-  @Input() counters: { type: string; count: number; }[];
+  constructor() {}
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

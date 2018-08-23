@@ -6,14 +6,15 @@ import { BehaviorSubject, from, interval, Observable, Observer, Subscription } f
 import { select, Store } from '@ngrx/store';
 import * as fromCounters from '../reducers/counter.reducer';
 import { LoadCounters } from '@app/counters/actions/counter.actions';
+import { ActionsFactory } from '../actions/counters.actions.factory';
 
 const log = new Logger('CountersComponent');
-interface SimplifiedCounter {
+interface NamedCounter {
   type: string;
   count: number;
 }
 
-const INITIAL_COUNTER: SimplifiedCounter[] = [
+const INITIAL_COUNTER: NamedCounter[] = [
   { type: 'Projects', count: 0 },
   { type: 'Scenarios', count: 0 },
   { type: 'Testcases', count: 0 },
@@ -30,13 +31,13 @@ const INITIAL_COUNTER: SimplifiedCounter[] = [
 export class CountersComponent implements OnInit, OnDestroy {
   private counters$: Observable<fromCounters.State>;
 
-  private subject = new BehaviorSubject<SimplifiedCounter[]>(INITIAL_COUNTER);
-  simplifiedCounters: Observable<SimplifiedCounter[]> = this.subject.asObservable();
+  private subject = new BehaviorSubject<NamedCounter[]>(INITIAL_COUNTER);
+  namedCounters: Observable<NamedCounter[]> = this.subject.asObservable();
 
   private pollSubscription: Subscription;
-  private simplifiedCounterSubscription: Subscription;
+  private namedCounterSubscription: Subscription;
 
-  static mapCounterToList(counter: Counter): SimplifiedCounter[] {
+  static mapCounterToList(counter: Counter): NamedCounter[] {
     return [
       { type: 'Projects', count: counter.projectsCount },
       { type: 'Scenarios', count: counter.testScenariosCount },
@@ -53,15 +54,15 @@ export class CountersComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.pollSubscription = interval(30000)
       .pipe(startWith(0))
-      .subscribe(() => this.store.dispatch(new LoadCounters()));
+      .subscribe(() => this.store.dispatch(ActionsFactory.newLoadCountersAction()));
 
-    this.simplifiedCounterSubscription =
+    this.namedCounterSubscription =
       this.counters$.subscribe(counterState =>
         this.subject.next(CountersComponent.mapCounterToList(counterState.counter)));
   }
 
   ngOnDestroy() {
     this.pollSubscription.unsubscribe();
-    this.simplifiedCounterSubscription.unsubscribe();
+    this.namedCounterSubscription.unsubscribe();
   }
 }
