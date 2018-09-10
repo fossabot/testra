@@ -10,6 +10,7 @@ import {HomeComponent} from './home.component';
 import {QuoteService} from './quote.service';
 import {CounterService, ProjectService} from '@app/core/api/testra/services';
 import {CountersModule} from '../counters/counters.module';
+import {ProjectsModule} from '@app/projects/projects.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {CountersModule} from '../counters/counters.module';
     CoreModule,
     SharedModule,
     HomeRoutingModule,
-    CountersModule
+    CountersModule,
+    ProjectsModule
   ],
   declarations: [
     HomeComponent,

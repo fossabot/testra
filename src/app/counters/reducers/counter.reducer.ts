@@ -1,4 +1,3 @@
-import {Action} from '@ngrx/store';
 import {CounterActions, CounterActionTypes} from '../actions/counter.actions';
 import {Counter} from '../../core/api/testra/models/counter';
 
