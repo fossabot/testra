@@ -6,7 +6,7 @@ import {Project} from '@app/core/api/testra/models/project';
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css']
 })
-export class ProjectListComponent implements OnInit, OnChanges {
+export class ProjectListComponent implements OnInit {
 
   @Input()
   projects: Project[];
@@ -15,8 +15,5 @@ export class ProjectListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
   }
 }
