@@ -1,25 +1,25 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { Counter } from '@app/core/api/testra/models';
-import { Logger } from '@app/core';
-import { startWith } from 'rxjs/operators';
-import { BehaviorSubject, from, interval, Observable, Observer, Subscription } from 'rxjs';
-import { select, Store } from '@ngrx/store';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {Counter} from '@app/core/api/testra/models';
+import {Logger} from '@app/core';
+import {startWith} from 'rxjs/operators';
+import {BehaviorSubject, interval, Observable, Subscription} from 'rxjs';
+import {select, Store} from '@ngrx/store';
 import * as fromCounters from '../reducers/counter.reducer';
-import { LoadCounters } from '@app/counters/actions/counter.actions';
-import { ActionsFactory } from '../actions/counters.actions.factory';
+import {ActionsFactory} from '../actions/counters.actions.factory';
 
 const log = new Logger('CountersComponent');
+
 interface NamedCounter {
   type: string;
   count: number;
 }
 
 const INITIAL_COUNTER: NamedCounter[] = [
-  { type: 'Projects', count: 0 },
-  { type: 'Scenarios', count: 0 },
-  { type: 'Testcases', count: 0 },
-  { type: 'Executions', count: 0 },
-  { type: 'Results', count: 0 }
+  {type: 'Projects', count: 0},
+  {type: 'Scenarios', count: 0},
+  {type: 'Testcases', count: 0},
+  {type: 'Executions', count: 0},
+  {type: 'Results', count: 0}
 ];
 
 @Component({
@@ -37,18 +37,18 @@ export class CountersComponent implements OnInit, OnDestroy {
   private pollSubscription: Subscription;
   private namedCounterSubscription: Subscription;
 
-  static mapCounterToList(counter: Counter): NamedCounter[] {
-    return [
-      { type: 'Projects', count: counter.projectsCount },
-      { type: 'Scenarios', count: counter.testScenariosCount },
-      { type: 'Testcases', count: counter.testCasesCount },
-      { type: 'Executions', count: counter.testExecutionsCount },
-      { type: 'Results', count: counter.testResultsCount }
-    ];
-  }
-
   constructor(private store: Store<fromCounters.State>) {
     this.counters$ = this.store.pipe(select('counters'));
+  }
+
+  static mapCounterToList(counter: Counter): NamedCounter[] {
+    return [
+      {type: 'Projects', count: counter.projectsCount},
+      {type: 'Scenarios', count: counter.testScenariosCount},
+      {type: 'Testcases', count: counter.testCasesCount},
+      {type: 'Executions', count: counter.testExecutionsCount},
+      {type: 'Results', count: counter.testResultsCount}
+    ];
   }
 
   ngOnInit() {

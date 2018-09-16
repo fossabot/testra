@@ -1,2 +1,9 @@
-<app-project-list [projects] = "projects$ | async">
+<app-project-list [projects]="projects$ | async"
+                  [isLoading]="loading$ | async"
+                  [isLoadSuccess]="isProjectLoadSuccess"
+                  (onRemoveProject)="removeProject($event)">
 </app-project-list>
+<br/>
+<app-project-create (onCreateProject)="createProject($event)"
+                    [message]="message$ | async">
+</app-project-create>

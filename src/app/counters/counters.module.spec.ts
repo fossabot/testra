@@ -1,4 +1,4 @@
-import { CountersModule } from './counters.module';
+import {CountersModule} from './counters.module';
 
 describe('CountersModule', () => {
   let countersModule: CountersModule;

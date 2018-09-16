@@ -1,5 +1,5 @@
-import { LoadCounters, LoadCountersSuccess, LoadCountersFail } from './counter.actions';
-import { Counter } from '@app/core/api/testra/models';
+import {LoadCounters, LoadCountersFail, LoadCountersSuccess} from './counter.actions';
+import {Counter} from '@app/core/api/testra/models';
 
 
 export class ActionsFactory {

@@ -5,7 +5,7 @@ import * as fromProjects from '../projects/reducers/projects.reducer';
 
 export interface State {
   counters: fromCounter.State;
-  projects: fromProjects.State;
+  projects: fromProjects.ProjectState;
 }
 
 export const reducers: ActionReducerMap<State> = {

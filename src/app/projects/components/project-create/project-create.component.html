@@ -1,0 +1,23 @@
+<form [formGroup]="projectForm" (submit)="onSubmit()">
+
+  <label>
+    Type:
+    <input type="radio" formControlName="type" value="TEST">Test<br>
+    <input type="radio" formControlName="type" value="SIMULATION">Simulation<br>
+    <input type="radio" formControlName="type" value="SECURITY">Security<br>
+  </label>
+
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Description:
+    <input type="text" formControlName="description">
+  </label>
+
+  <div *ngIf="message != null">{{message}}</div>
+
+  <button type="submit" [disabled]="!projectForm.valid">Create</button>
+</form>

@@ -4,4 +4,5 @@ export {TestcaseService} from './services/testcase.service';
 export {ExecutionService} from './services/execution.service';
 export {ResultService} from './services/result.service';
 export {TestGroupService} from './services/test-group.service';
+export {SimulationService} from './services/simulation.service';
 export {CounterService} from './services/counter.service';

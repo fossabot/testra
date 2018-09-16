@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Counter } from '@app/core/api/testra/models/counter';
-import { CounterService } from '@app/core/api/testra/services';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Counter} from '@app/core/api/testra/models/counter';
+import {CounterService} from '@app/core/api/testra/services';
+import {Actions, Effect, ofType} from '@ngrx/effects';
+import {Action} from '@ngrx/store';
+import {Observable, of} from 'rxjs';
+import {catchError, map, switchMap} from 'rxjs/operators';
 
-import { CounterActionTypes } from '../actions/counter.actions';
-import { ActionsFactory } from '../actions/counters.actions.factory';
+import {CounterActionTypes} from '../actions/counter.actions';
+import {ActionsFactory} from '../actions/counters.actions.factory';
 
 @Injectable()
 export class CounterEffects {
@@ -22,5 +22,6 @@ export class CounterEffects {
     )
   );
 
-  constructor(private actions$: Actions, private counterService: CounterService) {}
+  constructor(private actions$: Actions, private counterService: CounterService) {
+  }
 }

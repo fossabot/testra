@@ -15,8 +15,8 @@ import {ProjectsComponentsModule} from '@app/projects/components/projects.compon
     StoreModule.forFeature('projects', fromProjects.reducer),
     EffectsModule.forFeature([ProjectsEffects])
   ],
-  declarations: [ ProjectsComponent ],
-  exports: [ ProjectsComponent ],
+  declarations: [ProjectsComponent],
+  exports: [ProjectsComponent],
   providers: [ProjectService, ProjectsEffects]
 })
 export class ProjectsModule {

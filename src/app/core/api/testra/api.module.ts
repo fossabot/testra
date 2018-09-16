@@ -9,6 +9,7 @@ import {TestcaseService} from './services/testcase.service';
 import {ExecutionService} from './services/execution.service';
 import {ResultService} from './services/result.service';
 import {TestGroupService} from './services/test-group.service';
+import {SimulationService} from './services/simulation.service';
 import {CounterService} from './services/counter.service';
 
 /**
@@ -30,6 +31,7 @@ import {CounterService} from './services/counter.service';
     ExecutionService,
     ResultService,
     TestGroupService,
+    SimulationService,
     CounterService
   ],
 })

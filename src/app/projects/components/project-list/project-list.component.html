@@ -1,2 +1,14 @@
-<app-project-item *ngFor="let project of projects" [name]='project.name'>
-</app-project-item>
+<div *ngIf="isLoading">
+  Loading
+</div>
+<div *ngIf="isLoading == false">
+  <div *ngIf="isLoadSuccess">
+    <app-project-item *ngFor="let project of projects"
+                      [name]='project.name'
+                      (onRemove)="removeProject(project.id)">
+    </app-project-item>
+  </div>
+  <div *ngIf="isLoadSuccess == false">
+    Unable to load projects from Backend
+  </div>
+</div>
