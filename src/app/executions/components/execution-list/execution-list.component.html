@@ -1,0 +1,15 @@
+<div *ngIf="isLoading">
+  Loading
+</div>
+<div *ngIf="isLoading == false">
+  <div *ngIf="isLoadSuccess">
+    <app-execution-item
+      *ngFor="let execution of executions"
+      [execution]="execution"
+      (onRemove)="removeExecution(execution)">
+    </app-execution-item>
+  </div>
+  <div *ngIf="isLoadSuccess == false">
+    Unable to load projects from Backend
+  </div>
+</div>

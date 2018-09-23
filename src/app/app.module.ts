@@ -35,5 +35,4 @@ import {metaReducers, reducers} from './reducers';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
