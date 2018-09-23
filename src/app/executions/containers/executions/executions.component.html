@@ -1,0 +1,5 @@
+<app-execution-list [executions] = "executions$ | async"
+                    [isLoading]="false"
+                    [isLoadSuccess]="true"
+                    (onRemoveExecution)="removeExecution($event)">"
+</app-execution-list>
