@@ -1,10 +1,21 @@
-import {Component, EventEmitter, Inject, Injector, Input, OnInit, Output, PLATFORM_ID} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Inject,
+  Injector,
+  Input,
+  OnInit,
+  Output,
+  PLATFORM_ID
+} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectRequest} from '@app/core/api/testra/models/project-request';
 import {faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-project-sidebar-header',
   templateUrl: './project-sidebar-header.component.html',
   styleUrls: ['./project-sidebar-header.component.scss']

@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, Output} from '@angular/core';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import {Subscription, timer} from 'rxjs';
 
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-execution-auto-refresh',
   templateUrl: './execution-auto-refresh.component.html',
   styleUrls: ['./execution-auto-refresh.component.scss']

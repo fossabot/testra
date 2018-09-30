@@ -18,6 +18,7 @@
       color: nb-theme(color-fg);
       padding: nb-theme(card-padding)/2 nb-theme(card-padding) nb-theme(card-padding)/2 nb-theme(card-padding);
       border-bottom: nb-theme(list-item-border-width) nb-theme(card-header-border-type) nb-theme(separator);
+      cursor: default;
 
       &:hover {
         background-color: nb-theme(layout-bg);

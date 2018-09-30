@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProjectRequest} from '@app/core/api/testra/models/project-request';
 import {NgbActiveModal, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-project-create',
   templateUrl: './project-create.component.html',
   styleUrls: ['./project-create.component.scss']
@@ -22,8 +23,10 @@ export class ProjectCreateComponent implements OnInit {
   @Input() message: string;
 
   projectForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    name: new FormControl('',
+      [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+    description: new FormControl('',
+      [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
     type: new FormControl('', Validators.required),
   });
 

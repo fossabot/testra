@@ -10,10 +10,10 @@ import {ExecutionsEffects} from '@app/executions/effects/executions.effects';
 import {filter, map} from 'rxjs/operators';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-executions-sidebar',
   templateUrl: './executions-sidebar.component.html',
-  styleUrls: ['./executions-sidebar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./executions-sidebar.component.scss']
 })
 
 export class ExecutionsSidebarComponent implements OnInit, OnDestroy {

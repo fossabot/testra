@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {select, Store} from '@ngrx/store';
 import * as fromProject from '@app/projects/reducers/projects.reducer';
@@ -11,6 +11,7 @@ import {ProjectService} from '@app/core/api/testra/services/project.service';
 import {ActionsFactory} from '@app/executions/actions/executions.actions.factory';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-executions',
   templateUrl: './executions.component.html',
   styleUrls: ['./executions.component.scss']
@@ -19,7 +20,7 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
 
   projectNameFromRoute: string;
   executionIdFromRoute: string;
-  projectId: String;
+  projectId: string;
   private projects$: Observable<Project[]>;
 
   paramsSubscription: Subscription;
@@ -29,7 +30,8 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
   constructor(private activatedRoute: ActivatedRoute,
               private projectService: ProjectService,
               private projectStore: Store<fromProject.ProjectState>,
-              private executionStore: Store<fromExecution.ExecutionState>) {
+              private executionStore: Store<fromExecution.ExecutionState>,
+              private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -50,7 +52,7 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
                 .pipe(
                   map(p => this.projectId = String(p.id)),
                   catchError(e => e) // TODO: Handle this route
-                ).subscribe();
+                ).subscribe(() => this.changeDetectorRef.detectChanges() );
           }
         });
       }

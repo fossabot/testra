@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Project} from '../../../core/api/testra/models/project';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-project-content-header',
   templateUrl: './project-content-header.component.html',
   styleUrls: ['./project-content-header.component.scss']

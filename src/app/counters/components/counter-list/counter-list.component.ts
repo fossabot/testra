@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import * as numeral from 'numeral';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-counter-list',
   templateUrl: './counter-list.component.html',
   styleUrls: ['./counter-list.component.scss']
