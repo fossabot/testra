@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {Simulation} from '../models/simulation';
 import {SimulationRequest} from '../models/simulation-request';
@@ -24,7 +25,7 @@ class SimulationService extends BaseService {
   }
 
   /**
-   * Returns list of all simulations within given onCreateProject and execution
+   * Returns list of all simulations within given project and execution
    * @param params The `SimulationService.GetSimulationsParams` containing the following parameters:
    *
    * - `projectId`: Project Id
@@ -33,7 +34,7 @@ class SimulationService extends BaseService {
    *
    * @return Successful Response
    */
-  getSimulationsResponse(params: SimulationService.GetSimulationsParams): Observable<HttpResponse<Array<Simulation>>> {
+  getSimulationsResponse(params: SimulationService.GetSimulationsParams): Observable<StrictHttpResponse<Array<Simulation>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -50,18 +51,15 @@ class SimulationService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<Simulation> = null;
-        _body = _resp.body as Array<Simulation>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<Simulation>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<Simulation>>;
       })
     );
   }
 
   /**
-   * Returns list of all simulations within given onCreateProject and execution
+   * Returns list of all simulations within given project and execution
    * @param params The `SimulationService.GetSimulationsParams` containing the following parameters:
    *
    * - `projectId`: Project Id
@@ -72,12 +70,12 @@ class SimulationService extends BaseService {
    */
   getSimulations(params: SimulationService.GetSimulationsParams): Observable<Array<Simulation>> {
     return this.getSimulationsResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Adds a new simulation into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new simulation into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `SimulationService.CreateSimulationParams` containing the following parameters:
    *
    * - `projectId`: Result Id
@@ -88,7 +86,7 @@ class SimulationService extends BaseService {
    *
    * @return Successful creation of Simulation
    */
-  createSimulationResponse(params: SimulationService.CreateSimulationParams): Observable<HttpResponse<Simulation>> {
+  createSimulationResponse(params: SimulationService.CreateSimulationParams): Observable<StrictHttpResponse<Simulation>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -106,18 +104,15 @@ class SimulationService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Simulation = null;
-        _body = _resp.body as Simulation;
-        return _resp.clone({body: _body}) as HttpResponse<Simulation>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Simulation>;
       })
     );
   }
 
   /**
-   * Adds a new simulation into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new simulation into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `SimulationService.CreateSimulationParams` containing the following parameters:
    *
    * - `projectId`: Result Id
@@ -130,7 +125,7 @@ class SimulationService extends BaseService {
    */
   createSimulation(params: SimulationService.CreateSimulationParams): Observable<Simulation> {
     return this.createSimulationResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -145,7 +140,7 @@ class SimulationService extends BaseService {
    *
    * @return Successful deletion of given simulation
    */
-  deleteSimulationResponse(params: SimulationService.DeleteSimulationParams): Observable<HttpResponse<Simulation>> {
+  deleteSimulationResponse(params: SimulationService.DeleteSimulationParams): Observable<StrictHttpResponse<Simulation>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -162,12 +157,9 @@ class SimulationService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Simulation = null;
-        _body = _resp.body as Simulation;
-        return _resp.clone({body: _body}) as HttpResponse<Simulation>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Simulation>;
       })
     );
   }
@@ -185,7 +177,7 @@ class SimulationService extends BaseService {
    */
   deleteSimulation(params: SimulationService.DeleteSimulationParams): Observable<Simulation> {
     return this.deleteSimulationResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 }

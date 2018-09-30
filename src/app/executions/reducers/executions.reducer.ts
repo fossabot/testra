@@ -2,19 +2,23 @@ import {ExecutionsActions, ExecutionsActionTypes} from '../actions/executions.ac
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {Execution} from '@app/core/api/testra/models/execution';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-stats';
 
-export interface State extends EntityState<Execution> {
+export interface ExecutionState extends EntityState<Execution> {
+  selectedExecutionId: string | null;
+  currentExecutionStats: TestExecutionStats;
 }
 
 export function sortByDate(a: Execution, b: Execution): number {
-  return a.startTime - b.startTime;
+  return b.startTime - a.startTime;
 }
 
 export const adapter: EntityAdapter<Execution> = createEntityAdapter<Execution>({
   sortComparer: sortByDate,
 });
 
-export const initialState: State = adapter.getInitialState();
+export const initialState: ExecutionState =
+  adapter.getInitialState({selectedExecutionId: null, currentExecutionStats: null});
 
 export const {
   selectIds: selectExecutionIds,
@@ -24,7 +28,7 @@ export const {
 } = adapter.getSelectors();
 
 
-export function reducer(state: State = initialState, action: ExecutionsActions): State {
+export function reducer(state: ExecutionState = initialState, action: ExecutionsActions): ExecutionState {
   switch (action.type) {
     case ExecutionsActionTypes.LoadExecutions:
       return state;
@@ -40,9 +44,46 @@ export function reducer(state: State = initialState, action: ExecutionsActions):
       return state;
     case ExecutionsActionTypes.DeleteExecutionSuccess:
       return adapter.removeOne(action.payload.executionId, state);
+    case ExecutionsActionTypes.SelectExecution:
+      return {...state, selectedExecutionId: action.executionId};
+    case ExecutionsActionTypes.LoadExecutionStats:
+      return state;
+    case ExecutionsActionTypes.LoadExecutionStatsSuccess:
+      return {...state, currentExecutionStats: action.payload};
+    case ExecutionsActionTypes.LoadExecutionStatsFail:
+      return state;
   }
 }
 
-export const getExecutionState = createFeatureSelector<State>('executions');
+export const getExecutionState = createFeatureSelector<ExecutionState>('executions');
 
 export const allExecutions = createSelector(getExecutionState, selectAllExecutions);
+
+export const getCurrentExecutionId = createSelector(
+  getExecutionState,
+  executionState => executionState.selectedExecutionId
+);
+
+export const getCurrentExecution = createSelector(
+  getExecutionState,
+  getCurrentExecutionId,
+  (state: ExecutionState, currentExecutionId: string) => {
+    if (currentExecutionId == null) {
+      return null;
+    } else {
+      return state.entities[currentExecutionId];
+    }
+  }
+);
+
+export const getCurrentExecutionStats = createSelector(
+  getExecutionState,
+  getCurrentExecutionId,
+  (state: ExecutionState, currentExecId: string) => {
+    if (currentExecId == null) {
+      return null;
+    } else {
+      return state.currentExecutionStats;
+    }
+  }
+);

@@ -2,7 +2,7 @@
 import {Injectable} from '@angular/core';
 
 /**
- * Contains global configuration for API services
+ * Global configuration for Api services
  */
 @Injectable({
   providedIn: 'root',

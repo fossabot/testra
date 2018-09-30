@@ -1,0 +1,74 @@
+@import "../../../../theme/theme";
+
+@include nb-install-component() {
+  nb-card {
+    nb-card-header {
+      padding: 1rem;
+    }
+
+    nb-card-footer {
+      padding: 0.75rem;
+      text-align: right;
+    }
+
+    nb-card-body {
+      padding: 0;
+    }
+  }
+
+  .recent-list {
+    padding: 0;
+    margin: 0;
+  }
+
+  .recent-list li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    color: nb-theme(color-fg);
+    padding: nb-theme(card-padding)/2 nb-theme(card-padding) nb-theme(card-padding)/2 nb-theme(card-padding);
+    border-bottom: nb-theme(list-item-border-width) nb-theme(card-header-border-type) nb-theme(separator);
+    cursor: pointer;
+
+    &:hover {
+      background-color: nb-theme(layout-bg);
+
+      &::before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 6px;
+        left: 0;
+        top: 0;
+        background-color: nb-theme(color-success);
+        border-radius: nb-theme(radius);
+      }
+    }
+
+    &:focus {
+      background-color: nb-theme(layout-bg);
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  a {
+    text-decoration: none;
+
+    i {
+      position: relative;
+      top: 2px;
+      left: -3px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<app-counters></app-counters>
+<div class="row">
+  <div name="recent-projects" class="col-md-6">
+    <app-top-projects-list [title]="'Top Projects'" [list]="topProjects$ | async"
+                     [viewAllRouterLink]="'/projects'"
+                     (navigateTo)="navigateToProject($event)"></app-top-projects-list>
+  </div>
+  <div name="recent-executions" class="col-md-6">
+    <app-recent-executions-list [title]="'Recent Executions'"
+                     [executions]="recentExecutions$ | async"
+                     (navigateTo)="navigateToExecution($event)"></app-recent-executions-list>
+  </div>
+</div>

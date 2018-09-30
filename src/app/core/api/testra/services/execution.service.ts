@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {Execution} from '../models/execution';
 import {ExecutionRequest} from '../models/execution-request';
@@ -29,7 +30,7 @@ class ExecutionService extends BaseService {
    * @param projectId Project Id
    * @return Successful Response
    */
-  getExecutionsResponse(projectId: string): Observable<HttpResponse<Array<Execution>>> {
+  getExecutionsResponse(projectId: string): Observable<StrictHttpResponse<Array<Execution>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -45,12 +46,9 @@ class ExecutionService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<Execution> = null;
-        _body = _resp.body as Array<Execution>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<Execution>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<Execution>>;
       })
     );
   }
@@ -62,12 +60,12 @@ class ExecutionService extends BaseService {
    */
   getExecutions(projectId: string): Observable<Array<Execution>> {
     return this.getExecutionsResponse(projectId).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Adds a new execution into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new execution into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `ExecutionService.CreateExecutionParams` containing the following parameters:
    *
    * - `projectId`: Execution Id
@@ -76,7 +74,7 @@ class ExecutionService extends BaseService {
    *
    * @return Successful creation of Execution
    */
-  createExecutionResponse(params: ExecutionService.CreateExecutionParams): Observable<HttpResponse<Execution>> {
+  createExecutionResponse(params: ExecutionService.CreateExecutionParams): Observable<StrictHttpResponse<Execution>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -93,18 +91,15 @@ class ExecutionService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Execution = null;
-        _body = _resp.body as Execution;
-        return _resp.clone({body: _body}) as HttpResponse<Execution>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Execution>;
       })
     );
   }
 
   /**
-   * Adds a new execution into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new execution into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `ExecutionService.CreateExecutionParams` containing the following parameters:
    *
    * - `projectId`: Execution Id
@@ -115,7 +110,7 @@ class ExecutionService extends BaseService {
    */
   createExecution(params: ExecutionService.CreateExecutionParams): Observable<Execution> {
     return this.createExecutionResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -129,7 +124,7 @@ class ExecutionService extends BaseService {
    *
    * @return Successful response of given Execution
    */
-  getExecutionResponse(params: ExecutionService.GetExecutionParams): Observable<HttpResponse<Execution>> {
+  getExecutionResponse(params: ExecutionService.GetExecutionParams): Observable<StrictHttpResponse<Execution>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -146,12 +141,9 @@ class ExecutionService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Execution = null;
-        _body = _resp.body as Execution;
-        return _resp.clone({body: _body}) as HttpResponse<Execution>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Execution>;
       })
     );
   }
@@ -168,7 +160,7 @@ class ExecutionService extends BaseService {
    */
   getExecution(params: ExecutionService.GetExecutionParams): Observable<Execution> {
     return this.getExecutionResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -184,7 +176,7 @@ class ExecutionService extends BaseService {
    *
    * @return Successful update of given Execution
    */
-  updateExecutionResponse(params: ExecutionService.UpdateExecutionParams): Observable<HttpResponse<Execution>> {
+  updateExecutionResponse(params: ExecutionService.UpdateExecutionParams): Observable<StrictHttpResponse<Execution>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -202,12 +194,9 @@ class ExecutionService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Execution = null;
-        _body = _resp.body as Execution;
-        return _resp.clone({body: _body}) as HttpResponse<Execution>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Execution>;
       })
     );
   }
@@ -226,7 +215,7 @@ class ExecutionService extends BaseService {
    */
   updateExecution(params: ExecutionService.UpdateExecutionParams): Observable<Execution> {
     return this.updateExecutionResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -239,7 +228,7 @@ class ExecutionService extends BaseService {
    *
    * @return Successful deletion of given Execution
    */
-  deleteExecutionResponse(params: ExecutionService.DeleteExecutionParams): Observable<HttpResponse<Execution>> {
+  deleteExecutionResponse(params: ExecutionService.DeleteExecutionParams): Observable<StrictHttpResponse<Execution>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -256,12 +245,9 @@ class ExecutionService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Execution = null;
-        _body = _resp.body as Execution;
-        return _resp.clone({body: _body}) as HttpResponse<Execution>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Execution>;
       })
     );
   }
@@ -277,7 +263,7 @@ class ExecutionService extends BaseService {
    */
   deleteExecution(params: ExecutionService.DeleteExecutionParams): Observable<Execution> {
     return this.deleteExecutionResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -291,7 +277,7 @@ class ExecutionService extends BaseService {
    *
    * @return Successful response of given Execution
    */
-  getExecutionResultStatsResponse(params: ExecutionService.GetExecutionResultStatsParams): Observable<HttpResponse<TestExecutionStats>> {
+  getExecutionResultStatsResponse(params: ExecutionService.GetExecutionResultStatsParams): Observable<StrictHttpResponse<TestExecutionStats>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -308,12 +294,9 @@ class ExecutionService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: TestExecutionStats = null;
-        _body = _resp.body as TestExecutionStats;
-        return _resp.clone({body: _body}) as HttpResponse<TestExecutionStats>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<TestExecutionStats>;
       })
     );
   }
@@ -330,7 +313,46 @@ class ExecutionService extends BaseService {
    */
   getExecutionResultStats(params: ExecutionService.GetExecutionResultStatsParams): Observable<TestExecutionStats> {
     return this.getExecutionResultStatsResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
+    );
+  }
+
+  /**
+   * Returns list of recent executions sorted by start time
+   * @param size No of executions to return
+   * @return Successful Response
+   */
+  recentExecutionsResponse(size: number): Observable<StrictHttpResponse<Array<Execution>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (size != null) __params = __params.set('size', size.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/executions/recents`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<Execution>>;
+      })
+    );
+  }
+
+  /**
+   * Returns list of recent executions sorted by start time
+   * @param size No of executions to return
+   * @return Successful Response
+   */
+  recentExecutions(size: number): Observable<Array<Execution>> {
+    return this.recentExecutionsResponse(size).pipe(
+      __map(_r => _r.body)
     );
   }
 }

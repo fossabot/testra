@@ -13,7 +13,7 @@ import {SimulationService} from './services/simulation.service';
 import {CounterService} from './services/counter.service';
 
 /**
- * Module that provides instances for all API services
+ * Provider for all Api services, plus ApiConfiguration
  */
 @NgModule({
   imports: [

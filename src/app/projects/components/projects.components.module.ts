@@ -4,16 +4,37 @@ import {ProjectItemComponent} from '@app/projects/components/project-item/projec
 import {ProjectListComponent} from '@app/projects/components/project-list/project-list.component';
 import {ProjectCreateComponent} from '@app/projects/components/project-create/project-create.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ProjectResultsOverallChartComponent} from '@app/projects/components/project-results-overall-chart/project-results-overall-chart.component';
+import {ProjectSidebarHeaderComponent} from '@app/projects/components/project-sidebar-header/project-sidebar-header.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {NgbActiveModal, NgbModal, NgbModule, NgbRadioGroup} from '@ng-bootstrap/ng-bootstrap';
+import {ProjectContentHeaderComponent} from '@app/projects/components/project-content-header/project-content-header.component';
+import {NbCardModule} from '@nebular/theme';
+import {ProjectCountersComponent} from '@app/projects/components/project-counters/project-counters.component';
+import {RouterModule} from '@angular/router';
+import {AddCommasPipe} from '@app/projects/pipes/add-commas.pipe';
 
-export const COMPONENTS = [ProjectItemComponent, ProjectListComponent, ProjectCreateComponent];
+export const COMPONENTS = [ProjectItemComponent,
+  ProjectListComponent,
+  ProjectSidebarHeaderComponent,
+  ProjectCreateComponent,
+  ProjectCountersComponent,
+  ProjectResultsOverallChartComponent,
+  ProjectContentHeaderComponent];
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    NgbModule,
+    NbCardModule,
+    RouterModule
   ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS
+  declarations: [...COMPONENTS, AddCommasPipe],
+  exports: COMPONENTS,
+  providers: [NgbModal, NgbRadioGroup, NgbActiveModal],
+  entryComponents: [ProjectCreateComponent]
 })
 export class ProjectsComponentsModule {
 }

@@ -1,0 +1,29 @@
+.row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.icon-trash {
+  cursor: pointer;
+  text-align: center;
+  opacity: 0.5;
+  font-size: medium;
+
+  &:hover {
+    color: red;
+    opacity: 1;
+    font-size: large;
+  }
+}
+
+.icon-confirm {
+  cursor: pointer;
+  text-align: center;
+  color: darkorange;
+  opacity: 1;
+  font-size: large;
+}
+
+.col-sm-2 {
+  text-align: right;
+}

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import env from '../../../environments/.env';
 
 @Component({
   selector: 'app-shell',
@@ -7,10 +8,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ShellComponent implements OnInit {
 
+  packageVersion = env.npm_package_version;
+
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

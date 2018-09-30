@@ -6,11 +6,11 @@ import {TranslateModule} from '@ngx-translate/core';
 import {CoreModule} from '@app/core';
 import {SharedModule} from '@app/shared';
 import {HomeRoutingModule} from './home-routing.module';
-import {HomeComponent} from './home.component';
-import {QuoteService} from './quote.service';
-import {CounterService, ProjectService} from '@app/core/api/testra/services';
+import {HomeComponent} from '@app/home/container/home.component';
+import {CounterService, ExecutionService, ProjectService} from '@app/core/api/testra/services';
 import {CountersModule} from '../counters/counters.module';
 import {ProjectsModule} from '@app/projects/projects.module';
+import {HomeComponentsModule} from './components/home-components.module';
 import {ExecutionsModule} from '@app/executions/executions.module';
 
 @NgModule({
@@ -22,17 +22,11 @@ import {ExecutionsModule} from '@app/executions/executions.module';
     HomeRoutingModule,
     CountersModule,
     ProjectsModule,
+    HomeComponentsModule,
     ExecutionsModule
   ],
-  declarations: [
-    HomeComponent,
-  ],
-  providers: [
-    QuoteService,
-    CounterService,
-    ProjectService,
-    ApiConfiguration
-  ]
+  declarations: [HomeComponent],
+  providers: [CounterService, ProjectService, ExecutionService, ApiConfiguration]
 })
 export class HomeModule {
 }

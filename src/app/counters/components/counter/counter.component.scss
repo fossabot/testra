@@ -1,0 +1,114 @@
+@import "../../../../theme/theme";
+@import "~@nebular/theme/styles/global/bootstrap/hero-buttons";
+
+@include nb-install-component() {
+  nb-card {
+    height: 5rem;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    $bevel: btn-hero-bevel(nb-theme(card-bg));
+    $shadow: nb-theme(btn-hero-shadow);
+    box-shadow: $bevel, $shadow;
+
+    .icon-container {
+      height: inherit;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5.75rem;
+      height: inherit;
+      font-size: 3rem;
+      border-radius: nb-theme(card-border-radius);
+      transition: width 0.4s ease;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+      color: nb-theme(color-white);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+      &.primary {
+        @include btn-hero-primary-gradient();
+        @include btn-hero-primary-bevel-glow-shadow();
+      }
+      &.success {
+        @include btn-hero-success-gradient();
+        @include btn-hero-success-bevel-glow-shadow();
+      }
+      &.info {
+        @include btn-hero-info-gradient();
+        @include btn-hero-info-bevel-glow-shadow();
+      }
+      &.warning {
+        @include btn-hero-warning-gradient();
+        @include btn-hero-warning-bevel-glow-shadow();
+      }
+      &.danger {
+        @include btn-hero-danger-gradient();
+        @include btn-hero-danger-bevel-glow-shadow();
+      }
+      &.secondary {
+        @include btn-hero-secondary-bg();
+        @include btn-hero-secondary-bevel-glow-shadow();
+        color: nb-theme(card-fg);
+      }
+
+      @include nb-for-theme(cosmic) {
+        &.primary,
+        &.success,
+        &.info,
+        &.warning,
+        &.danger,
+        &.secondary {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .counter-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      height: 100%;
+      border-left: 1px solid transparent;
+    }
+
+    .count {
+      font-family: nb-theme(font-secondary);
+      font-size: 2.25rem;
+      font-weight: nb-theme(font-weight-bold);
+      color: nb-theme(card-fg-heading);
+      min-height: 90%;
+      vertical-align: bottom;
+    }
+
+    .type {
+      //font-size: 1vw;
+      font-weight: nb-theme(font-weight-light);
+      text-transform: uppercase;
+      color: nb-theme(card-fg);
+      vertical-align: top;
+      white-space: nowrap;
+      min-width: 0.75rem;
+    }
+
+    @media screen and (min-width: 601px) {
+      .type {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .type {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  nb-card-body {
+    overflow: visible;
+  }
+}

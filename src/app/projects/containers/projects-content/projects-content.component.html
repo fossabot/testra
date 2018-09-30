@@ -1,0 +1,4 @@
+<div *ngIf="(currentProject$ | async) != null">
+  <app-project-content-header [project]="currentProject$ | async"></app-project-content-header>
+  <app-project-counters [projectCounter]="projectCounter$ | async"></app-project-counters>
+</div>

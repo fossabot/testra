@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {TestGroup} from '../models/test-group';
 
@@ -29,7 +30,7 @@ class TestGroupService extends BaseService {
    *
    * @return Successful Response
    */
-  getTestGroupsInExecutionResponse(params: TestGroupService.GetTestGroupsInExecutionParams): Observable<HttpResponse<Array<TestGroup>>> {
+  getTestGroupsInExecutionResponse(params: TestGroupService.GetTestGroupsInExecutionParams): Observable<StrictHttpResponse<Array<TestGroup>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -46,12 +47,9 @@ class TestGroupService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<TestGroup> = null;
-        _body = _resp.body as Array<TestGroup>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<TestGroup>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<TestGroup>>;
       })
     );
   }
@@ -68,7 +66,7 @@ class TestGroupService extends BaseService {
    */
   getTestGroupsInExecution(params: TestGroupService.GetTestGroupsInExecutionParams): Observable<Array<TestGroup>> {
     return this.getTestGroupsInExecutionResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -82,7 +80,7 @@ class TestGroupService extends BaseService {
    *
    * @return Successful Response
    */
-  getTestGroupsResponse(params: TestGroupService.GetTestGroupsParams): Observable<HttpResponse<Array<TestGroup>>> {
+  getTestGroupsResponse(params: TestGroupService.GetTestGroupsParams): Observable<StrictHttpResponse<Array<TestGroup>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -99,12 +97,9 @@ class TestGroupService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<TestGroup> = null;
-        _body = _resp.body as Array<TestGroup>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<TestGroup>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<TestGroup>>;
       })
     );
   }
@@ -121,7 +116,7 @@ class TestGroupService extends BaseService {
    */
   getTestGroups(params: TestGroupService.GetTestGroupsParams): Observable<Array<TestGroup>> {
     return this.getTestGroupsResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 }

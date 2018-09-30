@@ -1,18 +1,23 @@
-import {Execution} from '@app/core/api/testra/models';
+import {Execution, TestExecutionStats} from '@app/core/api/testra/models';
 import {
   DeleteExecution,
-  DeleteExecutionFail, DeleteExecutionPayload,
+  DeleteExecutionFail,
+  DeleteExecutionPayload,
   DeleteExecutionSuccess,
   LoadExecutions,
   LoadExecutionsFail,
-  LoadExecutionsSuccess
+  LoadExecutionsSuccess,
+  LoadExecutionStats,
+  LoadExecutionStatsFail,
+  LoadExecutionStatsSuccess,
+  SelectExecution
 } from '@app/executions/actions/executions.actions';
 
 
 export class ActionsFactory {
 
-  static newLoadExecutionsAction(): LoadExecutions {
-    return new LoadExecutions();
+  static newLoadExecutionsAction(projectId: string): LoadExecutions {
+    return new LoadExecutions(projectId);
   }
 
   static newLoadExecutionsSuccessAction(execution: Array<Execution>): LoadExecutionsSuccess {
@@ -21,6 +26,18 @@ export class ActionsFactory {
 
   static newLoadExecutionsFailAction(err: any): LoadExecutionsFail {
     return new LoadExecutionsFail(err);
+  }
+
+  static newLoadExecutionStatsAction(projectId: string, executionId: string): LoadExecutionStats {
+    return new LoadExecutionStats(projectId, executionId);
+  }
+
+  static newLoadExecutionStatsSuccessAction(executionStats: TestExecutionStats): LoadExecutionStatsSuccess {
+    return new LoadExecutionStatsSuccess(executionStats);
+  }
+
+  static newLoadExecutionStatsFailAction(err: any): LoadExecutionStatsFail {
+    return new LoadExecutionStatsFail(err);
   }
 
   static newDeleteExecutionAction(payload: DeleteExecutionPayload): DeleteExecution {
@@ -33,5 +50,9 @@ export class ActionsFactory {
 
   static newDeleteExecutionFailAction(err: any): DeleteExecutionFail {
     return new DeleteExecutionFail(err);
+  }
+
+  static newSelectExecutionAction(executionId: string): SelectExecution {
+    return new SelectExecution(executionId);
   }
 }

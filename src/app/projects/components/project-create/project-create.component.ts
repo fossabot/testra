@@ -1,25 +1,37 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProjectRequest} from '@app/core/api/testra/models/project-request';
+import {NgbActiveModal, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-project-create',
   templateUrl: './project-create.component.html',
-  styleUrls: ['./project-create.component.css']
+  styleUrls: ['./project-create.component.scss']
 })
 export class ProjectCreateComponent implements OnInit {
 
-  @Output() onCreateProject = new EventEmitter<ProjectRequest>();
+  faPlus = faPlus;
+  createProjectModal: NgbModalRef;
+
+  constructor(private activeModal: NgbActiveModal, private modalService: NgbModal) {
+  }
+
+  @Output() public createProject$ = new EventEmitter<ProjectRequest>();
 
   @Input() message: string;
 
   projectForm = new FormGroup({
-    type: new FormControl('TEST'),
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    type: new FormControl('', Validators.required),
   });
 
-  constructor() {
+  static resolveType(type: string): any {
+    if (type === 'TEST_CASES' || type === 'SCENARIOS') {
+      return 'TEST';
+    }
+    return type;
   }
 
   ngOnInit() {
@@ -30,8 +42,21 @@ export class ProjectCreateComponent implements OnInit {
     const name = this.projectForm.get('name').value;
     const description = this.projectForm.get('description').value;
 
-    const projectRequest: ProjectRequest = {projectType: type, name: name, description: description};
+    const projectRequest: ProjectRequest = {
+      projectType: ProjectCreateComponent.resolveType(type),
+      name: name,
+      description: description
+    };
 
-    this.onCreateProject.emit(projectRequest);
+    this.createProject$.emit(projectRequest);
+  }
+
+  openModal(content: any) {
+    this.createProjectModal = this.modalService.open(content,
+      {size: 'lg', container: 'app-projects-sidebar', centered: true});
+  }
+
+  closeModal() {
+    this.createProjectModal.close();
   }
 }

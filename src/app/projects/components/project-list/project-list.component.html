@@ -3,10 +3,16 @@
 </div>
 <div *ngIf="isLoading == false">
   <div *ngIf="isLoadSuccess">
-    <app-project-item *ngFor="let project of projects"
-                      [name]='project.name'
-                      (onRemove)="removeProject(project.id)">
-    </app-project-item>
+    <ul class="list">
+      <li *ngFor="let project of projects"
+          [ngClass]="{'active': currentProject?.name == project.name}"
+          (click)="selectListItem(project.name)">
+        <app-project-item [name]='project.name'
+                          [id]='project.id'
+                          (remove$)="removeProject(project.id)">
+        </app-project-item>
+      </li>
+    </ul>
   </div>
   <div *ngIf="isLoadSuccess == false">
     Unable to load projects from Backend

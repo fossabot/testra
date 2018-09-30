@@ -1,5 +1,7 @@
-<app-counter
-  *ngFor='let counterItem of counters'
-  [type]="counterItem.type"
-  [count]="counterItem.count">
-</app-counter>
+<div class="row">
+  <div class="col-xxl-2 col-md-3" *ngFor='let counterItem of counters; let i = index'>
+    <app-counter [type]="counterItem.type" [count]="format(counterItem.count)"
+                 [iconClass]="iconBgNames[i]">
+    </app-counter>
+  </div>
+</div>

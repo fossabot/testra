@@ -2,11 +2,12 @@ import {CounterListComponent} from '@app/counters/components/counter-list/counte
 import {CounterComponent} from '@app/counters/components/counter/counter.component';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {NbCardModule} from '@nebular/theme';
 
 export const COMPONENTS = [CounterComponent, CounterListComponent];
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, NbCardModule],
   declarations: COMPONENTS,
   exports: COMPONENTS
 })

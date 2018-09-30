@@ -21,4 +21,6 @@ export {SimulationScenario} from './models/simulation-scenario';
 export {SimulationRequest} from './models/simulation-request';
 export {Simulation} from './models/simulation';
 export {Counter} from './models/counter';
+export {ProjectCounter} from './models/project-counter';
+export {ProjectExecutionCounter} from './models/project-execution-counter';
 export {ErrorResponse} from './models/error-response';

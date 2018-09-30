@@ -1,5 +1,9 @@
-<app-execution-list [executions] = "executions$ | async"
-                    [isLoading]="false"
-                    [isLoadSuccess]="true"
-                    (onRemoveExecution)="removeExecution($event)">"
-</app-execution-list>
+<div class="row">
+  <app-executions-sidebar class="col-md-3 executions-sidebar"
+                          *ngIf="projectId != null"
+                          [projectId]="projectId"
+                          [projectName]="projectNameFromRoute"
+                          [executionIdFromRoute]="executionIdFromRoute"></app-executions-sidebar>
+  <app-executions-content class="col-md-9"
+                          [projectName]="projectNameFromRoute"></app-executions-content>
+</div>

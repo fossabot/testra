@@ -2,4 +2,37 @@
  * Global application theme.
  * Framework overrides and customization goes here.
  */
+// import Nebular Theme System and the default theme
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/cosmic';
 
+// and change the variables you need,
+// or simply leave the map empty to use the default values
+// let's make it blue-ish instead of the default white color
+$nb-themes: nb-register-theme((
+  color-bg: #0a4c5c,
+  shadow: 0 10px 10px 0 #073945,
+  color-fg: #b6c4c8,
+  layout-bg: #003d4d,
+  color-fg-text: #f1f3f4,
+  separator: #003d4d,
+  list-item-border-width: 0.10px,
+  scrollbar-fg: #0d5e73,
+  scrollbar-bg: #002933,
+  form-control-bg: #003d4d,
+  /* // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+
+  color-bg: #0a4c5c,
+  shadow: 0 10px 10px 0 #073945,
+  color-fg: #b6c4c8,
+  layout-bg: #003d4d,
+  color-fg-text: #f1f3f4,
+  separator: #425257,
+  search-bg: linear-gradient(to right, #003d4d, #0a4c5c),
+
+  font-main: Roboto,
+  font-secondary: Exo, */
+), cosmic, cosmic);

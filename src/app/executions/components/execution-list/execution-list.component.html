@@ -3,13 +3,18 @@
 </div>
 <div *ngIf="isLoading == false">
   <div *ngIf="isLoadSuccess">
-    <app-execution-item
-      *ngFor="let execution of executions"
-      [execution]="execution"
-      (onRemove)="removeExecution(execution)">
-    </app-execution-item>
+    <ul class="list">
+      <li *ngFor="let execution of executions"
+          [ngClass]="{'active': currentExecution?.id == execution.id}"
+          (click)="selectListItem(execution.id)">
+        <app-execution-item
+          [execution]="execution"
+          (removeExecution)="removeExecution(execution)">
+        </app-execution-item>
+      </li>
+    </ul>
   </div>
   <div *ngIf="isLoadSuccess == false">
-    Unable to load projects from Backend
+    Unable to load executions from Backend
   </div>
 </div>

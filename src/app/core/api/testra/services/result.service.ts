@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {EnrichedTestResult} from '../models/enriched-test-result';
 import {TestResult} from '../models/test-result';
@@ -36,7 +37,7 @@ class ResultService extends BaseService {
    *
    * @return Successful Response
    */
-  getResultsResponse(params: ResultService.GetResultsParams): Observable<HttpResponse<Array<EnrichedTestResult>>> {
+  getResultsResponse(params: ResultService.GetResultsParams): Observable<StrictHttpResponse<Array<EnrichedTestResult>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -54,12 +55,9 @@ class ResultService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<EnrichedTestResult> = null;
-        _body = _resp.body as Array<EnrichedTestResult>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<EnrichedTestResult>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<EnrichedTestResult>>;
       })
     );
   }
@@ -78,12 +76,12 @@ class ResultService extends BaseService {
    */
   getResults(params: ResultService.GetResultsParams): Observable<Array<EnrichedTestResult>> {
     return this.getResultsResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Adds a new result into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new result into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `ResultService.CreateResultParams` containing the following parameters:
    *
    * - `projectId`: Result Id
@@ -94,7 +92,7 @@ class ResultService extends BaseService {
    *
    * @return Successful creation of Result
    */
-  createResultResponse(params: ResultService.CreateResultParams): Observable<HttpResponse<TestResult>> {
+  createResultResponse(params: ResultService.CreateResultParams): Observable<StrictHttpResponse<TestResult>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -112,18 +110,15 @@ class ResultService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: TestResult = null;
-        _body = _resp.body as TestResult;
-        return _resp.clone({body: _body}) as HttpResponse<TestResult>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<TestResult>;
       })
     );
   }
 
   /**
-   * Adds a new result into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new result into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `ResultService.CreateResultParams` containing the following parameters:
    *
    * - `projectId`: Result Id
@@ -136,7 +131,7 @@ class ResultService extends BaseService {
    */
   createResult(params: ResultService.CreateResultParams): Observable<TestResult> {
     return this.createResultResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -152,7 +147,7 @@ class ResultService extends BaseService {
    *
    * @return Successful update of given Result
    */
-  getResultResponse(params: ResultService.GetResultParams): Observable<HttpResponse<TestResult>> {
+  getResultResponse(params: ResultService.GetResultParams): Observable<StrictHttpResponse<TestResult>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -169,12 +164,9 @@ class ResultService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: TestResult = null;
-        _body = _resp.body as TestResult;
-        return _resp.clone({body: _body}) as HttpResponse<TestResult>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<TestResult>;
       })
     );
   }
@@ -193,7 +185,7 @@ class ResultService extends BaseService {
    */
   getResult(params: ResultService.GetResultParams): Observable<TestResult> {
     return this.getResultResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -211,7 +203,7 @@ class ResultService extends BaseService {
    *
    * @return Successful update of given Result
    */
-  updateResultResponse(params: ResultService.UpdateResultParams): Observable<HttpResponse<TestResult>> {
+  updateResultResponse(params: ResultService.UpdateResultParams): Observable<StrictHttpResponse<TestResult>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -229,12 +221,9 @@ class ResultService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: TestResult = null;
-        _body = _resp.body as TestResult;
-        return _resp.clone({body: _body}) as HttpResponse<TestResult>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<TestResult>;
       })
     );
   }
@@ -255,7 +244,7 @@ class ResultService extends BaseService {
    */
   updateResult(params: ResultService.UpdateResultParams): Observable<TestResult> {
     return this.updateResultResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -270,7 +259,7 @@ class ResultService extends BaseService {
    *
    * @return Successful deletion of given Result
    */
-  deleteResultResponse(params: ResultService.DeleteResultParams): Observable<HttpResponse<TestResult>> {
+  deleteResultResponse(params: ResultService.DeleteResultParams): Observable<StrictHttpResponse<TestResult>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -287,12 +276,9 @@ class ResultService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: TestResult = null;
-        _body = _resp.body as TestResult;
-        return _resp.clone({body: _body}) as HttpResponse<TestResult>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<TestResult>;
       })
     );
   }
@@ -310,7 +296,7 @@ class ResultService extends BaseService {
    */
   deleteResult(params: ResultService.DeleteResultParams): Observable<TestResult> {
     return this.deleteResultResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 }

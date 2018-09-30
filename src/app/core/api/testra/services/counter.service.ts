@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {Counter} from '../models/counter';
 
@@ -23,7 +24,7 @@ class CounterService extends BaseService {
    * Returns counters for Projects, Test executions, Test scenarions, Test cases and Test results
    * @return Successful Response
    */
-  getCountersResponse(): Observable<HttpResponse<Counter>> {
+  getCountersResponse(): Observable<StrictHttpResponse<Counter>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -38,12 +39,9 @@ class CounterService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Counter = null;
-        _body = _resp.body as Counter;
-        return _resp.clone({body: _body}) as HttpResponse<Counter>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Counter>;
       })
     );
   }
@@ -54,7 +52,7 @@ class CounterService extends BaseService {
    */
   getCounters(): Observable<Counter> {
     return this.getCountersResponse().pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 }

@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>
+    Executions
+  </nb-card-header>
+  <nb-card-body>
+    <app-execution-list [executions]="executions$ | async"
+                        [projectName]="projectName"
+                        [isLoading]="false"
+                        [isLoadSuccess]="true"
+                        [currentExecution]="currentExecution$ | async"
+                        (removeExecution$)="removeExecution($event)"
+                        (selectedExecutionId$)="selectExecution($event)">"
+    </app-execution-list>
+  </nb-card-body>
+</nb-card>

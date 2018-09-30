@@ -1,0 +1,16 @@
+<nb-card>
+  <div *ngIf="project == null">
+    No projects selected
+  </div>
+  <div *ngIf="project != null" class="row">
+    <div class="col-md-8">
+      <div class="project-info">
+        <div class="name">{{project.name}}</div>
+        <div class="id">ID - {{project.id}}</div>
+      </div>
+    </div>
+    <div class="col-md-4 links">
+      <button class="btn btn-danger" style="background-image: linear-gradient(to right, #ff38ac, #ff386a);" routerLink="/projects/{{project.name}}/executions">Executions</button>
+    </div>
+  </div>
+</nb-card>

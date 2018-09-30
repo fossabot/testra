@@ -1,0 +1,34 @@
+<nb-card>
+  <nb-card-header>
+    <div class="content-body-title">Automated: 100% Manual: 0%</div>
+    <div class="execution-auto-refresh">
+      <app-execution-auto-refresh (autoRefreshToggle)="autoRefreshResults()"></app-execution-auto-refresh>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <nb-tabset fullWidth *ngIf="currentExecution && currentExecutionStats">
+      <nb-tab tabTitle="Overview">
+        <app-execution-content-primary-chart [currentExecutionStats]="currentExecutionStats">
+        </app-execution-content-primary-chart>
+      </nb-tab>
+      <nb-tab tabTitle="Failed"
+              badgeText="{{currentExecutionStats.failed}}"
+              badgeStatus="danger"
+              badgePosition="top right">
+        <p>List of <strong>orders</strong>.</p>
+      </nb-tab>
+      <nb-tab tabTitle="Passed"
+              badgeText="{{currentExecutionStats.passed}}"
+              badgeStatus="success"
+              badgePosition="top right">
+        <p>List of <strong>orders</strong>.</p>
+      </nb-tab>
+      <nb-tab tabTitle="Others"
+              badgeText="{{currentExecutionStats.others}}"
+              badgeStatus="warning"
+              badgePosition="top right">
+        <p>List of <strong>orders</strong>.</p>
+      </nb-tab>
+    </nb-tabset>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,18 @@
+.execution-stats-refresh * {
+  display: inline;
+}
+
+.execution-stats-refresh {
+  &:hover {
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+#auto-refresh-on {
+  color: greenyellow;
+}
+
+#auto-refresh-off {
+  color: slategrey;
+}

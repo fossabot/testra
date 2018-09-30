@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {Testcase} from '../models/testcase';
 import {TestcaseRequest} from '../models/testcase-request';
@@ -33,7 +34,7 @@ class TestcaseService extends BaseService {
    *
    * @return Successful Response
    */
-  getTestcasesResponse(params: TestcaseService.GetTestcasesParams): Observable<HttpResponse<Array<Testcase>>> {
+  getTestcasesResponse(params: TestcaseService.GetTestcasesParams): Observable<StrictHttpResponse<Array<Testcase>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -50,12 +51,9 @@ class TestcaseService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<Testcase> = null;
-        _body = _resp.body as Array<Testcase>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<Testcase>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<Testcase>>;
       })
     );
   }
@@ -72,12 +70,12 @@ class TestcaseService extends BaseService {
    */
   getTestcases(params: TestcaseService.GetTestcasesParams): Observable<Array<Testcase>> {
     return this.getTestcasesResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Adds a new testcase into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new testcase into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `TestcaseService.CreateTestcaseParams` containing the following parameters:
    *
    * - `projectId`: Testcase Id
@@ -86,7 +84,7 @@ class TestcaseService extends BaseService {
    *
    * @return Successful creation of Testcase
    */
-  createTestcaseResponse(params: TestcaseService.CreateTestcaseParams): Observable<HttpResponse<Testcase>> {
+  createTestcaseResponse(params: TestcaseService.CreateTestcaseParams): Observable<StrictHttpResponse<Testcase>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -103,18 +101,15 @@ class TestcaseService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Testcase = null;
-        _body = _resp.body as Testcase;
-        return _resp.clone({body: _body}) as HttpResponse<Testcase>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Testcase>;
       })
     );
   }
 
   /**
-   * Adds a new testcase into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new testcase into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `TestcaseService.CreateTestcaseParams` containing the following parameters:
    *
    * - `projectId`: Testcase Id
@@ -125,7 +120,7 @@ class TestcaseService extends BaseService {
    */
   createTestcase(params: TestcaseService.CreateTestcaseParams): Observable<Testcase> {
     return this.createTestcaseResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -139,7 +134,7 @@ class TestcaseService extends BaseService {
    *
    * @return Successful response
    */
-  getTestcaseResponse(params: TestcaseService.GetTestcaseParams): Observable<HttpResponse<Testcase>> {
+  getTestcaseResponse(params: TestcaseService.GetTestcaseParams): Observable<StrictHttpResponse<Testcase>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -156,12 +151,9 @@ class TestcaseService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Testcase = null;
-        _body = _resp.body as Testcase;
-        return _resp.clone({body: _body}) as HttpResponse<Testcase>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Testcase>;
       })
     );
   }
@@ -178,7 +170,7 @@ class TestcaseService extends BaseService {
    */
   getTestcase(params: TestcaseService.GetTestcaseParams): Observable<Testcase> {
     return this.getTestcaseResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -194,7 +186,7 @@ class TestcaseService extends BaseService {
    *
    * @return Successful update of given Testcase
    */
-  updateTestcaseResponse(params: TestcaseService.UpdateTestcaseParams): Observable<HttpResponse<Testcase>> {
+  updateTestcaseResponse(params: TestcaseService.UpdateTestcaseParams): Observable<StrictHttpResponse<Testcase>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -212,12 +204,9 @@ class TestcaseService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Testcase = null;
-        _body = _resp.body as Testcase;
-        return _resp.clone({body: _body}) as HttpResponse<Testcase>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Testcase>;
       })
     );
   }
@@ -236,7 +225,7 @@ class TestcaseService extends BaseService {
    */
   updateTestcase(params: TestcaseService.UpdateTestcaseParams): Observable<Testcase> {
     return this.updateTestcaseResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -249,7 +238,7 @@ class TestcaseService extends BaseService {
    *
    * @return Successful deletion of given Testcase
    */
-  deleteTestcaseResponse(params: TestcaseService.DeleteTestcaseParams): Observable<HttpResponse<Testcase>> {
+  deleteTestcaseResponse(params: TestcaseService.DeleteTestcaseParams): Observable<StrictHttpResponse<Testcase>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -266,12 +255,9 @@ class TestcaseService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Testcase = null;
-        _body = _resp.body as Testcase;
-        return _resp.clone({body: _body}) as HttpResponse<Testcase>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Testcase>;
       })
     );
   }
@@ -287,7 +273,7 @@ class TestcaseService extends BaseService {
    */
   deleteTestcase(params: TestcaseService.DeleteTestcaseParams): Observable<Testcase> {
     return this.deleteTestcaseResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 }

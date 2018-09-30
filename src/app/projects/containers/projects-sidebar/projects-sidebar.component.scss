@@ -1,0 +1,13 @@
+@import "../../../../theme/theme";
+@import "~@nebular/theme/styles/global/bootstrap/hero-buttons";
+
+@include nb-install-component() {
+  nb-card-header {
+    padding: 5px 10px 5px;
+  }
+
+  nb-card-body {
+    padding: 0;
+    ///max-height: 85vh;
+  }
+}

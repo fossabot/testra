@@ -1,3 +1,13 @@
-<div>
-  {{type}} : {{count}}
-</div>
+<nb-card>
+  <div class="icon-container">
+    <div class="icon {{iconClass}}">
+      <span>{{firstTwoChars(type)}}</span>
+    </div>
+  </div>
+  <nb-card-body>
+    <div class="counter-container">
+      <div class="count">{{count}}</div>
+      <div class="type">{{type}}</div>
+    </div>
+  </nb-card-body>
+</nb-card>

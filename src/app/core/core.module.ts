@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RouteReuseStrategy, RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ShellComponent} from './shell/shell.component';
 import {HeaderComponent} from './shell/header/header.component';
@@ -14,18 +13,22 @@ import {HttpCacheService} from './http/http-cache.service';
 import {ApiPrefixInterceptor} from './http/api-prefix.interceptor';
 import {ErrorHandlerInterceptor} from './http/error-handler.interceptor';
 import {CacheInterceptor} from './http/cache.interceptor';
+import {NbLayoutModule, NbSidebarModule, NbSidebarService} from '@nebular/theme';
+import {FooterComponent} from './shell/footer/footer.component';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     TranslateModule,
-    NgbModule,
-    RouterModule
+    RouterModule,
+    NbLayoutModule,
+    NbSidebarModule
   ],
   declarations: [
     HeaderComponent,
-    ShellComponent
+    ShellComponent,
+    FooterComponent
   ],
   providers: [
     I18nService,
@@ -40,7 +43,8 @@ import {CacheInterceptor} from './http/cache.interceptor';
     {
       provide: RouteReuseStrategy,
       useClass: RouteReusableStrategy
-    }
+    },
+    NbSidebarService
   ]
 })
 export class CoreModule {

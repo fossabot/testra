@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {Scenario} from '../models/scenario';
 import {ScenarioRequest} from '../models/scenario-request';
@@ -33,7 +34,7 @@ class ScenarioService extends BaseService {
    *
    * @return Successful Response
    */
-  getScenariosResponse(params: ScenarioService.GetScenariosParams): Observable<HttpResponse<Array<Scenario>>> {
+  getScenariosResponse(params: ScenarioService.GetScenariosParams): Observable<StrictHttpResponse<Array<Scenario>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -50,12 +51,9 @@ class ScenarioService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<Scenario> = null;
-        _body = _resp.body as Array<Scenario>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<Scenario>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<Scenario>>;
       })
     );
   }
@@ -72,12 +70,12 @@ class ScenarioService extends BaseService {
    */
   getScenarios(params: ScenarioService.GetScenariosParams): Observable<Array<Scenario>> {
     return this.getScenariosResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Adds a new scenario into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new scenario into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `ScenarioService.CreateScenarioParams` containing the following parameters:
    *
    * - `projectId`: Scenario Id
@@ -86,7 +84,7 @@ class ScenarioService extends BaseService {
    *
    * @return Successful creation of Scenario
    */
-  createScenarioResponse(params: ScenarioService.CreateScenarioParams): Observable<HttpResponse<Scenario>> {
+  createScenarioResponse(params: ScenarioService.CreateScenarioParams): Observable<StrictHttpResponse<Scenario>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -103,18 +101,15 @@ class ScenarioService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Scenario = null;
-        _body = _resp.body as Scenario;
-        return _resp.clone({body: _body}) as HttpResponse<Scenario>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Scenario>;
       })
     );
   }
 
   /**
-   * Adds a new scenario into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new scenario into Testra app. It takes a JSON object containing a key that was not used before.
    * @param params The `ScenarioService.CreateScenarioParams` containing the following parameters:
    *
    * - `projectId`: Scenario Id
@@ -125,7 +120,7 @@ class ScenarioService extends BaseService {
    */
   createScenario(params: ScenarioService.CreateScenarioParams): Observable<Scenario> {
     return this.createScenarioResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -139,7 +134,7 @@ class ScenarioService extends BaseService {
    *
    * @return Scenario Info
    */
-  getScenarioResponse(params: ScenarioService.GetScenarioParams): Observable<HttpResponse<Scenario>> {
+  getScenarioResponse(params: ScenarioService.GetScenarioParams): Observable<StrictHttpResponse<Scenario>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -156,12 +151,9 @@ class ScenarioService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Scenario = null;
-        _body = _resp.body as Scenario;
-        return _resp.clone({body: _body}) as HttpResponse<Scenario>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Scenario>;
       })
     );
   }
@@ -178,7 +170,7 @@ class ScenarioService extends BaseService {
    */
   getScenario(params: ScenarioService.GetScenarioParams): Observable<Scenario> {
     return this.getScenarioResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -194,7 +186,7 @@ class ScenarioService extends BaseService {
    *
    * @return Successful update of given Scenario
    */
-  updateScenarioResponse(params: ScenarioService.UpdateScenarioParams): Observable<HttpResponse<Scenario>> {
+  updateScenarioResponse(params: ScenarioService.UpdateScenarioParams): Observable<StrictHttpResponse<Scenario>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -212,12 +204,9 @@ class ScenarioService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Scenario = null;
-        _body = _resp.body as Scenario;
-        return _resp.clone({body: _body}) as HttpResponse<Scenario>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Scenario>;
       })
     );
   }
@@ -236,7 +225,7 @@ class ScenarioService extends BaseService {
    */
   updateScenario(params: ScenarioService.UpdateScenarioParams): Observable<Scenario> {
     return this.updateScenarioResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -249,7 +238,7 @@ class ScenarioService extends BaseService {
    *
    * @return Successful deletion of given Scenario
    */
-  deleteScenarioResponse(params: ScenarioService.DeleteScenarioParams): Observable<HttpResponse<Scenario>> {
+  deleteScenarioResponse(params: ScenarioService.DeleteScenarioParams): Observable<StrictHttpResponse<Scenario>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -266,12 +255,9 @@ class ScenarioService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Scenario = null;
-        _body = _resp.body as Scenario;
-        return _resp.clone({body: _body}) as HttpResponse<Scenario>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Scenario>;
       })
     );
   }
@@ -287,7 +273,7 @@ class ScenarioService extends BaseService {
    */
   deleteScenario(params: ScenarioService.DeleteScenarioParams): Observable<Scenario> {
     return this.deleteScenarioResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 }

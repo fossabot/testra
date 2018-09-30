@@ -1,0 +1,11 @@
+<div class="execution-stats-refresh"
+     ngbTooltip="Toggle auto refresh results" container="body" placement="left">
+  <div id="auto-refresh-on" *ngIf="on" (click)="toggleAutoRefresh(false)">
+    <fa-icon [icon]="faClock"></fa-icon>
+    ON
+  </div>
+  <div id="auto-refresh-off" *ngIf="!on" (click)="toggleAutoRefresh(true)">
+    <fa-icon [icon]="faClock"></fa-icon>
+    OFF
+  </div>
+</div>

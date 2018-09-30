@@ -1,0 +1,61 @@
+.sidebar-header {
+  width: inherit;
+
+  .primary {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    width: inherit;
+    padding: 5px;
+
+    .title {
+      padding: 10px;
+    }
+
+    .primary-icons {
+      padding-top: 0.4em;
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .secondary {
+    padding-top: 5px;
+
+    .form-control {
+      color: white;
+
+      &:focus {
+        border-color: #1497b8;
+      }
+    }
+
+    span {
+      $radius: 7px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #003d4d;
+      border-bottom-right-radius: $radius;
+      border-top-right-radius: $radius;
+      height: inherit;
+    }
+
+    .icon-times {
+      padding-right: 0.5em;
+      padding-left: 0.5em;
+    }
+  }
+}
+
+.projects-count-badge {
+  background-color: #13a6ad;
+  border-radius: 0.5em;
+  padding: 0.1em 0.4em;
+  font-size: 1em;
+}

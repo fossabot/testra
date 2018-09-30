@@ -11,7 +11,9 @@ const initialCounter: Counter = {
   testScenariosCount: 0,
   testCasesCount: 0,
   testExecutionsCount: 0,
-  testResultsCount: 0
+  testResultsCount: 0,
+  simulationsCount: 0,
+  vulnerabilityAlertsCount: 0
 };
 
 export const initialState: State = {

@@ -9,11 +9,17 @@ export class CounterComponent implements OnInit {
   @Input()
   type: string;
   @Input()
-  count: number;
+  count: string;
+
+  @Input() iconClass: string;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  firstTwoChars(str: string): string {
+    return str.substring(0, 2);
   }
 }

@@ -5,4 +5,6 @@ export interface Counter {
   testCasesCount: number;
   testExecutionsCount: number;
   testResultsCount: number;
+  simulationsCount: number;
+  vulnerabilityAlertsCount: number;
 }

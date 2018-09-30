@@ -1,0 +1,29 @@
+<nb-card class="project-counter">
+  <div *ngIf="projectCounter == null">
+    No projects selected
+  </div>
+  <div *ngIf="projectCounter != null" class="row">
+    <div class="col-md-12 container">
+      <ul class="list">
+        <li>
+          <div>
+            <div class="title">Executions</div>
+            <div class="value">{{projectCounter.testExecutionsCount | addCommas}}</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="title">Results</div>
+            <div class="value">{{projectCounter.testResultsCount | addCommas}}</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="title">Scenarios</div>
+            <div class="value">{{projectCounter.testScenariosCount | addCommas}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nb-card>

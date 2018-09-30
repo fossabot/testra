@@ -3,11 +3,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {BaseService} from '../base-service';
 import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter as __filter, map as __map} from 'rxjs/operators';
 
 import {Project} from '../models/project';
 import {ProjectRequest} from '../models/project-request';
+import {ProjectCounter} from '../models/project-counter';
+import {ProjectExecutionCounter} from '../models/project-execution-counter';
 
 /**
  * Everything about Projects
@@ -27,7 +30,7 @@ class ProjectService extends BaseService {
    * Returns list of all projects available
    * @return Successful Response
    */
-  getProjectsResponse(): Observable<HttpResponse<Array<Project>>> {
+  getProjectsResponse(): Observable<StrictHttpResponse<Array<Project>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -42,12 +45,9 @@ class ProjectService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Array<Project> = null;
-        _body = _resp.body as Array<Project>;
-        return _resp.clone({body: _body}) as HttpResponse<Array<Project>>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<Project>>;
       })
     );
   }
@@ -58,16 +58,16 @@ class ProjectService extends BaseService {
    */
   getProjects(): Observable<Array<Project>> {
     return this.getProjectsResponse().pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Adds a new project into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new project into Testra app. It takes a JSON object containing a key that was not used before.
    * @param body undefined
    * @return Successful creation of Project
    */
-  createProjectResponse(body: ProjectRequest): Observable<HttpResponse<Project>> {
+  createProjectResponse(body: ProjectRequest): Observable<StrictHttpResponse<Project>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -83,33 +83,30 @@ class ProjectService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Project = null;
-        _body = _resp.body as Project;
-        return _resp.clone({body: _body}) as HttpResponse<Project>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Project>;
       })
     );
   }
 
   /**
-   * Adds a new project into Testra app. It takes a JSON object containing a name that was not used before.
+   * Adds a new project into Testra app. It takes a JSON object containing a key that was not used before.
    * @param body undefined
    * @return Successful creation of Project
    */
   createProject(body: ProjectRequest): Observable<Project> {
     return this.createProjectResponse(body).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
   /**
-   * Returns single project info for the given id or name
+   * Returns single project info for the given id or key
    * @param id Project Id or Name
    * @return Successful update of given Project
    */
-  getProjectResponse(id: string): Observable<HttpResponse<Project>> {
+  getProjectResponse(id: string): Observable<StrictHttpResponse<Project>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -125,24 +122,21 @@ class ProjectService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Project = null;
-        _body = _resp.body as Project;
-        return _resp.clone({body: _body}) as HttpResponse<Project>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Project>;
       })
     );
   }
 
   /**
-   * Returns single project info for the given id or name
+   * Returns single project info for the given id or key
    * @param id Project Id or Name
    * @return Successful update of given Project
    */
   getProject(id: string): Observable<Project> {
     return this.getProjectResponse(id).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -156,7 +150,7 @@ class ProjectService extends BaseService {
    *
    * @return Successful update of given Project
    */
-  updateProjectResponse(params: ProjectService.UpdateProjectParams): Observable<HttpResponse<Project>> {
+  updateProjectResponse(params: ProjectService.UpdateProjectParams): Observable<StrictHttpResponse<Project>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -173,12 +167,9 @@ class ProjectService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Project = null;
-        _body = _resp.body as Project;
-        return _resp.clone({body: _body}) as HttpResponse<Project>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Project>;
       })
     );
   }
@@ -195,7 +186,7 @@ class ProjectService extends BaseService {
    */
   updateProject(params: ProjectService.UpdateProjectParams): Observable<Project> {
     return this.updateProjectResponse(params).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
     );
   }
 
@@ -203,7 +194,7 @@ class ProjectService extends BaseService {
    * @param id Project Id
    * @return Successful deletion of given Project
    */
-  deleteProjectResponse(id: string): Observable<HttpResponse<Project>> {
+  deleteProjectResponse(id: string): Observable<StrictHttpResponse<Project>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -219,12 +210,9 @@ class ProjectService extends BaseService {
       });
 
     return this.http.request<any>(req).pipe(
-      filter(_r => _r instanceof HttpResponse),
-      map(_r => {
-        let _resp = _r as HttpResponse<any>;
-        let _body: Project = null;
-        _body = _resp.body as Project;
-        return _resp.clone({body: _body}) as HttpResponse<Project>;
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Project>;
       })
     );
   }
@@ -235,7 +223,85 @@ class ProjectService extends BaseService {
    */
   deleteProject(id: string): Observable<Project> {
     return this.deleteProjectResponse(id).pipe(
-      map(_r => _r.body)
+      __map(_r => _r.body)
+    );
+  }
+
+  /**
+   * Returns counts of Executions, Results, Scenarios, Testcases, SImulations and Vulnerability alerts
+   * @param id Project Id
+   * @return Success return of counts
+   */
+  getProjectCountersResponse(id: string): Observable<StrictHttpResponse<ProjectCounter>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/projects/${id}/counters`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<ProjectCounter>;
+      })
+    );
+  }
+
+  /**
+   * Returns counts of Executions, Results, Scenarios, Testcases, SImulations and Vulnerability alerts
+   * @param id Project Id
+   * @return Success return of counts
+   */
+  getProjectCounters(id: string): Observable<ProjectCounter> {
+    return this.getProjectCountersResponse(id).pipe(
+      __map(_r => _r.body)
+    );
+  }
+
+  /**
+   * Returns list of top projects sorted by no of executions
+   * @param size No of projects to retrieve
+   * @return Successful Response
+   */
+  topProjectsResponse(size: number): Observable<StrictHttpResponse<Array<ProjectExecutionCounter>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (size != null) __params = __params.set('size', size.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/projects/top`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r: HttpResponse<any>) => {
+        return _r as StrictHttpResponse<Array<ProjectExecutionCounter>>;
+      })
+    );
+  }
+
+  /**
+   * Returns list of top projects sorted by no of executions
+   * @param size No of projects to retrieve
+   * @return Successful Response
+   */
+  topProjects(size: number): Observable<Array<ProjectExecutionCounter>> {
+    return this.topProjectsResponse(size).pipe(
+      __map(_r => _r.body)
     );
   }
 }

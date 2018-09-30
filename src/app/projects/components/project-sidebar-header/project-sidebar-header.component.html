@@ -1,0 +1,22 @@
+<div class="sidebar-header">
+  <div class="primary" *ngIf="isPrimary">
+    <div class="title">
+      Projects
+      <sup><span class="projects-count-badge">{{projectsCount}}</span></sup>
+    </div>
+    <div class="primary-icons">
+      <app-project-create class="create" [message]="message"
+                          (createProject$)="createProject($event)"></app-project-create>
+      <span>
+        <fa-icon class="icon-search" [icon]="faSearch" size="m"
+                 (click)="toggleSecondary()"></fa-icon>
+      </span>
+    </div>
+  </div>
+  <div class="input-group secondary" *ngIf="!isPrimary">
+    <input type="text" class="form-control" placeholder="Search" autofocus>
+    <span (click)="togglePrimary()">
+      <fa-icon class="icon-times" [icon]="faTimes"></fa-icon>
+    </span>
+  </div>
+</div>

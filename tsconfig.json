@@ -7,7 +7,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5",
     "typeRoots": [
@@ -20,7 +20,8 @@
     "baseUrl": "src",
     "paths": {
       "@app/*": ["app/*"],
-      "@env/*": ["environments/*"]
+      "@env/*": ["environments/*"],
+      "echarts": ["../node_modules/echarts/dist/echarts.min.js"]
     }
   }
 }

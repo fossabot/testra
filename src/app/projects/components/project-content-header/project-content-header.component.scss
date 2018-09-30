@@ -1,0 +1,31 @@
+.project-info {
+  margin-left: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  display: block;
+  padding-bottom: 0.1em;
+  text-shadow: 0px 0px 13px rgba(150, 150, 150, 1);
+}
+
+.id {
+  font-size: 1rem;
+  color: #b6c4c8;
+  display: block;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,47 @@
+@import "../../../../theme/theme";
+
+@include nb-install-component() {
+  .list {
+    overflow: auto;
+    height: 70vh;
+    max-height: 70vh;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+
+    li {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      color: nb-theme(color-fg);
+      padding: nb-theme(card-padding)/2 nb-theme(card-padding) nb-theme(card-padding)/2 nb-theme(card-padding);
+      border-bottom: nb-theme(list-item-border-width) nb-theme(card-header-border-type) nb-theme(separator);
+
+      &:hover {
+        background-color: nb-theme(layout-bg);
+        color: white;
+
+        &::before {
+          position: absolute;
+          content: '';
+          height: 100%;
+          width: 6px;
+          left: 0;
+          top: 0;
+          background-color: nb-theme(color-success);
+          border-radius: nb-theme(radius);
+        }
+      }
+    }
+
+    app-project-item {
+      width: 100%;
+    }
+  }
+
+  .active {
+    background-image: linear-gradient(to top, #0a4b5c, #0b5467, #0d5e73, #0e677e, #0f718a);
+  }
+}

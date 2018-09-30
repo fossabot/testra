@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>
+    <app-project-sidebar-header [message]="message$ | async"
+                                [projectsCount]="projectsTotal$ | async"
+                                (createProject$)="createProject($event)"></app-project-sidebar-header>
+  </nb-card-header>
+  <nb-card-body>
+    <app-project-list [projects]="projects$ | async"
+                      [isLoading]="loading$ | async"
+                      [isLoadSuccess]="isProjectLoadSuccess"
+                      [currentProject]="currentProject$ | async"
+                      (selectedProjectName$)="selectProject($event)"
+                      (removeProject$)="removeProject($event)">
+    </app-project-list>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>{{title}}</nb-card-header>
+  <nb-card-body>
+    <ul class="recent-list">
+      <li *ngFor="let execution of executions" (click)="navigate(execution.projectId, execution.id)">
+        <div>{{execution.projectId}}</div>
+        <div>{{execution.startTime | date:'MMM d, y, h:mm:ss a'}}</div>
+      </li>
+    </ul>
+  </nb-card-body>
+</nb-card>

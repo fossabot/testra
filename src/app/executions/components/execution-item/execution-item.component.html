@@ -1,4 +1,22 @@
-<div>
-  {{execution.id}}
-  <button (click)="remove()">Remove</button>
+<div class="row">
+  <div class="col-md-10" id="execution-info-container">
+    <span class="execution-time">
+      {{execution.startTime | date:'MMM d, y, h:mm:ss a'}}
+      <sup id="execution-environment">{{execution.environment}}</sup>
+    </span>
+    <br/>
+    <span class="execution-branch">{{execution.branch | slice:0:15}}</span>
+  </div>
+  <div class="col-md-2 icon-container">
+    <div *ngIf="!(showConfirmIcon$ | async)">
+      <fa-icon class="icon-trash" [icon]="faTrash"
+               placement="bottom" ngbTooltip="Delete execution" container="body"
+               (click)="remove()"></fa-icon>
+    </div>
+    <div *ngIf="showConfirmIcon$ | async">
+      <fa-icon class="icon-confirm" [icon]="faExclamation"
+               placement="bottom" ngbTooltip="Confirm delete" container="body"
+               (click)="confirmedRemove()"></fa-icon>
+    </div>
+  </div>
 </div>

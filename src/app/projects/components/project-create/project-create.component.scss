@@ -1,0 +1,61 @@
+.btn-success {
+  border: 0;
+  padding: 0.3rem 0.5rem;
+  vertical-align: top;
+  position: relative;
+  text-transform: capitalize;
+
+  .icon {
+    font-weight: bold;
+  }
+}
+
+.form-elem {
+  vertical-align: top;
+  padding-bottom: 0.5em;
+}
+
+.form-control {
+  display: inline;
+  color: white;
+
+  &:focus {
+    border-color: #1497b8;
+  }
+}
+
+.modal-body {
+  justify-content: center;
+  div {
+    margin-bottom: 0.5em;
+  }
+}
+
+.btn-group {
+  padding-left: 0;
+  padding-right: 0;
+
+  .btn-outline-primary {
+    border-color: #1497b8;
+    border-width: 0.5px;
+    padding-top: 0.5em;
+    background-color: #003d4d;
+
+    &:hover {
+      background-color: #1497b8;
+    }
+  }
+
+  .active {
+    background-color: #1497b8;
+  }
+}
+
+label {
+  vertical-align: center;
+}
+
+.modal-footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

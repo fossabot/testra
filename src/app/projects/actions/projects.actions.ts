@@ -14,7 +14,8 @@ export enum ProjectsActionTypes {
   DeleteProjectFail = '[Projects] Delete Project Fail',
   UpdateProject = '[Projects] Update Project',
   UpdateProjectSuccess = '[Projects] Update Project Success',
-  UpdateProjectFail = '[Projects] Update Project Fail'
+  UpdateProjectFail = '[Projects] Update Project Fail',
+  SelectProject = '[Projects] Select Project'
 }
 
 export class LoadProjects implements Action {
@@ -98,6 +99,13 @@ export class UpdateProjectFail implements Action {
   }
 }
 
+export class SelectProject implements Action {
+  readonly type = ProjectsActionTypes.SelectProject;
+
+  constructor(public projectId: string) {
+  }
+}
+
 export type ProjectsActions =
   LoadProjects |
   LoadProjectsSuccess |
@@ -110,4 +118,5 @@ export type ProjectsActions =
   DeleteProjectFail |
   UpdateProject |
   UpdateProjectSuccess |
-  UpdateProjectFail;
+  UpdateProjectFail |
+  SelectProject;

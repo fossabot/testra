@@ -1,9 +1,5 @@
-<app-project-list [projects]="projects$ | async"
-                  [isLoading]="loading$ | async"
-                  [isLoadSuccess]="isProjectLoadSuccess"
-                  (onRemoveProject)="removeProject($event)">
-</app-project-list>
-<br/>
-<app-project-create (onCreateProject)="createProject($event)"
-                    [message]="message$ | async">
-</app-project-create>
+<div class="row">
+  <app-projects-sidebar class="col-md-3 projects-sidebar"
+                        [projectNameFromRoute]="projectNameFromRoute"></app-projects-sidebar>
+  <app-projects-content class="col-md-9 content"></app-projects-content>
+</div>

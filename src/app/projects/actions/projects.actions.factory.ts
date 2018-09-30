@@ -8,7 +8,7 @@ import {
   DeleteProjectSuccess,
   LoadProjects,
   LoadProjectsFail,
-  LoadProjectsSuccess
+  LoadProjectsSuccess, SelectProject
 } from '@app/projects/actions/projects.actions';
 
 
@@ -48,5 +48,9 @@ export class ActionsFactory {
 
   static newDeleteProjectFailAction(err: any): DeleteProjectFail {
     return new DeleteProjectFail(err);
+  }
+
+  static newSelectProjectAction(id: string): SelectProject {
+    return new SelectProject(id);
   }
 }

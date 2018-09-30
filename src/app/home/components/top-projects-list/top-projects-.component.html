@@ -1,0 +1,19 @@
+<nb-card>
+  <nb-card-header>{{title}}</nb-card-header>
+  <nb-card-body>
+    <ul class="recent-list">
+      <li *ngFor="let item of list" (click)="navigate(item[0])">
+        <div>{{item[0]}}</div>
+        <div>{{item[1]}}</div>
+      </li>
+    </ul>
+  </nb-card-body>
+  <nb-card-footer *ngIf="viewAllRouterLink != null">
+  <div class="icon">
+    <a routerLink="{{viewAllRouterLink}}" routerLinkActive="active">
+      <span>View All</span>
+      <fa-icon [icon]="faChevronCircleRight"></fa-icon>
+    </a>
+  </div>
+</nb-card-footer>
+</nb-card>

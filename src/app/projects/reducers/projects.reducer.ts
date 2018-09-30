@@ -5,6 +5,7 @@ import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface ProjectState extends EntityState<Project> {
   loading: boolean;
+  selectedProjectId: string | null;
 }
 
 export function sortByName(a: Project, b: Project): number {
@@ -16,13 +17,13 @@ export const adapter: EntityAdapter<Project> = createEntityAdapter<Project>({
 });
 
 export const initialState: ProjectState =
-  adapter.getInitialState({loading: false});
+  adapter.getInitialState({loading: false, selectedProjectId: null});
 
 export const {
   selectIds: selectProjectIds,
   selectEntities: selectProjectEntities,
   selectAll: selectAllProjects,
-  selectTotal: projectsCount
+  selectTotal: selectTotal
 } = adapter.getSelectors();
 
 export function reducer(state: ProjectState = initialState, action: ProjectsActions): ProjectState {
@@ -54,6 +55,8 @@ export function reducer(state: ProjectState = initialState, action: ProjectsActi
         id: action.id,
         changes: action.changes,
       }, state);
+    case ProjectsActionTypes.SelectProject:
+      return {...state, selectedProjectId: action.projectId};
 
     default:
       return state;
@@ -63,8 +66,26 @@ export function reducer(state: ProjectState = initialState, action: ProjectsActi
 export const getProjectState = createFeatureSelector<ProjectState>('projects');
 
 export const allProjects = createSelector(getProjectState, selectAllProjects);
+export const projectsCount = createSelector(getProjectState, selectTotal);
 
 export const selectProjectsLoading = createSelector(
   getProjectState,
   projectState => projectState.loading
+);
+
+export const getCurrentProjectId = createSelector(
+  getProjectState,
+  projectState => projectState.selectedProjectId
+);
+
+export const getCurrentProject = createSelector(
+  getProjectState,
+  getCurrentProjectId,
+  (state: ProjectState, currentProjectId: string) => {
+    if (currentProjectId == null) {
+      return null;
+    } else {
+      return state.entities[currentProjectId];
+    }
+  }
 );
