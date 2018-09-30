@@ -11,6 +11,7 @@ import {ExecutionContentPrimaryChartComponent} from '@app/executions/components/
 import {NgxEchartsModule} from 'ngx-echarts';
 import {ExecutionAutoRefreshComponent} from '@app/executions/components/execution-auto-refresh/execution-auto-refresh.component';
 import {ExecutionContentHeaderComponent} from '@app/executions/components/execution-content-header/execution-content-header.component';
+import {ExecutionPipesModule} from '@app/executions/pipes/execution-pipes.module';
 
 export const COMPONENTS = [ExecutionItemComponent,
   ExecutionListComponent,
@@ -28,9 +29,10 @@ export const COMPONENTS = [ExecutionItemComponent,
     NbCardModule,
     NbTabsetModule,
     NgxEchartsModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    ExecutionPipesModule
   ],
-  declarations: COMPONENTS,
+  declarations: [COMPONENTS],
   exports: COMPONENTS
 })
 export class ExecutionsComponentsModule {

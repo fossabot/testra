@@ -1,27 +1,36 @@
 <nb-card>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="execution-info">
-        <div class="id">{{projectName}} / Executions / {{currentExecution.id}}</div>
-        <div class="id">ID - {{currentExecution.id}}</div>
-        <div *ngIf="currentExecution.description.length > 0" class="id">Description -
-          {{currentExecution.description}}
-        </div>
-        <div class="id">Branch - {{currentExecution.branch}} | Tags - {{currentExecution.tags}}
-        </div>
-        <div *ngIf="currentExecution.buildRef.length > 0" class="id">Build Reference -
-          {{currentExecution.buildRef}}
-        </div>
+  <div class="row execution-info-title">
+    <div>{{projectName}} / Executions / {{currentExecution.id}}</div>
+  </div>
+  <div class="row execution-metadata">
+    <div class="col-md-8 execution-info">
+      <div class="execution-branch"><span>{{currentExecution.branch}}</span></div>
+      <div *ngIf="currentExecution.description.length > 0" class="execution-desc">
+        {{currentExecution.description}}
+      </div>
+      <div class="execution-tags">
+        <span *ngFor="let tag of currentExecution.tags">
+          <span *ngIf="tag.length > 0">{{tag}}</span>
+        </span>
+      </div>
+      <div *ngIf="currentExecution.buildRef.length > 0" class="execution-build-ref">
+        {{currentExecution.buildRef}}
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="execution-info">
-        <div class="id">Duration - {{currentExecution.endTime - currentExecution.startTime}}</div>
-        <div class="id">{{currentExecution.startTime | date:'MMM d, y, h:mm:ss a'}} -
-          {{currentExecution.endTime | date:'MMM d, y, h:mm:ss a'}}
+    <div class="col-md-4 execution-times">
+      <div *ngIf="currentExecution.endTime != 0">
+        <div>
+          <fa-icon [icon]="faStopWatch"></fa-icon>
+          {{(currentExecution.endTime - currentExecution.startTime) | prettyDuration}}
         </div>
-        <div class="id">Environment - {{currentExecution.environment}}</div>
+        <div>
+          <fa-icon [icon]="faClock"></fa-icon>
+          {{currentExecution.startTime | date:'d/M/yy, h:mm a'}} - {{currentExecution.endTime |
+          date:'d/M/yy, h:mm a'}}
+        </div>
       </div>
+      <div class="execution-env">Environment
+        <span>{{currentExecution.environment | uppercase}}</span></div>
     </div>
   </div>
 </nb-card>

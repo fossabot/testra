@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {faClock} from '@fortawesome/free-solid-svg-icons';
+import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import {Subscription, timer} from 'rxjs';
 
 
@@ -10,7 +10,7 @@ import {Subscription, timer} from 'rxjs';
 })
 export class ExecutionAutoRefreshComponent implements OnDestroy {
 
-  faClock = faClock;
+  faSyncAlt = faSyncAlt;
   on = false;
 
   @Output() autoRefreshToggle = new EventEmitter<void>();

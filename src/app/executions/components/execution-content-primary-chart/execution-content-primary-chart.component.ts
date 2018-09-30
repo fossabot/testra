@@ -66,9 +66,15 @@ export class ExecutionContentPrimaryChartComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    let legendData = ['Passed'];
-    let seriesData = [{value: this.currentExecutionStats.passed, name: 'Passed'}];
-    let colors = ['#00d977'];
+    let legendData = [];
+    let seriesData = [];
+    let colors = [];
+
+    if (this.currentExecutionStats.passed > 0) {
+      legendData = [...legendData, 'Passed'];
+      seriesData = [...seriesData, {value: this.currentExecutionStats.passed, name: 'Passed'}];
+      colors = [...colors, '#00d977'];
+    }
 
     const failed = this.currentExecutionStats.failed - this.currentExecutionStats.expectedFailures;
     if (failed > 0) {

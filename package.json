@@ -41,6 +41,7 @@
     "lodash": "^4.17.11",
     "ngx-echarts": "^4.0.0",
     "numeral": "^2.0.6",
+    "pretty-ms": "^4.0.0",
     "rxjs": "^6.3.2",
     "zone.js": "^0.8.26"
   },

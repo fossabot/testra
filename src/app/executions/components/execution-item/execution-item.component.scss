@@ -27,6 +27,7 @@
 .icon-container {
   text-align: right;
   align-items: center;
+  padding-left: 0;
 }
 
 .execution-time {
@@ -34,12 +35,11 @@
   font-size: 1em;
 }
 
-#execution-environment {
+.execution-environment {
   background-color: #13a6ad;
   border-radius: 0.5em;
   padding: 0.1em 0.4em;
-  font-size: 0.85em;
-  font-weight: bold;
+  font-size: 0.75em;
   color: #fff;
 }
 
@@ -49,4 +49,8 @@
   padding: 0 0.4em;
   position: relative;
   font-size: small;
+}
+
+.execution-info-container {
+  padding-right: 0;
 }

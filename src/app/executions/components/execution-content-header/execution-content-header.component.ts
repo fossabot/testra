@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Execution} from '@app/core/api/testra/models/execution';
+import {faClock, faStopwatch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,6 +12,9 @@ export class ExecutionContentHeaderComponent implements OnInit {
 
   @Input() currentExecution: Execution;
   @Input() projectName: string;
+
+  faStopWatch = faStopwatch;
+  faClock = faClock;
 
   constructor() {
   }
