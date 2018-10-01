@@ -1,10 +1,11 @@
 <div *ngIf="(currentExecution$ | async)">
   <app-execution-content-header
-    [projectName]= "projectName"
+    [projectName]="projectName"
     [currentExecution]="currentExecution$ | async">
   </app-execution-content-header>
   <app-execution-content-body [currentExecution]="currentExecution$ | async"
                               [currentExecutionStats]="currentExecutionStats$ | async"
-                              (autoRefreshResultsEmitter)="loadExecutionStats()">
+                              (autoRefreshResultsEmitter)="loadExecutionStats()"
+                              (showSidebarEmitter)="showSideBar($event)">
   </app-execution-content-body>
 </div>

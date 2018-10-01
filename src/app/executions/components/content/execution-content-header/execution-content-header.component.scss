@@ -11,19 +11,23 @@ $default-color: #b6c4c8;
 .execution-metadata {
   display: flex;
   justify-content: space-between;
-  margin: 0.5em 1em 1em;
+  margin: 0.5em 1em 0.5em 1em;
 
   .execution-info {
     padding: 0 0 0 2px;
 
     div {
-      margin-bottom: 1px;
+      margin-bottom: 5px;
     }
   }
 
   .execution-times {
     padding: 0;
     text-align: right;
+
+    div {
+      margin-bottom: 5px;
+    }
   }
 
   .execution-branch span {
@@ -38,7 +42,7 @@ $default-color: #b6c4c8;
     color: $default-color;
 
     span {
-      background-color: #13a6ad;
+      background-color: mediumslateblue;
       border-radius: 0.5em;
       padding: 0.1em 0.4em;
       font-size: 0.75em;
@@ -47,14 +51,18 @@ $default-color: #b6c4c8;
     }
   }
 
-  .execution-tags span span {
-    background-color: #ff9e00;
-    border-radius: 0.5em;
-    padding: 0.1em 0.4em;
-    font-size: 0.75em;
-    font-weight: bold;
-    color: #fff;
-    margin: 1px;
+  .execution-tags {
+    color: $default-color;
+
+    span {
+      background-color: steelblue;
+      border-radius: 0.5em;
+      padding: 0.1em 0.4em;
+      font-size: 0.75em;
+      font-weight: bold;
+      color: #fff;
+      margin: 1px;
+    }
   }
 
   .execution-desc {

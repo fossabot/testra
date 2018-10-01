@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {select, Store} from '@ngrx/store';
 import * as fromProject from '@app/projects/reducers/projects.reducer';
@@ -21,11 +21,11 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
   projectNameFromRoute: string;
   executionIdFromRoute: string;
   projectId: string;
-  private projects$: Observable<Project[]>;
-
   paramsSubscription: Subscription;
   projectsSubscription: Subscription;
   projectServiceSubscription: Subscription;
+
+  private projects$: Observable<Project[]>;
 
   constructor(private activatedRoute: ActivatedRoute,
               private projectService: ProjectService,
@@ -52,11 +52,15 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
                 .pipe(
                   map(p => this.projectId = String(p.id)),
                   catchError(e => e) // TODO: Handle this route
-                ).subscribe(() => this.changeDetectorRef.detectChanges() );
+                ).subscribe(() => this.changeDetectorRef.detectChanges());
           }
         });
       }
     );
+  }
+
+  toggleSideBar(on: boolean) {
+    console.log('Toggle' + on);
   }
 
   ngOnDestroy(): void {

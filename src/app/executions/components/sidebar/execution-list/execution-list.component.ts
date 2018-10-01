@@ -32,6 +32,6 @@ export class ExecutionListComponent implements OnInit {
 
   selectListItem(executionId: string) {
     this.selectedExecutionId$.emit(executionId);
-    window.history.replaceState({}, '', `/projects/${this.projectName}/executions/${executionId}`);
+    window.history.replaceState({}, '', `/projects/${this.projectName}/executions/${executionId}?tab=overview`);
   }
 }

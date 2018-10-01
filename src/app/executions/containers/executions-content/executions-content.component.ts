@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import * as fromExecutions from '@app/executions/reducers/executions.reducer';
 import {Observable, Subject} from 'rxjs';
@@ -16,6 +16,8 @@ import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-sta
 export class ExecutionsContentComponent implements OnInit, OnDestroy {
 
   @Input() projectName: string;
+
+  @Output() showSideBarEmitter = new EventEmitter<boolean>();
 
   destroyed$ = new Subject<void>();
   currentExecution$: Observable<Execution>;
@@ -38,6 +40,10 @@ export class ExecutionsContentComponent implements OnInit, OnDestroy {
         filter(e => e != null)
       )
       .subscribe(e => this.store.dispatch(ActionsFactory.newLoadExecutionStatsAction(e.projectId, e.id)));
+  }
+
+  showSideBar(on: boolean) {
+    this.showSideBarEmitter.emit(on);
   }
 
   ngOnDestroy() {
