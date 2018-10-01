@@ -3,8 +3,9 @@
                           *ngIf="projectId != null"
                           [projectId]="projectId"
                           [projectName]="projectNameFromRoute"
-                          [executionIdFromRoute]="executionIdFromRoute"></app-executions-sidebar>
-  <app-executions-content class="col-md-9"
+                          [executionIdFromRoute]="executionIdFromRoute"
+                          [style.display]="styleDisplay"></app-executions-sidebar>
+  <app-executions-content [ngClass]="contentNgClass"
                           [projectName]="projectNameFromRoute"
                           (showSideBarEmitter)="toggleSideBar($event)"></app-executions-content>
 </div>

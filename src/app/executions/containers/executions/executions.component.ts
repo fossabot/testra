@@ -27,6 +27,9 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
 
   private projects$: Observable<Project[]>;
 
+  styleDisplay = 'block';
+  contentNgClass = 'col-md-9';
+
   constructor(private activatedRoute: ActivatedRoute,
               private projectService: ProjectService,
               private projectStore: Store<fromProject.ProjectState>,
@@ -60,7 +63,13 @@ export class ExecutionsComponent implements OnInit, OnDestroy {
   }
 
   toggleSideBar(on: boolean) {
-    console.log('Toggle' + on);
+    if (on) {
+      this.styleDisplay = 'block';
+      this.contentNgClass = 'col-md-9';
+    } else {
+      this.styleDisplay = 'none';
+      this.contentNgClass = 'col-md-12';
+    }
   }
 
   ngOnDestroy(): void {
