@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <split [gutterSize]="7" gutterColor="teal" (dragEnd)="log('dragEnd', $event)">
+      <split-area *ngIf="showGroupsContent" [order]="0">
+        <p>A</p>
+      </split-area>
+      <split-area *ngIf="showTestsContent" [order]="1">
+        <p>B</p>
+      </split-area>
+      <split-area *ngIf="showTestContent" [order]="2">
+        <p>C</p>
+      </split-area>
+    </split>
+  </div>
+</div>

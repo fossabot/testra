@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
     // Setup logger
     if (environment.production) {
       Logger.enableProductionMode();
+      // Disables all console log statements for prod
+      window.console.log(() => {});
     }
 
     log.debug('init');

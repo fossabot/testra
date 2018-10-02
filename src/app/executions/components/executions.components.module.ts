@@ -12,6 +12,8 @@ import {NgxEchartsModule} from 'ngx-echarts';
 import {ExecutionAutoRefreshComponent} from '@app/executions/components/content/execution-auto-refresh/execution-auto-refresh.component';
 import {ExecutionContentHeaderComponent} from '@app/executions/components/content/execution-content-header/execution-content-header.component';
 import {ExecutionPipesModule} from '@app/executions/pipes/execution-pipes.module';
+import { ExecutionContentByStatusComponent } from './content/execution-content-by-status/execution-content-by-status.component';
+import {AngularSplitModule} from 'angular-split-ng6';
 
 export const COMPONENTS = [ExecutionItemComponent,
   ExecutionListComponent,
@@ -30,9 +32,10 @@ export const COMPONENTS = [ExecutionItemComponent,
     NbTabsetModule,
     NgxEchartsModule,
     NgbTooltipModule,
+    AngularSplitModule,
     ExecutionPipesModule
   ],
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, ExecutionContentByStatusComponent],
   exports: COMPONENTS
 })
 export class ExecutionsComponentsModule {
