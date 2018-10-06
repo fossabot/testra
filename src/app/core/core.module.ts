@@ -2,12 +2,10 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RouteReuseStrategy, RouterModule} from '@angular/router';
-import {TranslateModule} from '@ngx-translate/core';
 
 import {ShellComponent} from './shell/shell.component';
 import {HeaderComponent} from './shell/header/header.component';
 import {RouteReusableStrategy} from './route-reusable-strategy';
-import {I18nService} from './i18n.service';
 import {HttpService} from './http/http.service';
 import {HttpCacheService} from './http/http-cache.service';
 import {ApiPrefixInterceptor} from './http/api-prefix.interceptor';
@@ -20,7 +18,6 @@ import {FooterComponent} from './shell/footer/footer.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    TranslateModule,
     RouterModule,
     NbLayoutModule,
     NbSidebarModule
@@ -31,7 +28,6 @@ import {FooterComponent} from './shell/footer/footer.component';
     FooterComponent
   ],
   providers: [
-    I18nService,
     HttpCacheService,
     ApiPrefixInterceptor,
     ErrorHandlerInterceptor,

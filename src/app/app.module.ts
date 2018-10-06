@@ -7,7 +7,6 @@ import {SharedModule} from '@app/shared';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {TranslateModule} from '@ngx-translate/core';
 
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
@@ -21,7 +20,6 @@ import {NbThemeModule} from '@nebular/theme';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    TranslateModule.forRoot(),
     CoreModule,
     SharedModule,
     HomeModule,
