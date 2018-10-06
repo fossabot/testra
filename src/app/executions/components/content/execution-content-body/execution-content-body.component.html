@@ -1,37 +1,36 @@
 <nb-card>
-  <nb-card-header>
-    <div class="content-body-title">Test Results</div>
-    <div class="execution-auto-refresh">
-      <app-execution-auto-refresh
-        (autoRefreshToggle)="autoRefreshResults()"></app-execution-auto-refresh>
-    </div>
-  </nb-card-header>
-  <nb-card-body>
-    <nb-tabset fullWidth *ngIf="currentExecution && currentExecutionStats" (changeTab)="changeTab($event)">
-      <nb-tab tabTitle="Overview"
-              badgeText="{{getTotalResultsCount()}}"
-              badgeStatus="info">
-        <app-execution-content-primary-chart [currentExecutionStats]="currentExecutionStats">
-        </app-execution-content-primary-chart>
-      </nb-tab>
-      <nb-tab tabTitle="Failed"
-              badgeText="{{currentExecutionStats.failed}}"
-              badgeStatus="danger"
-              badgePosition="top right">
-        <app-execution-content-by-status></app-execution-content-by-status>
-      </nb-tab>
-      <nb-tab tabTitle="Passed"
-              badgeText="{{currentExecutionStats.passed}}"
-              badgeStatus="success"
-              badgePosition="top right">
-        <p>List of <strong>orders</strong>.</p>
-      </nb-tab>
-      <nb-tab tabTitle="Others"
-              badgeText="{{currentExecutionStats.others}}"
-              badgeStatus="warning"
-              badgePosition="top right">
-        <p>List of <strong>orders</strong>.</p>
-      </nb-tab>
-    </nb-tabset>
-  </nb-card-body>
+  <nb-tabset [fullWidth]=true *ngIf="currentExecution && currentExecutionStats"
+             (changeTab)="changeTab($event)">
+    <nb-tab tabTitle="Overview" style="height: 100%; margin-top: 1em;"
+            badgeText="{{getTotalResultsCount()}}"
+            badgeStatus="info">
+      <app-execution-content-primary-chart *ngIf="currentTab === 'Overview'"
+                                           [currentExecutionStats]="currentExecutionStats">
+      </app-execution-content-primary-chart>
+    </nb-tab>
+    <nb-tab tabTitle="Failed"
+            badgeText="{{currentExecutionStats.failed}}"
+            badgeStatus="danger"
+            badgePosition="top right">
+      <app-execution-content-by-status *ngIf="currentTab === 'Failed'"
+                                       [resultStatus]="'FAILED'"></app-execution-content-by-status>
+    </nb-tab>
+    <nb-tab tabTitle="Passed"
+            badgeText="{{currentExecutionStats.passed}}"
+            badgeStatus="success"
+            badgePosition="top right">
+      <app-execution-content-by-status *ngIf="currentTab === 'Passed'"
+                                       [resultStatus]="'PASSED'"></app-execution-content-by-status>
+    </nb-tab>
+    <nb-tab tabTitle="Others"
+            badgeText="{{currentExecutionStats.others}}"
+            badgeStatus="warning"
+            badgePosition="top right">
+      <app-execution-content-by-status *ngIf="currentTab === 'Others'"
+                                       [resultStatus]="'OTHERS'"></app-execution-content-by-status>
+    </nb-tab>
+    <nb-tab tabTitle="Analytics">
+      <strong>TODO</strong>
+    </nb-tab>
+  </nb-tabset>
 </nb-card>

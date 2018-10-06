@@ -1,11 +1,17 @@
 $default-color: #b6c4c8;
 
 .execution-info-title {
+  display: flex;
+  justify-content: space-between;
   color: white;
   font-size: 1.2em;
   font-weight: bolder;
   margin: 1em 1em 0;
   text-shadow: 0 0 13px rgba(150, 150, 150, 1);
+
+  .execution-auto-refresh {
+    text-shadow: none;
+  }
 }
 
 .execution-metadata {
@@ -33,7 +39,7 @@ $default-color: #b6c4c8;
   .execution-branch span {
     background-color: #073945;
     border-radius: 0.5em;
-    padding: 0 0.4em;
+    padding: 0.1em 0.4em;
     position: relative;
     font-size: 1em;
   }

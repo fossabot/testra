@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-stats';
 
 @Component({
@@ -11,15 +17,16 @@ export class ExecutionContentPrimaryChartComponent implements OnChanges {
 
   @Input() currentExecutionStats: TestExecutionStats;
 
-  options: any = {};
+  options = ExecutionContentPrimaryChartComponent.getDefaultChartOptions();
+  updateOptions: any = {};
 
   constructor() {
   }
 
-  static getChartOptions(legendData: string[], seriesData: any[], colors: string[]) {
+  private static getDefaultChartOptions() {
     return {
       backgroundColor: '#0a4c5c',
-      color: colors,
+      color: [],
       tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b} : {c} ({d}%)',
@@ -27,7 +34,7 @@ export class ExecutionContentPrimaryChartComponent implements OnChanges {
       legend: {
         orient: 'vertical',
         left: 'left',
-        data: legendData,
+        data: [],
         textStyle: {
           color: '#fff',
         },
@@ -38,7 +45,7 @@ export class ExecutionContentPrimaryChartComponent implements OnChanges {
           type: 'pie',
           radius: '80%',
           center: ['50%', '50%'],
-          data: seriesData,
+          data: [],
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
@@ -66,6 +73,10 @@ export class ExecutionContentPrimaryChartComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.updateChartOptions();
+  }
+
+  private updateChartOptions() {
     let legendData = [];
     let seriesData = [];
     let colors = [];
@@ -95,6 +106,6 @@ export class ExecutionContentPrimaryChartComponent implements OnChanges {
       colors = [...colors, '#ffa100'];
     }
 
-    this.options = ExecutionContentPrimaryChartComponent.getChartOptions(legendData, seriesData, colors);
+    this.updateOptions = {color: colors, legend: {data: legendData}, series: [{data: seriesData}]};
   }
 }

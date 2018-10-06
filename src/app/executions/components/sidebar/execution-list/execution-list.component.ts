@@ -34,4 +34,8 @@ export class ExecutionListComponent implements OnInit {
     this.selectedExecutionId$.emit(executionId);
     window.history.replaceState({}, '', `/projects/${this.projectName}/executions/${executionId}?tab=overview`);
   }
+
+  trackByExecId(index: number, exec: Execution) {
+    return exec.id;
+  }
 }

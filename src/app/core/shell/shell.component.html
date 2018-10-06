@@ -1,13 +1,9 @@
 <nb-layout class="window-mode with-scroll">
-  <nb-layout-header fixed>
-    <app-header></app-header>
+  <nb-layout-header [fixed]=true>
+    <app-header packageVersion="{{packageVersion}}"></app-header>
   </nb-layout-header>
 
   <nb-layout-column class="main-content">
     <router-outlet></router-outlet>
   </nb-layout-column>
-
-  <nb-layout-footer>
-    <app-footer packageVersion="{{packageVersion}}"></app-footer>
-  </nb-layout-footer>
 </nb-layout>

@@ -1,6 +1,7 @@
-<nb-card>
+<nb-card [nbSpinner]="loading$ | async" nbSpinnerStatus="success">
   <nb-card-header>
-    Executions
+    <div>Executions</div>
+    <fa-icon [icon]="faFilter"></fa-icon>
   </nb-card-header>
   <nb-card-body>
     <app-execution-list [executions]="executions$ | async"

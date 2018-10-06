@@ -1,0 +1,7 @@
+<ul style="padding-left: 0.5em; padding-right: 0.5em;">
+  <li *ngFor="let group of groups"
+      (click)="selectGroup(group)">
+    <app-gherkin-card [gherkinText]="getFeature(group)"
+    [isActive]="currentGroup?.name == group.name"></app-gherkin-card>
+  </li>
+</ul>

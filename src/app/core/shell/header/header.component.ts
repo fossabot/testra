@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-
-import {I18nService} from '../../i18n.service';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,28 +7,11 @@ import {I18nService} from '../../i18n.service';
 })
 export class HeaderComponent implements OnInit {
 
-  menuHidden = true;
+  @Input() packageVersion: string;
 
-  constructor(private i18nService: I18nService) {
-  }
-
-  get currentLanguage(): string {
-    return this.i18nService.language;
-  }
-
-  get languages(): string[] {
-    return this.i18nService.supportedLanguages;
+  constructor() {
   }
 
   ngOnInit() {
   }
-
-  toggleMenu() {
-    this.menuHidden = !this.menuHidden;
-  }
-
-  setLanguage(language: string) {
-    this.i18nService.language = language;
-  }
-
 }

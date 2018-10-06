@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Execution} from '@app/core/api/testra/models/execution';
 import {faClock, faStopwatch} from '@fortawesome/free-solid-svg-icons';
 
@@ -8,10 +8,12 @@ import {faClock, faStopwatch} from '@fortawesome/free-solid-svg-icons';
   templateUrl: './execution-content-header.component.html',
   styleUrls: ['./execution-content-header.component.scss']
 })
-export class ExecutionContentHeaderComponent implements OnInit {
+export class ExecutionContentHeaderComponent {
 
   @Input() currentExecution: Execution;
   @Input() projectName: string;
+
+  @Output() autoRefreshResultsEmitter = new EventEmitter();
 
   faStopWatch = faStopwatch;
   faClock = faClock;
@@ -19,6 +21,7 @@ export class ExecutionContentHeaderComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  autoRefreshResults() {
+    this.autoRefreshResultsEmitter.emit();
   }
 }

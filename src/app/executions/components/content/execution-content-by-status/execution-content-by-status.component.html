@@ -1,14 +1,38 @@
-<div class="row">
-  <div class="col-md-12">
-    <split [gutterSize]="7" gutterColor="teal" (dragEnd)="log('dragEnd', $event)">
+<div class="row content-by-status">
+  <div class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
+    <split [gutterSize]="5" gutterColor="#19424d" [useTransition]="true">
       <split-area *ngIf="showGroupsContent" [order]="0">
-        <p>A</p>
+        <nb-card [nbSpinner]="loading$ | async" nbSpinnerStatus="success">
+          <nb-card-header>
+            Features
+            <sub><span class="features-count-badge">{{groupsCount$ | async}}</span></sub>
+          </nb-card-header>
+          <nb-card-body style="padding:0;">
+            <app-test-groups [groups]="groups$ | async"
+                             (selectedGroup)="selectGroup($event)"></app-test-groups>
+          </nb-card-body>
+        </nb-card>
       </split-area>
-      <split-area *ngIf="showTestsContent" [order]="1">
-        <p>B</p>
+      <split-area *ngIf="showResultsContent" [order]="1">
+        <nb-card>
+          <nb-card-header>
+            Scenarios
+          </nb-card-header>
+          <nb-card-body style="padding:0;">
+            <app-result-list [results]="selectedGroupResults"
+                             (selectedResult)="selectResult($event)"></app-result-list>
+          </nb-card-body>
+        </nb-card>
       </split-area>
-      <split-area *ngIf="showTestContent" [order]="2">
-        <p>C</p>
+      <split-area *ngIf="showResultContent" [order]="2">
+        <nb-card>
+          <nb-card-header>
+            Test Result
+          </nb-card-header>
+          <nb-card-body style="padding-left:0.5em; padding-top:0.5em;">
+            <app-result [result]="selectedResult"></app-result>
+          </nb-card-body>
+        </nb-card>
       </split-area>
     </split>
   </div>

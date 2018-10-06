@@ -1,6 +1,10 @@
 <nb-card>
   <div class="row execution-info-title">
     <div>{{projectName}} / Executions / {{currentExecution.id}}</div>
+    <div class="execution-auto-refresh">
+      <app-execution-auto-refresh
+        (autoRefreshToggle)="autoRefreshResults()"></app-execution-auto-refresh>
+    </div>
   </div>
   <div class="row execution-metadata">
     <div class="col-md-8 execution-info">

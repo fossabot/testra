@@ -1,10 +1,11 @@
-import { Action } from '@ngrx/store';
-import {TestResult} from '@app/core/api/testra/models/test-result';
+import {Action} from '@ngrx/store';
+import {EnrichedTestResult} from '@app/core/api/testra/models/enriched-test-result';
 
 export enum ResultsActionTypes {
   LoadResults = '[Results] Load Results',
   LoadResultsSuccess = '[Results] Load Results Success',
-  LoadResultsFail = '[Results] Load Results Fai'
+  LoadResultsFail = '[Results] Load Results Fai',
+  EmptyResultsStore = '[Results/Store] Empty Results'
 }
 
 export interface LoadResultsPayload {
@@ -23,7 +24,7 @@ export class LoadResults implements Action {
 export class LoadResultsSuccess implements Action {
   readonly type = ResultsActionTypes.LoadResultsSuccess;
 
-  constructor(public payload: Array<TestResult>) {
+  constructor(public payload: Array<EnrichedTestResult>) {
   }
 }
 
@@ -33,4 +34,12 @@ export class LoadResultsFail implements Action {
   constructor(public payload: any) {
   }
 }
-export type ResultsActions = LoadResults | LoadResultsFail | LoadResultsSuccess;
+
+export class EmptyResults implements Action {
+  readonly type = ResultsActionTypes.EmptyResultsStore;
+
+  constructor() {
+  }
+}
+
+export type ResultsActions = LoadResults | LoadResultsFail | LoadResultsSuccess | EmptyResults;

@@ -9,14 +9,17 @@ import {ExecutionsEffects} from '@app/executions/effects/executions.effects';
 import {ExecutionsComponentsModule} from '@app/executions/components/executions.components.module';
 import {ExecutionsComponent} from './containers/executions/executions.component';
 import {ExecutionsContentComponent} from './containers/executions-content/executions-content.component';
-import {NbCardModule} from '@nebular/theme';
+import {NbCardModule, NbSpinnerModule} from '@nebular/theme';
 import {ExecutionsRoutingModule} from '@app/executions/executions-routing.module';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
-    ExecutionsComponentsModule,
     NbCardModule,
+    NbSpinnerModule,
+    FontAwesomeModule,
+    ExecutionsComponentsModule,
     ExecutionsRoutingModule,
     StoreModule.forFeature('executions', fromExecutions.reducer),
     EffectsModule.forFeature([ExecutionsEffects])

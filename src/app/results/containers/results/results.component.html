@@ -1,1 +1,9 @@
-<app-result-list></app-result-list>
+<split [gutterSize]="5" gutterColor="#19424d" [useTransition]="true">
+  <split-area *ngIf="showResultsListArea" [order]="0" class="results-area">
+    <app-result-list [results]="results"
+                     (selectedResult)="selectResult($event)"></app-result-list>
+  </split-area>
+  <split-area *ngIf="showResultArea" [order]="1" class="result-area">
+    <app-result [result]="selectedResult"></app-result>
+  </split-area>
+</split>

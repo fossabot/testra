@@ -23,6 +23,8 @@ export class ExecutionsContentComponent implements OnInit, OnDestroy {
   currentExecution$: Observable<Execution>;
   currentExecutionStats$: Observable<TestExecutionStats>;
 
+  styleDisplay = 'block';
+
   constructor(private store: Store<fromExecutions.ExecutionState>) {
   }
 
@@ -44,6 +46,14 @@ export class ExecutionsContentComponent implements OnInit, OnDestroy {
 
   showSideBar(on: boolean) {
     this.showSideBarEmitter.emit(on);
+  }
+
+  showHeader(on: boolean) {
+    if (on) {
+      this.styleDisplay = 'block';
+    } else {
+      this.styleDisplay = 'none';
+    }
   }
 
   ngOnDestroy() {

@@ -1,20 +1,15 @@
-<div *ngIf="isLoading">
-  Loading
+<div *ngIf="isLoadSuccess">
+  <ul class="list">
+    <li *ngFor="let project of projects;trackBy:trackByProjectId"
+        [ngClass]="{'active': currentProject?.name == project.name}"
+        (click)="selectListItem(project.name)">
+      <app-project-item [name]='project.name'
+                        [id]='project.id'
+                        (remove$)="removeProject(project.id)">
+      </app-project-item>
+    </li>
+  </ul>
 </div>
-<div *ngIf="isLoading == false">
-  <div *ngIf="isLoadSuccess">
-    <ul class="list">
-      <li *ngFor="let project of projects"
-          [ngClass]="{'active': currentProject?.name == project.name}"
-          (click)="selectListItem(project.name)">
-        <app-project-item [name]='project.name'
-                          [id]='project.id'
-                          (remove$)="removeProject(project.id)">
-        </app-project-item>
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="isLoadSuccess == false">
-    Unable to load projects from Backend
-  </div>
+<div *ngIf="isLoadSuccess == false">
+  Unable to load projects from Backend
 </div>

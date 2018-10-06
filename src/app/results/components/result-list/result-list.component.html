@@ -1,3 +1,6 @@
-<p>
-  result-list works!
-</p>
+<ul style="margin-left: 0.5em; margin-right: 0.5em; list-style: none;">
+  <li *ngFor="let result of results;trackBy:trackByFn" (click)="selectResult(result)">
+    <app-gherkin-card [gherkinText]="getScenario(result)"
+                      [isActive]="currentResult?.id == result.id"></app-gherkin-card>
+  </li>
+</ul>

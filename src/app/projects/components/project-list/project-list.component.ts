@@ -10,7 +10,6 @@ import {Project} from '@app/core/api/testra/models/project';
 export class ProjectListComponent implements OnInit {
 
   @Input() projects: Project[];
-  @Input() isLoading: boolean;
   @Input() isLoadSuccess: boolean;
   @Input() currentProject: Project;
 
@@ -30,5 +29,9 @@ export class ProjectListComponent implements OnInit {
   selectListItem(projectName: string) {
     this.selectedProjectName$.emit(projectName);
     window.history.replaceState({}, '', `/projects/${projectName}`);
+  }
+
+  trackByProjectId(index: number, project: Project) {
+    return project.id;
   }
 }

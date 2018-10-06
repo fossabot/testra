@@ -1,35 +1,37 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {select, Store} from '@ngrx/store';
-import * as fromResults from '@app/results/reducers/results.reducer';
-import {ActionsFactory} from '@app/results/actions/results.actions.factory';
-import {ResultsEffects} from '@app/results/effects/results.effects';
-import {Observable} from 'rxjs';
-import {TestResult} from '@app/core/api/testra/models/test-result';
-import {allResults} from '@app/results/reducers/results.reducer';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {TestGroup} from '@app/core/api/testra/models/test-group';
+import {EnrichedTestResult} from '@app/core/api/testra/models/enriched-test-result';
+import {Subject} from 'rxjs';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css']
+  styleUrls: ['./results.component.scss']
 })
 
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit, OnChanges {
 
-  @Input() projectId: string;
-  @Input() executionIdFromRoute: string;
-  @Input() status: string;
+  @Input() group: TestGroup;
+  @Input() results: EnrichedTestResult[];
 
-  results$: Observable<TestResult[]>;
+  showResultsListArea = true;
+  showResultArea = false;
 
-  constructor(private store: Store<fromResults.ResultState>,
-              private resultEffects: ResultsEffects) {
+  selectedResult: EnrichedTestResult;
+
+  constructor() {
   }
-  ngOnInit() {
-    this.results$ = this.store.pipe(select(allResults));
 
-    this.store.dispatch(ActionsFactory.newLoadResultsAction(
-      {projectId: this.projectId, executionId: this.executionIdFromRoute, status: this.status}
-    ));
+  ngOnInit() {
+  }
+
+  selectResult(result: EnrichedTestResult) {
+    this.showResultArea = true;
+    this.selectedResult = result;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.showResultArea = false;
   }
 }

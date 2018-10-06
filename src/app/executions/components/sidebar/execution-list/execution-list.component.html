@@ -1,20 +1,15 @@
-<div *ngIf="isLoading">
-  Loading
+<div *ngIf="isLoadSuccess">
+  <ul class="list">
+    <li *ngFor="let execution of executions;trackBy:trackByExecId"
+        [ngClass]="{'active': currentExecution?.id == execution.id}"
+        (click)="selectListItem(execution.id)">
+      <app-execution-item
+        [execution]="execution"
+        (removeExecution)="removeExecution(execution)">
+      </app-execution-item>
+    </li>
+  </ul>
 </div>
-<div *ngIf="isLoading == false">
-  <div *ngIf="isLoadSuccess">
-    <ul class="list">
-      <li *ngFor="let execution of executions"
-          [ngClass]="{'active': currentExecution?.id == execution.id}"
-          (click)="selectListItem(execution.id)">
-        <app-execution-item
-          [execution]="execution"
-          (removeExecution)="removeExecution(execution)">
-        </app-execution-item>
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="isLoadSuccess == false">
-    Unable to load executions from Backend
-  </div>
+<div *ngIf="isLoadSuccess == false">
+  Unable to load executions from Backend
 </div>

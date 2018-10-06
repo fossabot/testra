@@ -1,4 +1,4 @@
-<nb-card>
+<nb-card [nbSpinner]="loading$ | async" nbSpinnerStatus="success">
   <nb-card-header>
     <app-project-sidebar-header [message]="message$ | async"
                                 [projectsCount]="projectsTotal$ | async"
@@ -6,7 +6,6 @@
   </nb-card-header>
   <nb-card-body>
     <app-project-list [projects]="projects$ | async"
-                      [isLoading]="loading$ | async"
                       [isLoadSuccess]="isProjectLoadSuccess"
                       [currentProject]="currentProject$ | async"
                       (selectedProjectName$)="selectProject($event)"

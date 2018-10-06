@@ -8,6 +8,8 @@ import {DeleteExecutionPayload, ExecutionsActionTypes} from '@app/executions/act
 import {ofType} from '@ngrx/effects';
 import {ExecutionsEffects} from '@app/executions/effects/executions.effects';
 import {filter, map} from 'rxjs/operators';
+import {faFilter} from '@fortawesome/free-solid-svg-icons';
+import {selectExecutionsLoading} from '@app/executions/reducers/executions.reducer';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,11 +26,14 @@ export class ExecutionsSidebarComponent implements OnInit, OnDestroy {
 
   isExecutionsLoadSuccess = false;
   executions$: Observable<Execution[]>;
+  loading$: Observable<boolean>;
   currentExecution$: Observable<Execution>;
 
   loadExecutionsSuccessfulSubscription: Subscription;
   loadExecutionsFailSubscription: Subscription;
   executionsSubscription: Subscription;
+
+  faFilter = faFilter;
 
   constructor(private store: Store<fromExecutions.ExecutionState>,
               private executionEffects: ExecutionsEffects) {
@@ -37,6 +42,7 @@ export class ExecutionsSidebarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.executions$ = this.store.pipe(select(fromExecutions.allExecutions));
     this.currentExecution$ = this.store.pipe(select(fromExecutions.getCurrentExecution));
+    this.loading$ = this.store.pipe(select(selectExecutionsLoading));
 
     this.store.dispatch(ActionsFactory.newLoadExecutionsAction(this.projectId));
 

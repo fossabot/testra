@@ -1,0 +1,29 @@
+<div class="row test-result">
+  <div class="col-sm-12">
+    <div>
+      <p>Status : </p>
+      <strong class="result-status-failed" [style.background-color]="resultStatusColor">{{result.status}}</strong>
+    </div>
+    <div>
+      <fa-icon [icon]="faClock"></fa-icon>
+      <p> Duration : </p>
+      {{(result.endTime - result.startTime) | prettyDuration}}
+    </div>
+    <div>
+      <fa-icon [icon]="faStopWatch">Time:</fa-icon>
+      <p> Time : </p>
+      {{result.startTime | date:'d MMM yy, h:mm:ss a'}} - {{result.endTime | date:'d MMM yy, h:mm:ss a'}}
+    </div>
+    <div>
+      <fa-icon [icon]="faRetry"></fa-icon>
+      <p> Retries : </p>
+      {{result.retryCount}}
+    </div>
+  </div>
+</div>
+
+<app-gherkin-card [gherkinText]="getStepsAsString()"></app-gherkin-card>
+
+<nb-card *ngIf="result.status === 'FAILED'">
+    <div>{{result.error}}</div>
+</nb-card>

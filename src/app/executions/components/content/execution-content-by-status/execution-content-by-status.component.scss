@@ -1,0 +1,23 @@
+.content-by-status {
+  margin: 0;
+  height: 100%;
+}
+
+nb-card {
+  height: inherit;
+  margin-bottom: 0;
+}
+
+nb-card-body {
+  height: inherit;
+  box-shadow: none;
+
+  &::-webkit-scrollbar { width: 0 !important }
+}
+
+.features-count-badge {
+  background-color: #13a6ad;
+  border-radius: 0.5em;
+  padding: 0.1em 0.4em;
+  font-size: 1em;
+}

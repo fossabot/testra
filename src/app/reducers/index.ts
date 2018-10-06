@@ -4,7 +4,7 @@ import * as fromCounter from '../counters/reducers/counter.reducer';
 import * as fromProjects from '../projects/reducers/projects.reducer';
 import * as fromExecutions from '../executions/reducers/executions.reducer';
 import * as fromResults from '../results/reducers/results.reducer';
-import * as fromTestGroups from '../testgroups/reducers/test-groups.reducer';
+import * as fromTestGroups from '../test-groups/reducers/test-groups.reducer';
 
 export interface State {
   counters: fromCounter.State;

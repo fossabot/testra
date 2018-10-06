@@ -5,7 +5,8 @@
                           [projectName]="projectNameFromRoute"
                           [executionIdFromRoute]="executionIdFromRoute"
                           [style.display]="styleDisplay"></app-executions-sidebar>
-  <app-executions-content [ngClass]="contentNgClass"
+  <app-executions-content class="col-md-9"
+                          [ngClass]="contentNgClass"
                           [projectName]="projectNameFromRoute"
                           (showSideBarEmitter)="toggleSideBar($event)"></app-executions-content>
 </div>

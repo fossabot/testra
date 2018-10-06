@@ -1,0 +1,22 @@
+.gherkin-textbox-card {
+  padding: 0.5em;
+  background-color: #002b36;
+  cursor: default;
+  margin-bottom: 0.5em;
+
+  &:hover {
+    border: 3px solid #17a2b8;
+    -webkit-box-shadow: 0 0 12px 0 rgba(0, 255, 170, 0.25);
+    box-shadow: 0 0 12px 0 rgba(0, 255, 170, 0.25);
+  }
+}
+
+.gherkin-text {
+  white-space: pre-wrap;
+}
+
+.active {
+  border: 3px solid #17a2b8;
+  -webkit-box-shadow: 0 0 12px 0 rgba(0, 255, 170, 0.25);
+  box-shadow: 0 0 12px 0 rgba(0, 255, 170, 0.25);
+}

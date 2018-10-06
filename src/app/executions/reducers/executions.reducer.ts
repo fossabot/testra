@@ -5,6 +5,7 @@ import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-stats';
 
 export interface ExecutionState extends EntityState<Execution> {
+  loading: boolean;
   selectedExecutionId: string | null;
   currentExecutionStats: TestExecutionStats;
 }
@@ -18,7 +19,7 @@ export const adapter: EntityAdapter<Execution> = createEntityAdapter<Execution>(
 });
 
 export const initialState: ExecutionState =
-  adapter.getInitialState({selectedExecutionId: null, currentExecutionStats: null});
+  adapter.getInitialState({loading: false, selectedExecutionId: null, currentExecutionStats: null});
 
 export const {
   selectIds: selectExecutionIds,
@@ -31,11 +32,11 @@ export const {
 export function reducer(state: ExecutionState = initialState, action: ExecutionsActions): ExecutionState {
   switch (action.type) {
     case ExecutionsActionTypes.LoadExecutions:
-      return state;
+      return {...state, loading: true};
     case ExecutionsActionTypes.LoadExecutionsSuccess:
-      return adapter.addAll(action.payload, state);
+      return {...adapter.addAll(action.payload, state), loading: false};
     case ExecutionsActionTypes.LoadExecutionsFail:
-      return state;
+      return {...state, loading: false};
     default:
       return state;
 
@@ -58,6 +59,8 @@ export function reducer(state: ExecutionState = initialState, action: Executions
 export const getExecutionState = createFeatureSelector<ExecutionState>('executions');
 
 export const allExecutions = createSelector(getExecutionState, selectAllExecutions);
+
+export const selectExecutionsLoading = createSelector(getExecutionState, state => state.loading);
 
 export const getCurrentExecutionId = createSelector(
   getExecutionState,

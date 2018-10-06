@@ -1,11 +1,14 @@
 <div *ngIf="(currentExecution$ | async)">
   <app-execution-content-header
+    ngClass="styleDisplay"
     [projectName]="projectName"
-    [currentExecution]="currentExecution$ | async">
+    [currentExecution]="currentExecution$ | async"
+    [style.display]="styleDisplay"
+    (autoRefreshResultsEmitter)="loadExecutionStats()">
   </app-execution-content-header>
   <app-execution-content-body [currentExecution]="currentExecution$ | async"
                               [currentExecutionStats]="currentExecutionStats$ | async"
-                              (autoRefreshResultsEmitter)="loadExecutionStats()"
-                              (showSidebarEmitter)="showSideBar($event)">
+                              (showSidebarEmitter)="showSideBar($event)"
+                              (showContentHeaderEmitter)="showHeader($event)">
   </app-execution-content-body>
 </div>

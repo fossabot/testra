@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-11 execution-info-container">
     <span class="execution-time">
-      {{execution.startTime | date:'MMM d, y h:mm:ss a'}}
+      {{execution.startTime | date:'d MMM, y h:mm:ss a'}}
       <sup class="execution-environment">{{execution.environment | uppercase}}</sup>
     </span>
     <br/>
-    <span class="execution-branch">{{execution.branch | slice:0:15}}</span>
+    <span class="execution-branch">{{execution.branch | slice:0:40}}</span>
   </div>
   <div class="col-md-1 icon-container">
     <div *ngIf="!(showConfirmIcon$ | async)">

@@ -20,19 +20,9 @@ $nb-themes: nb-register-theme((
   scrollbar-fg: #0d5e73,
   scrollbar-bg: #002933,
   form-control-bg: #003d4d,
-  /* // app wise variables for each theme
-  sidebar-header-gap: 2rem,
-  sidebar-header-height: initial,
-  layout-content-width: 1400px,
+  spinner-bg: #0a4c5c,
+  spinner-circle-bg: #003d4d,
 
-  color-bg: #0a4c5c,
-  shadow: 0 10px 10px 0 #073945,
-  color-fg: #b6c4c8,
-  layout-bg: #003d4d,
-  color-fg-text: #f1f3f4,
-  separator: #425257,
-  search-bg: linear-gradient(to right, #003d4d, #0a4c5c),
-
-  font-main: Roboto,
-  font-secondary: Exo, */
+  // font-main: Roboto,
+  // font-secondary: Exo
 ), cosmic, cosmic);
