@@ -75,13 +75,13 @@
     "ng-swagger-gen": "^1.2.1",
     "protractor": "~5.4.1",
     "puppeteer": "^1.8.0",
-    "stylelint": "~9.5.0",
+    "stylelint": "~9.6.0",
     "stylelint-config-recommended-scss": "~3.2.0",
     "stylelint-config-standard": "~18.2.0",
     "stylelint-scss": "~3.3.0",
     "ts-node": "~7.0.1",
     "tslint": "~5.11.0",
-    "typescript": "~2.7.2",
+    "typescript": "~3.1.1",
     "webpack-bundle-analyzer": "^3.0.2",
     "yamljs": "^0.3.0"
   }

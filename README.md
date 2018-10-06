@@ -1,5 +1,7 @@
 # Testra
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/testra-tech/testra.svg)](https://greenkeeper.io/)
+
 # Getting started
 
 1. Go to project folder and install dependencies:
