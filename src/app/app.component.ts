@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 import {environment} from '@env/environment';
 import {Logger} from '@app/core';
@@ -9,8 +10,7 @@ import {Logger} from '@app/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  constructor() {
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
   }
 
   ngOnInit() {

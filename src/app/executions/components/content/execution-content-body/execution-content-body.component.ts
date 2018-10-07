@@ -1,10 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {Execution} from '@app/core/api/testra/models/execution';
-import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-stats';
-import {NbTabComponent} from '@nebular/theme/components/tabset/tabset.component';
-import {Store} from '@ngrx/store';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
+import { Execution } from '@app/core/api/testra/models/execution';
+import { TestExecutionStats } from '@app/core/api/testra/models/test-execution-stats';
+import { NbTabComponent } from '@nebular/theme/components/tabset/tabset.component';
+import { Store } from '@ngrx/store';
 import * as fromResults from '@app/results/reducers/results.reducer';
-import {ActionsFactory} from '@app/results/actions/results.actions.factory';
+import { ActionsFactory } from '@app/results/actions/results.actions.factory';
+
+const OVERVIEW = 'Overview';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,26 +15,35 @@ import {ActionsFactory} from '@app/results/actions/results.actions.factory';
   styleUrls: ['./execution-content-body.component.scss']
 })
 export class ExecutionContentBodyComponent {
+  @Input()
+  currentExecution: Execution;
+  @Input()
+  currentExecutionStats: TestExecutionStats;
 
-  @Input() currentExecution: Execution;
-  @Input() currentExecutionStats: TestExecutionStats;
+  @Output()
+  showSidebarEmitter = new EventEmitter<boolean>();
+  @Output()
+  showContentHeaderEmitter = new EventEmitter<boolean>();
 
-  @Output() showSidebarEmitter = new EventEmitter<boolean>();
-  @Output() showContentHeaderEmitter = new EventEmitter<boolean>();
+  currentTab = OVERVIEW;
+  overviewTabTitle = OVERVIEW;
 
-  currentTab = 'Overview';
-
-  constructor(private resultsStore: Store<fromResults.ResultState>) {
-  }
+  constructor(private resultsStore: Store<fromResults.ResultState>) {}
 
   getTotalResultsCount() {
     return this.currentExecutionStats.passed + this.currentExecutionStats.failed + this.currentExecutionStats.others;
   }
 
   changeTab(e: NbTabComponent) {
-    this.showSidebarEmitter.emit(e.tabTitle === 'Overview');
-    this.showContentHeaderEmitter.emit(e.tabTitle === 'Overview');
+    this.showSidebarEmitter.emit(e.tabTitle.endsWith('Overview'));
+    this.showContentHeaderEmitter.emit(e.tabTitle.endsWith('Overview'));
     this.currentTab = e.tabTitle;
     this.resultsStore.dispatch(ActionsFactory.newEmptyResultsAction());
+
+    if (e.tabTitle.startsWith('Back')) {
+      this.overviewTabTitle = OVERVIEW;
+    } else if (e.tabTitle !== OVERVIEW) {
+      this.overviewTabTitle = 'Back to ' + OVERVIEW;
+    }
   }
 }

@@ -1,8 +1,7 @@
 <div class="row test-result">
   <div class="col-sm-12">
-    <div>
-      <p>Status : </p>
-      <strong class="result-status-failed" [style.background-color]="resultStatusColor">{{result.status}}</strong>
+    <div class="test-result-status" [style.background-color]="resultStatusColor">
+      <strong class="result-status-failed">{{result.status}}</strong>
     </div>
     <div>
       <fa-icon [icon]="faClock"></fa-icon>

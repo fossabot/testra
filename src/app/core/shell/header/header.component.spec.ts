@@ -1,9 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateModule} from '@ngx-translate/core';
 import {RouterTestingModule} from '@angular/router/testing';
 
-import {I18nService} from '../../i18n.service';
 import {HeaderComponent} from './header.component';
 
 describe('HeaderComponent', () => {
@@ -15,12 +13,9 @@ describe('HeaderComponent', () => {
       imports: [
         RouterTestingModule,
         NgbModule.forRoot(),
-        TranslateModule.forRoot()
       ],
       declarations: [HeaderComponent],
-      providers: [
-        I18nService
-      ]
+      providers: []
     })
       .compileComponents();
   }));

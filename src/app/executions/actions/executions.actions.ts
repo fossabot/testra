@@ -12,6 +12,9 @@ export enum ExecutionsActionTypes {
   DeleteExecution = '[Executions] Delete Execution',
   DeleteExecutionSuccess = '[Executions] Delete Execution Success',
   DeleteExecutionFail = '[Executions] Delete Execution Fail',
+  ReloadExecution = '[Executions/store] Reload Execution',
+  ReloadExecutionSuccess = '[Executions/store] Reload Execution Success',
+  ReloadExecutionFail = '[Executions/store] Reload Execution Fail',
   SelectExecution = '[Executions] Select Execution'
 }
 
@@ -62,6 +65,27 @@ export class DeleteExecutionFail implements Action {
   }
 }
 
+export class ReloadExecution implements Action {
+  readonly type = ExecutionsActionTypes.ReloadExecution;
+
+  constructor(public projectId: string, public executionId: string) {
+  }
+}
+
+export class ReloadExecutionSuccess implements Action {
+  readonly type = ExecutionsActionTypes.ReloadExecutionSuccess;
+
+  constructor(public payload: Execution) {
+  }
+}
+
+export class ReloadExecutionFail implements Action {
+  readonly type = ExecutionsActionTypes.ReloadExecutionFail;
+
+  constructor(public payload: any) {
+  }
+}
+
 export class SelectExecution implements Action {
   readonly type = ExecutionsActionTypes.SelectExecution;
 
@@ -97,6 +121,9 @@ export type ExecutionsActions =
   DeleteExecution |
   DeleteExecutionSuccess |
   DeleteExecutionFail |
+  ReloadExecution |
+  ReloadExecutionSuccess |
+  ReloadExecutionFail |
   SelectExecution |
   LoadExecutionStats |
   LoadExecutionStatsSuccess |

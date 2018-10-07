@@ -7,7 +7,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {ExecutionContentBodyComponent} from '@app/executions/components/content/execution-content-body/execution-content-body.component';
 import {NbCardModule, NbSpinnerModule, NbTabsetModule} from '@nebular/theme';
-import {ExecutionContentPrimaryChartComponent} from '@app/executions/components/content/execution-content-primary-chart/execution-content-primary-chart.component';
 import {NgxEchartsModule} from 'ngx-echarts';
 import {ExecutionAutoRefreshComponent} from '@app/executions/components/content/execution-auto-refresh/execution-auto-refresh.component';
 import {ExecutionContentHeaderComponent} from '@app/executions/components/content/execution-content-header/execution-content-header.component';
@@ -16,14 +15,15 @@ import {AngularSplitModule} from 'angular-split-ng6';
 import {TestGroupsModule} from '@app/test-groups/test-groups.module';
 import {ResultsModule} from '@app/results/results.module';
 import {SharedModule} from '@app/shared';
+import { TestsOverviewChartsComponent } from '@app/executions/components/content/tests-overview-charts/tests-overview-charts.component';
 
 export const COMPONENTS = [ExecutionItemComponent,
   ExecutionListComponent,
   ExecutionContentBodyComponent,
-  ExecutionContentPrimaryChartComponent,
   ExecutionAutoRefreshComponent,
   ExecutionContentHeaderComponent,
-  ExecutionContentByStatusComponent];
+  ExecutionContentByStatusComponent,
+  TestsOverviewChartsComponent];
 
 @NgModule({
   imports: [

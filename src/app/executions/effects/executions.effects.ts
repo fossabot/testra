@@ -4,7 +4,8 @@ import {
   DeleteExecution,
   ExecutionsActionTypes,
   LoadExecutions,
-  LoadExecutionStats
+  LoadExecutionStats,
+  ReloadExecution
 } from '../actions/executions.actions';
 import {catchError, map, share, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
@@ -12,6 +13,7 @@ import {Execution} from '@app/core/api/testra/models/execution';
 import {ActionsFactory} from '@app/executions/actions/executions.actions.factory';
 import {ExecutionService} from '@app/core/api/testra/services/execution.service';
 import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-stats';
+import GetExecutionParams = ExecutionService.GetExecutionParams;
 import DeleteExecutionParams = ExecutionService.DeleteExecutionParams;
 import GetExecutionResultStatsParams = ExecutionService.GetExecutionResultStatsParams;
 
@@ -55,6 +57,23 @@ export class ExecutionsEffects {
         };
         return this.executionsService.deleteExecution(deleteExecutionParams).pipe(
           map(() => ActionsFactory.newDeleteExecutionSuccessAction(action.payload)),
+          catchError(error => of(ActionsFactory.newDeleteExecutionFailAction(error)))
+        );
+      }
+    ),
+    share()
+  );
+
+  @Effect()
+  reloadExecutions$ = this.actions$.pipe(
+    ofType(ExecutionsActionTypes.ReloadExecution),
+    switchMap((action: ReloadExecution) => {
+        const getExecutionParams: GetExecutionParams = {
+          projectId: action.projectId,
+          id: action.executionId
+        };
+        return this.executionsService.getExecution(getExecutionParams).pipe(
+          map((execution: Execution) => ActionsFactory.newReloadExecutionSuccessAction(execution)),
           catchError(error => of(ActionsFactory.newDeleteExecutionFailAction(error)))
         );
       }

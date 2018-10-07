@@ -7,6 +7,7 @@ import {SharedModule} from '@app/shared';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
@@ -30,7 +31,7 @@ import {NbThemeModule} from '@nebular/theme';
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [AppComponent],
-  providers: [],
+  providers: [Angulartics2GoogleAnalytics],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

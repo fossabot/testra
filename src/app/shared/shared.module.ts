@@ -1,22 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {LoaderComponent} from './loader/loader.component';
-import {NbCardModule} from '@nebular/theme';
-import {HighlightModule} from 'ngx-highlightjs';
-import {GherkinCardComponent} from '@app/shared/gherkin-card/gherkin-card.component';
 import {PrettyDurationPipe} from '@app/shared/pipes/pretty-duration/pretty-duration.pipe';
+import {ComponentsModule} from '@app/shared/components/components.module';
 
-const COMPONENTS = [LoaderComponent, GherkinCardComponent, PrettyDurationPipe];
+const PIPES = [PrettyDurationPipe];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NbCardModule,
-    HighlightModule.forRoot({theme: 'solarized-dark'})
-  ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS
+  imports: [CommonModule, ComponentsModule],
+  declarations: [...PIPES],
+  exports: [...PIPES, ComponentsModule]
 })
 export class SharedModule {
 }

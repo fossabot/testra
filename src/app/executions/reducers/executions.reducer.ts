@@ -37,21 +37,15 @@ export function reducer(state: ExecutionState = initialState, action: Executions
       return {...adapter.addAll(action.payload, state), loading: false};
     case ExecutionsActionTypes.LoadExecutionsFail:
       return {...state, loading: false};
-    default:
-      return state;
-
-    case ExecutionsActionTypes.DeleteExecution:
-    case ExecutionsActionTypes.DeleteExecutionFail:
-      return state;
     case ExecutionsActionTypes.DeleteExecutionSuccess:
       return adapter.removeOne(action.payload.executionId, state);
+    case ExecutionsActionTypes.ReloadExecutionSuccess:
+      return adapter.updateOne({ id: action.payload.id, changes: action.payload }, state);
     case ExecutionsActionTypes.SelectExecution:
       return {...state, selectedExecutionId: action.executionId};
-    case ExecutionsActionTypes.LoadExecutionStats:
-      return state;
     case ExecutionsActionTypes.LoadExecutionStatsSuccess:
       return {...state, currentExecutionStats: action.payload};
-    case ExecutionsActionTypes.LoadExecutionStatsFail:
+    default:
       return state;
   }
 }

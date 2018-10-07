@@ -5,6 +5,7 @@ export interface TestExecutionStats {
   projectId?: string;
   passed?: number;
   failed?: number;
+  manual?: number;
   expectedFailures?: number;
   others?: number;
 }

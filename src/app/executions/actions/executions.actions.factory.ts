@@ -10,7 +10,10 @@ import {
   LoadExecutionStats,
   LoadExecutionStatsFail,
   LoadExecutionStatsSuccess,
-  SelectExecution
+  SelectExecution,
+  ReloadExecution,
+  ReloadExecutionSuccess,
+  ReloadExecutionFail
 } from '@app/executions/actions/executions.actions';
 
 
@@ -50,6 +53,18 @@ export class ActionsFactory {
 
   static newDeleteExecutionFailAction(err: any): DeleteExecutionFail {
     return new DeleteExecutionFail(err);
+  }
+
+  static newReloadExecutionAction(projectId: string, executionId: string): ReloadExecution {
+    return new ReloadExecution(projectId, executionId);
+  }
+
+  static newReloadExecutionSuccessAction(payload: Execution): ReloadExecutionSuccess {
+    return new ReloadExecutionSuccess(payload);
+  }
+
+  static newReloadExecutionFailAction(err: any): ReloadExecutionFail {
+    return new ReloadExecutionFail(err);
   }
 
   static newSelectExecutionAction(executionId: string): SelectExecution {

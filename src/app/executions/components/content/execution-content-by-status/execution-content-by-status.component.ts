@@ -4,7 +4,7 @@ import {Observable, Subject} from 'rxjs';
 import {Execution} from '@app/core/api/testra/models/execution';
 import {select, Store} from '@ngrx/store';
 import * as fromTestGroups from '@app/test-groups/reducers/test-groups.reducer';
-import {allTestGroups, selectGroupsLoading} from '@app/test-groups/reducers/test-groups.reducer';
+import {allTestGroups, selectGroupsCount} from '@app/test-groups/reducers/test-groups.reducer';
 import * as fromExecutions from '@app/executions/reducers/executions.reducer';
 import {getCurrentExecution} from '@app/executions/reducers/executions.reducer';
 import * as fromResults from '@app/results/reducers/results.reducer';
@@ -18,7 +18,6 @@ import {ActionsFactory as ResultsActionFactory} from '@app/results/actions/resul
 import {ofType} from '@ngrx/effects';
 import {TestGroupsActionTypes} from '@app/test-groups/actions/test-groups.actions';
 import {EnrichedTestResult} from '@app/core/api/testra/models/enriched-test-result';
-import {selectGroupsCount} from '@app/test-groups/reducers/test-groups.reducer';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,7 +35,7 @@ export class ExecutionContentByStatusComponent implements OnInit, OnDestroy {
   selectedResult: EnrichedTestResult;
 
   loading$: Observable<boolean>;
-  groupsCount$: Observable<number>;
+  totalGroupsCount$: Observable<number>;
 
   @Input() resultStatus: string;
 
@@ -47,9 +46,12 @@ export class ExecutionContentByStatusComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject<void>();
 
   groups$ = new Subject<TestGroup[]>();
+  groupsCount$ = new Subject<number>();
   results$: Observable<EnrichedTestResult[]>;
 
   selectedGroupResults: EnrichedTestResult[];
+
+  loadResultsPayload: LoadResultsPayload;
 
   constructor(private testGroupsStore: Store<fromTestGroups.TestGroupState>,
               private executionsStore: Store<fromExecutions.ExecutionState>,
@@ -63,18 +65,17 @@ export class ExecutionContentByStatusComponent implements OnInit, OnDestroy {
     this.currentExecution$ = this.executionsStore.pipe(select(getCurrentExecution));
     this.results$ = this.resultsStore.pipe(select(allResults));
     this.testGroups$ = this.testGroupsStore.pipe(select(allTestGroups));
-    this.groupsCount$ = this.testGroupsStore.pipe(select(selectGroupsCount));
+    this.totalGroupsCount$ = this.testGroupsStore.pipe(select(selectGroupsCount));
 
     this.currentExecution$
       .pipe(takeUntil(this.destroyed$))
       .subscribe((exec: Execution) => {
-          const loadResultsPayload: LoadResultsPayload = {
+          this.loadResultsPayload = {
             projectId: exec.projectId,
             executionId: exec.id,
             status: this.resultStatus
           };
           this.testGroupsStore.dispatch(TestGroupsActionFactory.newLoadTestGroupsAction(exec.projectId, exec.id));
-          this.resultsStore.dispatch(ResultsActionFactory.newLoadResultsAction(loadResultsPayload));
         }
       );
 
@@ -87,6 +88,7 @@ export class ExecutionContentByStatusComponent implements OnInit, OnDestroy {
         this.testGroups$
           .pipe(takeUntil(this.destroyed$))
           .subscribe((testGroups: TestGroup[]) => {
+              this.resultsStore.dispatch(ResultsActionFactory.newLoadResultsAction(this.loadResultsPayload));
               this.resultsEffects.loadResults$
                 .pipe(takeUntil(this.destroyed$),
                   ofType(ResultsActionTypes.LoadResultsSuccess))
@@ -100,6 +102,7 @@ export class ExecutionContentByStatusComponent implements OnInit, OnDestroy {
                     )
                     .subscribe(filteredTestGroups => {
                       this.groups$.next(filteredTestGroups);
+                      this.groupsCount$.next(filteredTestGroups.length);
                     })
                 );
             }

@@ -5,7 +5,7 @@
         <nb-card [nbSpinner]="loading$ | async" nbSpinnerStatus="success">
           <nb-card-header>
             Features
-            <sub><span class="features-count-badge">{{groupsCount$ | async}}</span></sub>
+            <sub><span class="features-count-badge">{{groupsCount$ | async}} / {{totalGroupsCount$ | async}}</span></sub>
           </nb-card-header>
           <nb-card-body style="padding:0;">
             <app-test-groups [groups]="groups$ | async"
