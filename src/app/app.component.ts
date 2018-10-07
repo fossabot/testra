@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 import {environment} from '@env/environment';
 import {Logger} from '@app/core';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 @Component({
   selector: 'app-root',

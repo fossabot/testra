@@ -7,7 +7,6 @@ import {SharedModule} from '@app/shared';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
@@ -15,6 +14,8 @@ import {AppComponent} from './app.component';
 import {HomeModule} from './home/home.module';
 import {metaReducers, reducers} from './reducers';
 import {NbThemeModule} from '@nebular/theme';
+import {Angulartics2Module} from 'angulartics2';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 @NgModule({
   imports: [
@@ -28,6 +29,12 @@ import {NbThemeModule} from '@nebular/theme';
     NbThemeModule.forRoot({name: 'cosmic'}),
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([]),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+      developerMode: true,
+      pageTracking: {
+        clearIds: true,
+      },
+    }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [AppComponent],

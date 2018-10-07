@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {Route} from '@app/core';
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import {Angulartics2Module} from 'angulartics2';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 const routes: Routes = [
-  Route.withShell([
-  ]),
+  Route.withShell([]),
   // Fallback when no prior route is matched
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
@@ -14,7 +13,13 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics])],
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+      developerMode: true,
+      pageTracking: {
+        clearIds: true,
+      },
+    })
+  ],
   exports: [RouterModule],
   providers: []
 })
