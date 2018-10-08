@@ -17,5 +17,5 @@ script:
   - yarn build
   - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_USERNAME\" --password-stdin"
   - docker build -t testra .
-  - docker tag testra testra/testra
-  - docker push testra/testra
+  - docker tag testra testra/testra-web
+  - docker push testra/testra-web
