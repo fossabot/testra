@@ -300,9 +300,9 @@
     typescript "2.4.1"
     yargs "8.0.2"
 
-"@fortawesome/angular-fontawesome@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.2.0.tgz#2a072fb0538223f0c90447af50340ddfbed73585"
+"@fortawesome/angular-fontawesome@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.2.1.tgz#8278e73b45e01496c587fb75914cad22a66fe551"
   dependencies:
     tslib "^1.9.0"
 
@@ -701,6 +701,12 @@ amdefine@>=0.0.4:
 angular-split-ng6@^1.0.0-rc.5:
   version "1.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/angular-split-ng6/-/angular-split-ng6-1.0.0-rc.5.tgz#c0e3ad0b80712cc1126c1ce81f69e7dfbe0e3062"
+  dependencies:
+    tslib "^1.9.0"
+
+angulartics2@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-6.3.0.tgz#85107238fe021e1e1e5cb492c5979aed829a1240"
   dependencies:
     tslib "^1.9.0"
 
@@ -8169,9 +8175,9 @@ typescript@2.4.1:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
-typescript@~3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.1.tgz#3362ba9dd1e482ebb2355b02dfe8bcd19a2c7c96"
+typescript@~2.7.2:
+  version "2.7.2"
+  resolved "http://registry.npmjs.org/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
 
 uglify-es@^3.3.4:
   version "3.3.9"
