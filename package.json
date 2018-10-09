@@ -59,7 +59,7 @@
     "@types/jasmine": "^2.8.7",
     "@types/jasminewd2": "^2.0.2",
     "@types/lodash": "^4.14.116",
-    "@types/node": "^10.9.4",
+    "@types/node": "^10.11.6",
     "codelyzer": "^4.4.4",
     "hads": "^1.7.0",
     "htmlhint": "^0.10.1",
