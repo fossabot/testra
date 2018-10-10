@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-4 execution-times">
       <div *ngIf="currentExecution.endTime != 0">
-        <div style="color: #fff; font-weight: bolder; font-size: medium">
+        <div style="color: #fff; font-weight: bolder; font-size: medium;">
           <fa-icon [icon]="faStopWatch"></fa-icon>
           {{(currentExecution.endTime - currentExecution.startTime) | prettyDuration}}
         </div>

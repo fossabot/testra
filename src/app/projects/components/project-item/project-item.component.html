@@ -2,7 +2,7 @@
   <span class="col-sm-10">{{name}}</span>
   <div class="col-sm-2" *ngIf="!(showConfirmIcon$ | async)">
     <fa-icon class="icon-trash" [icon]="faTrash"
-             placement="bottom" ngbTooltip="[Temp. Disabled] Delete project" container="body"
+             placement="bottom" ngbTooltip="[ Disabled ]" container="body"
              ></fa-icon>
   </div>
   <div *ngIf="showConfirmIcon$ | async" class="col-sm-2">

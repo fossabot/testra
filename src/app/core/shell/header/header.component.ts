@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {faAt, faHeart} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input() packageVersion: string;
+
+  faHeart = faHeart;
+  faAt = faAt;
 
   constructor() {
   }

@@ -13,6 +13,7 @@ import {ErrorHandlerInterceptor} from './http/error-handler.interceptor';
 import {CacheInterceptor} from './http/cache.interceptor';
 import {NbLayoutModule, NbSidebarModule, NbSidebarService} from '@nebular/theme';
 import {FooterComponent} from './shell/footer/footer.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {FooterComponent} from './shell/footer/footer.component';
     HttpClientModule,
     RouterModule,
     NbLayoutModule,
-    NbSidebarModule
+    NbSidebarModule,
+    FontAwesomeModule
   ],
   declarations: [
     HeaderComponent,
