@@ -1,6 +1,7 @@
 # Testra
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/testra-tech/testra-api/graphs/commit-activity)
+[![Build Status](https://travis-ci.org/testra-tech/testra.svg?branch=master)](https://travis-ci.org/testra-tech/testra)
 [![Greenkeeper badge](https://badges.greenkeeper.io/testra-tech/testra.svg)](https://greenkeeper.io/)
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 

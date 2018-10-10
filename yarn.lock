@@ -300,9 +300,9 @@
     typescript "2.4.1"
     yargs "8.0.2"
 
-"@fortawesome/angular-fontawesome@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.2.0.tgz#2a072fb0538223f0c90447af50340ddfbed73585"
+"@fortawesome/angular-fontawesome@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.2.1.tgz#8278e73b45e01496c587fb75914cad22a66fe551"
   dependencies:
     tslib "^1.9.0"
 
@@ -310,9 +310,9 @@
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.4.tgz#7c560ff732c6c7c7c179ae25227ce5449e6f6d65"
 
-"@fortawesome/fontawesome-free@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.3.1.tgz#5466b8f31c1f493a96754c1426c25796d0633dd9"
+"@fortawesome/fontawesome-free@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.4.0.tgz#f3eea20ce4c216dc35e3c13f52f1caf9fc52d746"
 
 "@fortawesome/fontawesome-svg-core@^1.2.4":
   version "1.2.4"
@@ -437,13 +437,17 @@
   dependencies:
     "@types/jasmine" "*"
 
-"@types/lodash@^4.14.116":
-  version "4.14.116"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.116.tgz#5ccf215653e3e8c786a58390751033a9adca0eb9"
+"@types/lodash@^4.14.117":
+  version "4.14.117"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.117.tgz#695a7f514182771a1e0f4345d189052ee33c8778"
 
-"@types/node@*", "@types/node@^10.9.4":
+"@types/node@*":
   version "10.11.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.3.tgz#c055536ac8a5e871701aa01914be5731539d01ee"
+
+"@types/node@^10.11.6":
+  version "10.11.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.6.tgz#ce5690df6cd917a9178439a1013e39a7e565c46e"
 
 "@types/node@^6.0.46":
   version "6.0.117"
@@ -701,6 +705,12 @@ amdefine@>=0.0.4:
 angular-split-ng6@^1.0.0-rc.5:
   version "1.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/angular-split-ng6/-/angular-split-ng6-1.0.0-rc.5.tgz#c0e3ad0b80712cc1126c1ce81f69e7dfbe0e3062"
+  dependencies:
+    tslib "^1.9.0"
+
+angulartics2@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-7.0.0.tgz#c76641f7068670b65e01a722e9b24b090fe3ed34"
   dependencies:
     tslib "^1.9.0"
 
@@ -8169,9 +8179,9 @@ typescript@2.4.1:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
-typescript@~3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.1.tgz#3362ba9dd1e482ebb2355b02dfe8bcd19a2c7c96"
+typescript@~2.7.2:
+  version "2.7.2"
+  resolved "http://registry.npmjs.org/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
 
 uglify-es@^3.3.4:
   version "3.3.9"
