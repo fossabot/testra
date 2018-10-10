@@ -4,12 +4,12 @@
       <strong class="result-status-failed">{{result.status}}</strong>
     </div>
     <div>
-      <fa-icon [icon]="faClock"></fa-icon>
+      <fa-icon [icon]="faStopWatch"></fa-icon>
       <p> Duration : </p>
       {{(result.endTime - result.startTime) | prettyDuration}}
     </div>
     <div>
-      <fa-icon [icon]="faStopWatch">Time:</fa-icon>
+      <fa-icon [icon]="faClock">Time:</fa-icon>
       <p> Time : </p>
       {{result.startTime | date:'d MMM yy, h:mm:ss a'}} - {{result.endTime | date:'d MMM yy, h:mm:ss a'}}
     </div>

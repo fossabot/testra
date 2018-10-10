@@ -15,7 +15,7 @@ import {SharedModule} from '@app/shared';
     CommonModule,
     NbCardModule,
     SharedModule,
-    StoreModule.forFeature('TestGroups', fromTestGroups.reducer),
+    StoreModule.forFeature('testGroups', fromTestGroups.reducer),
     EffectsModule.forFeature([TestGroupsEffects])
   ],
   declarations: [TestGroupsComponent, TestGroupsListComponent],
