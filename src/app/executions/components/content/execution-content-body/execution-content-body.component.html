@@ -1,5 +1,8 @@
 <nb-card>
-  <nb-tabset [fullWidth]=true *ngIf="currentExecution && currentExecutionStats" (changeTab)="changeTab($event)">
+  <div *ngIf="getTotalResultsCount() <= 0">
+    No test results
+  </div>
+  <nb-tabset [fullWidth]=true *ngIf="canShowTabSet()" (changeTab)="changeTab($event)">
     <nb-tab tabTitle="{{overviewTabTitle}}" style="height: 100%; margin-top: 1em;" badgeText="{{getTotalResultsCount()}}"
       badgeStatus="info">
       <app-tests-overview-charts [currentExecutionStats]="currentExecutionStats"></app-tests-overview-charts>

@@ -29,12 +29,6 @@ import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
     NbThemeModule.forRoot({name: 'cosmic'}),
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([]),
-    Angulartics2Module.forRoot({
-      developerMode: true,
-      pageTracking: {
-        clearIds: true,
-      },
-    }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [AppComponent],

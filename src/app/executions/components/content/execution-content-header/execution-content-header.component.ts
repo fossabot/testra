@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Execution} from '@app/core/api/testra/models/execution';
-import {faClock, faStopwatch} from '@fortawesome/free-solid-svg-icons';
+import {faClock, faStopwatch, faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +17,7 @@ export class ExecutionContentHeaderComponent {
 
   faStopWatch = faStopwatch;
   faClock = faClock;
+  faExclamation = faExclamationTriangle;
 
   constructor() {
   }

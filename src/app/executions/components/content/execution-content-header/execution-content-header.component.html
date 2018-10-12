@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="col-md-4 execution-times">
-      <div *ngIf="currentExecution.endTime != 0">
+      <div *ngIf="currentExecution.endTime !== null">
         <div style="color: #fff; font-weight: bolder; font-size: medium;">
           <fa-icon [icon]="faStopWatch"></fa-icon>
           {{(currentExecution.endTime - currentExecution.startTime) | prettyDuration}}
@@ -33,6 +33,9 @@
           {{currentExecution.startTime | date:'d/M/yy, h:mm a'}} - {{currentExecution.endTime |
           date:'d/M/yy, h:mm a'}}
         </div>
+      </div>
+      <div *ngIf="currentExecution.endTime === null">
+        <fa-icon [icon]="faExclamation"></fa-icon> End Time is not available yet
       </div>
       <div class="execution-env">
         Environment : <span>{{currentExecution.environment | uppercase}}</span>

@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
-import { Execution } from '@app/core/api/testra/models/execution';
-import { TestExecutionStats } from '@app/core/api/testra/models/test-execution-stats';
-import { NbTabComponent } from '@nebular/theme/components/tabset/tabset.component';
-import { Store } from '@ngrx/store';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {Execution} from '@app/core/api/testra/models/execution';
+import {TestExecutionStats} from '@app/core/api/testra/models/test-execution-stats';
+import {NbTabComponent} from '@nebular/theme/components/tabset/tabset.component';
+import {Store} from '@ngrx/store';
 import * as fromResults from '@app/results/reducers/results.reducer';
-import { ActionsFactory } from '@app/results/actions/results.actions.factory';
+import {ActionsFactory} from '@app/results/actions/results.actions.factory';
 
 const OVERVIEW = 'Overview';
 
@@ -28,10 +28,13 @@ export class ExecutionContentBodyComponent {
   currentTab = OVERVIEW;
   overviewTabTitle = OVERVIEW;
 
-  constructor(private resultsStore: Store<fromResults.ResultState>) {}
+  constructor(private resultsStore: Store<fromResults.ResultState>) {
+  }
 
   getTotalResultsCount() {
-    return this.currentExecutionStats.passed + this.currentExecutionStats.failed + this.currentExecutionStats.others;
+    return (this.currentExecutionStats === null) ? 0 : (this.currentExecutionStats.passed +
+      this.currentExecutionStats.failed +
+      this.currentExecutionStats.others);
   }
 
   changeTab(e: NbTabComponent) {
@@ -45,5 +48,9 @@ export class ExecutionContentBodyComponent {
     } else if (e.tabTitle !== OVERVIEW) {
       this.overviewTabTitle = 'Back to ' + OVERVIEW;
     }
+  }
+
+  canShowTabSet() {
+    return this.currentExecution && this.currentExecutionStats && this.getTotalResultsCount() > 0;
   }
 }
