@@ -1,0 +1,17 @@
+ks-modal-gallery /deep/ #current-image {
+  max-height: 80vh !important;
+  max-width: 80vh !important;
+  height: auto !important;
+}
+
+.screens {
+  background-color: #002b36;
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+
+  label {
+    text-align: center;
+    font-weight: bold;
+  }
+}

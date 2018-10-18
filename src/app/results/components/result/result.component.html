@@ -1,8 +1,7 @@
 <div class="row test-result">
   <div class="col-sm-12">
-    <div class="test-result-status" [style.background-color]="resultStatusColor">
-      <strong class="result-status-failed">{{result.status}}</strong>
-    </div>
+    <app-result-status [resultStatus]="result.status"
+                       [isExpectedToFail]="result.expectedToFail"></app-result-status>
     <div>
       <fa-icon [icon]="faStopWatch"></fa-icon>
       <p> Duration : </p>
@@ -23,6 +22,9 @@
 
 <app-gherkin-card [gherkinText]="getStepsAsString()"></app-gherkin-card>
 
+<app-attachment-list *ngIf="result.attachments.length > 0"
+                     [attachments]="result.attachments"></app-attachment-list>
+
 <nb-card *ngIf="result.status === 'FAILED'">
-    <div>{{result.error}}</div>
+  <div>{{result.error}}</div>
 </nb-card>

@@ -6,8 +6,11 @@ import {NbCardModule, NbTabsetModule} from '@nebular/theme';
 import {HighlightModule} from 'ngx-highlightjs';
 import {SharedModule} from '@app/shared';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {AttachmentListComponent} from './attachment-list/attachment-list.component';
+import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
+import {ResultStatusComponent} from './result-status/result-status.component';
 
-const COMPONENTS = [ResultListComponent, ResultComponent];
+const COMPONENTS = [ResultListComponent, ResultComponent, AttachmentListComponent, ResultStatusComponent];
 
 @NgModule({
   imports: [
@@ -16,9 +19,10 @@ const COMPONENTS = [ResultListComponent, ResultComponent];
     FontAwesomeModule,
     NbCardModule,
     NbTabsetModule,
+    ModalGalleryModule.forRoot(),
     HighlightModule.forRoot({theme: 'solarized-dark'}),
   ],
-  declarations: [COMPONENTS],
+  declarations: COMPONENTS,
   exports: COMPONENTS
 })
 export class ResultsComponentModule {

@@ -3,8 +3,7 @@
     No test results
   </div>
   <nb-tabset [fullWidth]=true *ngIf="canShowTabSet()" (changeTab)="changeTab($event)">
-    <nb-tab tabTitle="{{overviewTabTitle}}" style="height: 100%; margin-top: 1em;" badgeText="{{getTotalResultsCount()}}"
-      badgeStatus="info">
+    <nb-tab tabTitle="{{overviewTabTitle}}" style="height: 100%; margin-top: 1em;">
       <app-tests-overview-charts [currentExecutionStats]="currentExecutionStats"></app-tests-overview-charts>
     </nb-tab>
     <nb-tab tabTitle="Failed" badgeText="{{currentExecutionStats.failed}}" badgeStatus="danger" badgePosition="top right">
@@ -15,6 +14,9 @@
     </nb-tab>
     <nb-tab tabTitle="Others" badgeText="{{currentExecutionStats.others}}" badgeStatus="warning" badgePosition="top right">
       <app-execution-content-by-status *ngIf="currentTab === 'Others'" [resultStatus]="'OTHERS'"></app-execution-content-by-status>
+    </nb-tab>
+    <nb-tab tabTitle="All" badgeText="{{getTotalResultsCount()}}" badgeStatus="info" badgePosition="top right">
+      <app-execution-content-by-status *ngIf="currentTab === 'All'" [resultStatus]="'ALL'"></app-execution-content-by-status>
     </nb-tab>
     <nb-tab tabTitle="Analytics">
       <strong>TODO</strong>

@@ -15,11 +15,13 @@ export class ResultsEffects {
   loadResults$ = this.actions$.pipe(
     ofType(ResultsActionTypes.LoadResults),
     switchMap((action: LoadResults) => {
-        const getResultsParam: GetResultsParams = {
+        let getResultsParam: GetResultsParams = {
           projectId: action.payload.projectId,
           executionId: action.payload.executionId,
-          status: action.payload.status
         };
+        if (action.payload.status !== 'ALL') {
+          getResultsParam = {...getResultsParam, status: action.payload.status};
+        }
         return this.resultService.getResults(getResultsParam).pipe(
           map((results: Array<EnrichedTestResult>) => ActionsFactory.newLoadResultsSuccessAction(results)),
           catchError(error => of(ActionsFactory.newLoadResultsFailAction(error)))
