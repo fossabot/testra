@@ -1,7 +1,10 @@
 <ul style="padding-left: 0.5em; padding-right: 0.5em;">
-  <li *ngFor="let group of groups"
+  <li *ngFor="let group of groups;trackBy:trackByFn"
       (click)="selectGroup(group)">
-    <app-gherkin-card [gherkinText]="getFeature(group)"
-    [isActive]="currentGroup?.name == group.name"></app-gherkin-card>
+    <app-gherkin-card [gherkinText]="getFeature(group)" *ngIf="group.type === 'FEATURE'"
+                      [isActive]="currentGroup?.name == group.name"></app-gherkin-card>
+    <app-namespace-item *ngIf="group.type === 'NAMESPACE'"
+                        [isActive]="currentGroup?.name == group.name"
+                        [testGroup]="group"></app-namespace-item>
   </li>
 </ul>

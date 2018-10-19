@@ -9,8 +9,14 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {AttachmentListComponent} from './attachment-list/attachment-list.component';
 import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
 import {ResultStatusComponent} from './result-status/result-status.component';
+import {TestCaseResultComponent} from '@app/results/components/test-case-result/test-case-result.component';
 
-const COMPONENTS = [ResultListComponent, ResultComponent, AttachmentListComponent, ResultStatusComponent];
+const COMPONENTS = [
+  ResultListComponent,
+  ResultComponent,
+  AttachmentListComponent,
+  ResultStatusComponent,
+  TestCaseResultComponent];
 
 @NgModule({
   imports: [

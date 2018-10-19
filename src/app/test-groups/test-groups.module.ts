@@ -9,6 +9,7 @@ import {TestGroupsComponent} from './containers/test-groups/test-groups.componen
 import {TestGroupsListComponent} from './components/test-groups-list/test-groups-list.component';
 import {NbCardModule} from '@nebular/theme';
 import {SharedModule} from '@app/shared';
+import { NamespaceItemComponent } from './components/namespace-item/namespace-item.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import {SharedModule} from '@app/shared';
     StoreModule.forFeature('testGroups', fromTestGroups.reducer),
     EffectsModule.forFeature([TestGroupsEffects])
   ],
-  declarations: [TestGroupsComponent, TestGroupsListComponent],
+  declarations: [TestGroupsComponent, TestGroupsListComponent, NamespaceItemComponent],
   providers: [TestGroupService, TestGroupsEffects],
   exports: [TestGroupsComponent]
 })

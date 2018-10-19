@@ -13,6 +13,7 @@ import {NbCardModule} from '@nebular/theme';
 import {ProjectCountersComponent} from '@app/projects/components/project-counters/project-counters.component';
 import {RouterModule} from '@angular/router';
 import {AddCommasPipe} from '@app/projects/pipes/add-commas.pipe';
+import {SharedModule} from '@app/shared';
 
 export const COMPONENTS = [ProjectItemComponent,
   ProjectListComponent,
@@ -25,6 +26,7 @@ export const COMPONENTS = [ProjectItemComponent,
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     FontAwesomeModule,
     NgbModule,

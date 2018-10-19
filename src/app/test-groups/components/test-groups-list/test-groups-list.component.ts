@@ -30,7 +30,7 @@ export class TestGroupsListComponent implements OnInit {
     return 'Feature: ' + group.name + '\n' + group.description;
   }
 
-  trackByFn(index: number, item: any) {
-    return index; // or item.id
+  trackByFn(index: number, group: TestGroup) {
+    return group.id;
   }
 }

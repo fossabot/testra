@@ -1,6 +1,9 @@
 <ul style="margin-left: 0.5em; margin-right: 0.5em; list-style: none;">
   <li *ngFor="let result of results;trackBy:trackByFn" (click)="selectResult(result)">
-    <app-gherkin-card [gherkinText]="getScenario(result)"
+    <app-gherkin-card [gherkinText]="getScenario(result)" *ngIf="result.resultType === 'SCENARIO'"
                       [isActive]="currentResult?.id == result.id"></app-gherkin-card>
+    <app-test-case-result *ngIf="result.resultType === 'TEST_CASE'"
+                          [result]="result"
+                          [isActive]="currentResult?.id == result.id"></app-test-case-result>
   </li>
 </ul>

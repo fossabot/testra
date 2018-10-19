@@ -17,10 +17,16 @@
             <div class="value">{{projectCounter.testResultsCount | addCommas}}</div>
           </div>
         </li>
-        <li>
+        <li *ngIf="projectCounter.testScenariosCount > 0">
           <div>
             <div class="title">Scenarios</div>
             <div class="value">{{projectCounter.testScenariosCount | addCommas}}</div>
+          </div>
+        </li>
+        <li *ngIf="projectCounter.testCasesCount > 0">
+          <div>
+            <div class="title">Testcases</div>
+            <div class="value">{{projectCounter.testCasesCount | addCommas}}</div>
           </div>
         </li>
       </ul>

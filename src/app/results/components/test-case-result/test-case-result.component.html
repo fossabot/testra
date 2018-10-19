@@ -1,0 +1,4 @@
+<nb-card *ngIf="result.resultType === 'TEST_CASE'"
+         [ngClass]="{'active': isActive}">
+  <strong>{{result.testcase.name}}</strong>
+</nb-card>
