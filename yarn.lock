@@ -718,9 +718,9 @@ angular-split-ng6@^1.0.0-rc.5:
   dependencies:
     tslib "^1.9.0"
 
-angulartics2@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-7.0.1.tgz#e1390f393556088961af68063330f0c32f60024e"
+angulartics2@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-7.0.2.tgz#b0e07375883b522a0059e8efb070603b122899df"
   dependencies:
     tslib "^1.9.0"
 
