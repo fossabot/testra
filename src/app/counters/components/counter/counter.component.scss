@@ -1,5 +1,5 @@
 @import "../../../../theme/theme";
-@import "~@nebular/theme/styles/global/bootstrap/hero-buttons";
+@import "~@nebular/bootstrap/styles/_hero-buttons";
 
 @include nb-install-component() {
   nb-card {
