@@ -10,6 +10,7 @@ import {AttachmentListComponent} from './attachment-list/attachment-list.compone
 import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
 import {ResultStatusComponent} from './result-status/result-status.component';
 import {TestCaseResultComponent} from '@app/results/components/test-case-result/test-case-result.component';
+import gherkin from 'highlight.js/lib/languages/gherkin';
 
 const COMPONENTS = [
   ResultListComponent,
@@ -17,6 +18,12 @@ const COMPONENTS = [
   AttachmentListComponent,
   ResultStatusComponent,
   TestCaseResultComponent];
+
+export function hljsLanguages() {
+  return [
+    {name: 'gherkin', func: gherkin},
+  ];
+}
 
 @NgModule({
   imports: [
@@ -26,7 +33,7 @@ const COMPONENTS = [
     NbCardModule,
     NbTabsetModule,
     ModalGalleryModule.forRoot(),
-    HighlightModule.forRoot({theme: 'solarized-dark'}),
+    HighlightModule.forRoot({languages: hljsLanguages}),
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS
