@@ -8,14 +8,23 @@ cache:
   directories:
     - node_modules
     
-branches:
-  only:
-  - master
+stages:
+- install
+- build
+- name: release
+  if: tag IS present    
 
-script:
-  - yarn install
-  - yarn build
-  - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_USERNAME\" --password-stdin"
-  - docker build -t testra .
-  - docker tag testra testra/testra-web
-  - docker push testra/testra-web
+jobs:
+  include:
+  - stage: install
+    script:
+    - "yarn install"
+  - stage: build
+    script:
+    - "yarn build"
+  - stage: release
+    script:
+    - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_USERNAME\" --password-stdin"
+    - docker build -t testra .
+    - docker tag testra testra/testra-web
+    - docker push testra/testra-web
