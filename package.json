@@ -33,7 +33,7 @@
     "@nebular/bootstrap": "^3.1.0",
     "@nebular/theme": "3.1.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
-    "@ngrx/effects": "^7.0.0",
+    "@ngrx/effects": "^7.1.0",
     "@ngrx/entity": "^7.0.0",
     "@ngrx/store": "^7.0.0",
     "angular-split-ng6": "^1.0.0-rc.5",
