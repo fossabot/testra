@@ -37,7 +37,7 @@
     "@ngrx/entity": "^7.0.0",
     "@ngrx/store": "^7.0.0",
     "angular-split-ng6": "^1.0.0-rc.5",
-    "angulartics2": "^7.4.0",
+    "angulartics2": "^7.4.1",
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.2",
     "echarts": "^4.2.0-rc.2",
