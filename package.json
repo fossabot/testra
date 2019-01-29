@@ -32,7 +32,7 @@
     "@ks89/angular-modal-gallery": "^6.3.0",
     "@nebular/bootstrap": "^3.1.0",
     "@nebular/theme": "3.1.0",
-    "@ng-bootstrap/ng-bootstrap": "^4.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^4.0.2",
     "@ngrx/effects": "^7.1.0",
     "@ngrx/entity": "^7.0.0",
     "@ngrx/store": "^7.1.0",
