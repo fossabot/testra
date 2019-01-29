@@ -463,10 +463,10 @@
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-7.1.0.tgz#c42966a92096d605b72a1959599ad6c90a1e15a2"
   integrity sha512-0oF9VaixL8TNzIyBfFieLXunoz66uuceGfh5EaepQu+qPcVhnFq5KvYHDQOdCq0uuQYB7rVwNFYjOD7pO5LE5A==
 
-"@ngrx/entity@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-7.0.0.tgz#c059e10f63d366e405f24a349d6f860afc80f91f"
-  integrity sha512-SyiUmg9YjKcb6cuHvIqoMIUJ6KPPJV4oIaI8Rxxps0C+K3R16q8pTbnNqZek/oGj7SQhbd2DOzhqvybrI34Kmg==
+"@ngrx/entity@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-7.1.0.tgz#342b2c99a839eb788f51a8aa9398c5a4e493e35f"
+  integrity sha512-blCV88FKOY3FMFoTaOslp5pQu5QTWSCxorU/s2Bl8ThhnolHUsX/Nx3IaEtBr5sWW2z7mY/95qY294iXvfeM9w==
 
 "@ngrx/schematics@^7.1.0":
   version "7.1.0"
